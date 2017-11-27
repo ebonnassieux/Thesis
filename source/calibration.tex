@@ -1,0 +1,76 @@
+% !TeX spellcheck = en_UK
+
+\section{Calibration Methods in Radio Interferometry}\label{section.calibration}
+\pg
+In this section, we will discuss the implementation of interferometric array calibration. Our analysis will be based on the RIME formalism described in \cref{section.RIME}. One key metric of calibration quality is the \emph{dynamic range} (DR). High dynamic ranges mean that a high contrast has been obtained, and fainter sources can be reached. Dynamic range is defined as the following:
+\begin{equation}\label{eq.DR}
+DR = \frac{flux_{max}}{\max(\sigma_{thermal},\sigma_{artefacts})}
+\end{equation}
+where $flux_{max}$ is the flux of the brightest source, $\sigma_{thermal}$ the thermal noise in the image, and $\sigma_{artefacts}$ the noise associated with calibration artefacts.
+
+\pg
+The distinction between these two noise sources is crucial; one can never go `below noise' for a given observation, no matter the quality of calibration. Astronomers typically observe for longer periods of time in order to reduce $\sigma_{thermal}$ in their images, but this will not reduce the artefacts caused by poor calibration solutions. However, uncorrected Direction-Dependent Effects will not go away on their own, no matter how long the integration time.
+
+\pg
+There are three `generations' of calibration methods, of increasing complexity. I shall describe them in terms of the RIME, showing how each generation increases in generality to account for more exotic effects. For the sake of clarity, I shall henceforth refer to them interchangeably as `nth-generation calibration' or `nGC' methods.
+
+\subsection{First-Generation: Open-Loop Calibration}\label{section.calibration.1gc}
+
+\pg
+First-generation calibration methods (1GC methods) consist of open-loop calibration. This relies entirely on instrument stability, and thus imposes significant design constraints on radio telescopes. It consists of briefly observing a calibrator before and after each observation run to find a gain factor and offset error\footnote{For a concrete example, see \href{http://www.analog.com/en/analog-dialogue/articles/open-loop-calibration-techniques.html}{here}.}
+
+\pg
+Phase calibration in the 1GC era `proper' was not done, as engineers were capable of ensuring phase stability in contemporary interferometers. Phase was thus calculated relative to a fixed frame of reference, usually the central antenna of a 3-antenna array. 
+
+\pg
+In RIME terms, this consists of solving for a very basic form of $\Gjones_p$:
+\begin{equation}
+\Gjones_p = \begin{bmatrix} a_p t + b_p \end{bmatrix} % \begin{bmatrix} e^{2 \pi i \nu ( \phi_p - \phi_0)} \end{bmatrix}
+\end{equation}
+where $a_p,b_p$ are constants solved for during open-loop calibration and $t$ is time. %, $\nu$ the observing frequency, $\phi$ the phase at an antenna, and $\phi_0$ the phase at the reference antenna.
+
+\pg
+While values for $a_p$ and $b_p$ can in theory be found for both autocorrelation and both crosscorrelations, low signal-to-noise means that in practice, a single set of values is solved for per antenna\footnote{This reduces calibration to solving only for the intensity gains: the data can then only be used for \emph{intensity mapping} (e.g. \citepads{1957IAUS....4..159J}). This practice therefore precludes polarimetry.}. With these techniques, one can achieve dynamic ranges of about 100:1 (\citepads{2010A&A...524A..61N}).
+
+\subsection{Second-Generation: Self-Calibration}\label{section.calibration.2gc}
+
+\pg
+Second-generation calibration methods (2GC methods) are defined by their use of \emph{self-calibration}\footnote{On the discovery of self-calibration and its evolution in parallel to adaptive optics, I highly recommend the chapter titled "The Almost Serendipitous Discovery of Self-Calibration'' in "\href{http://library.nrao.edu/public/collection/02000000000280.pdf}{\citep{serendipitous}}.}, commonly referred to as \emph{self-cal} (\citepads{1984ARA&A..22...97P}). As described in \cref{section.RIME.FullSky.CVZ}, this method can only be deployed if the brightness matrix of the sky is the same for all baselines\footnote{This is not to say that the brightness matrix must contain only point sources, but rather that moving our interferometer 500m to the East should not change its measured visibilities} (i.e. that we are not affected by direction-dependent effects).
+
+\pg
+The seeds of self-calibration (and adaptive optics) is a paper published in the era of 1GC by Jennison (\citepads{1958MNRAS.118..276J}, expanding on his PhD work, which was published in 1951). With sufficient signal-to-noise, he showed that \emph{phase closure} could be calculated and errors due to the atmosphere thus mitigated.
+
+\pg
+Self-calibration and adaptive optics are the same thing, albeit meeting different constraints. Most notably, interferometric data is digital, allowing radio astronomers to perform their adaptive optics correction after the observation.
+
+\pg
+[ TODO: put adaptive optics diagram here maybe]
+
+\pg
+If amplitude and phase gains can be written as antenna-dependent, then each antenna-based error is estimated N times (once per baseline which includes this antenna). By estimating, and correcting for, these errors, one can use a simple source model to infer an improved one. This is why the method is referred to as self-cal; by calibrating `on' a good calibrator source (bright, compact and unresolved), one can drastically improve one's source model, along with one's calibration solutions.
+
+\pg
+By extending this idea to VLBI\footnote{e.g.  \citepads{1974ApJ...193..293R}}, \emph{amplitude closure} was introduced to the field along with phase closure, as described in \citepads{1983Sci...219...51R}. Astronomers were quick to apply these methods to interferometers in general.
+
+\pg
+The great advantage of radio interferometry over optics, however, is that we can \emph{iterate} over progressively improved source models. This is because interferometric data is digital, and because we record phase information.
+
+\pg
+In practice, of course, self-cal will be limited by noise. More precisely, it will be limited by sensitivity, in the form of the signal-to-noise ratio (henceforth SNR). For sufficiently bright sources, with high SNR, self-calibration can easily improve dynamic range by a factor of 10 (\cite{serendipitous}, p. 154) in a single iteration. 
+
+\subsection{Third-Generation: Direction-Dependent Effects}
+
+\pg
+Third-generation calibration (3GC) is an extension of 2GC calibration which takes direction-dependent effects into account. At the time of writing, this is the state of the art in radio interferometric calibration.
+
+\pg
+In this section, I will discuss the approach taken by [cite DDF and kMS paper when it comes out] and [cite prefactor paper if/when it is out], \emph{facet-based calibration}. The approach cannot be divorced from imaging, for the simple reason that solving for and applying Jones matrices in different directions requires image-plane knowledge of the sky brightness distribution $\Bmatrix$. The imaging challenges this methods introduces will be discussed in [href to relevant imaging section].
+
+\pg
+
+
+
+
+
+
+

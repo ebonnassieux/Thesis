@@ -1,0 +1,181 @@
+	\documentclass[11pt,a4paper,notitlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[top=4cm,bottom=3cm]{geometry}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage[divpsnames]{xcolor}
+\usepackage{subcaption}
+%\usepackage{hyperref}
+\usepackage[capitalise]{cleveref}
+\usepackage{multirow}
+\usepackage{aas_macros}
+\usepackage{natbib, twoopt}
+\usepackage{booktabs}
+\usepackage{floatrow}
+\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+\usepackage{listings}
+%\lstset{language=C,
+%  basicstyle=\footnotesize,
+%  keywordstyle=\color{blue},
+%  commentstyle=\color{green},
+%  numberstyle=\color{magenta},
+%  stringstyle=\color{blue},
+%  identifierstyle=\color{black}
+%}
+\usepackage{color}
+\usepackage{float}
+\restylefloat{figure}
+\usepackage{changepage}
+\usepackage[titles]{tocloft}
+\usepackage[justification=centering,font=small,labelsep=period,textfont=it,labelfont=bf]{caption}
+\usepackage{url}
+\usepackage{cleveref}
+\newcommand{\Hrule}{\rule{\linewidth}{0.4mm}}
+%\usepackage[french]{babel}
+%\interfootnotelinepenalty=10000  % So that long footnotes bring their paragraph with them on next page
+%\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=cyan}
+
+\bibpunct{}{}{;}{a}{}{,}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\makeatletter
+\newcommandtwoopt{\citeads}[3][][]{\href{http://adsabs.harvard.edu/abs/#3}%
+{\def\hyper@linkstart##1##2{}%
+\let\hyper@linkend\@empty\citealp[#1][#2]{#3}}}
+\newcommandtwoopt{\citepads}[3][][]{\href{http://adsabs.harvard.edu/abs/#3}%
+{\def\hyper@linkstart##1##2{}%
+\let\hyper@linkend\@empty\citep[#1][#2]{#3}}}
+\newcommandtwoopt{\citetads}[3][][]{\href{http://adsabs.harvard.edu/abs/#3}%
+{\def\hyper@linkstart##1##2{}%
+\let\hyper@linkend\@empty\citet[#1][#2]{#3}}}
+\newcommandtwoopt{\citeyearads}[3][][]%
+{\href{http://adsabs.harvard.edu/abs/#3}
+{\def\hyper@linkstart##1##2{}%
+\let\hyper@linkend\@empty\citeyear[#1][#2]{#3}}}
+\makeatother
+
+
+\usepackage{graphicx}
+%\usepackage{psfig}
+\usepackage{epstopdf}
+\usepackage{cuted}
+\usepackage{caption}
+%\usepackage{draftwatermark}
+\usepackage[bookmarks=false]{hyperref} %\usepackage{hyperref}
+%\usepackage[capitalise]{cleveref}
+%\usepackage{amssymb}
+\usepackage{amsmath}
+%\usepackage{aas_macros}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{natbib}
+\usepackage{rotate}
+\usepackage{dsfont}
+\usepackage{lscape}
+%\usepackage{dsfont}
+\usepackage{aalongtable}
+\usepackage{supertabular}
+\usepackage{mathbbol}
+\usepackage{bm}
+\usepackage{mathtools}
+%\usepackage[subnum]{cases}
+\usepackage{enumerate}
+%\usepackage{draftcopy}
+%\psdraft
+%\usepackage[sc]{titlesec}
+%\usepackage{bold-extra}
+%\usepackage{arydshln}
+\usepackage{amsmath}
+%\usepackage{mathabx}
+\usepackage{MnSymbol}
+\allowdisplaybreaks
+\usepackage{float}
+
+\bibpunct{(}{)}{;}{a}{}{,}
+
+\newcommand{\tbsp}{\rule{0pt}{18pt}}
+\newcommand\sqdeg{deg$^{2}$}
+\newcommand\psqdeg{deg$^{-2}$}
+\newcommand\ugriz{u$^*$g'r'i'z'}
+\newcommand\mic{$\mu$m}
+\newcommand\AAn{\AA~}
+\newcommand\sfr{SFR$_{0.5}$}
+\newcommand\ssfr{sSFR$_{0.5}$}
+\newcommand\msol{\mbox{M$_{\odot}$}}
+\newcommand\wph{W.Hz$^{-1}$}
+\newcommand\lsol{\mbox{L$_{\odot}$}}
+\newcommand{\appropto}{\mathrel{\vcenter{
+  \offinterlineskip\halign{\hfil$##$\cr
+    \propto\cr\noalign{\kern2pt}\sim\cr\noalign{\kern-2pt}}}}}
+%\usepackage{newtxtext,newtxmath}
+
+\def\mathY{\bm{\mathcal{Y}}}
+%\def\mathY{\bm{\mathcal{V}}}
+\def\Bchi{\large\bm{\mathcal{\chi}}}
+%\def\Bchi{\chi}
+\def\PVec{\textbf{x}}
+%\input{Defs.tex}
+\newcommand{\FigDir}{../Figures/}
+
+
+\def\supertiny{ \font\supertinyfont = cmr10 at 4pt \relax \supertinyfont}
+
+
+
+
+
+
+
+
+\author{Etienne Bonnassieux}
+\title{PhD manuscript}
+
+% +++ IMPORT DEFINITIONS +++
+\input{source/Defs.tex}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%
+%%% PREFACE %%%
+%%%%%%%%%%%%%%%
+\pagenumbering{roman}
+\input{titlepage/reports}
+\addtocontents{toc}{~\hfill\textbf{Page}\par}
+%\input{source/synopsis.tex}
+%\newpage
+%\input{source/acknowledgements.tex}
+
+%%%%%%%%%%%%%%%%%%%%
+%%% START THESIS %%%
+%%%%%%%%%%%%%%%%%%%%
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\input{source/RIME.tex}
+\newpage
+\input{source/calibration.tex}
+\newpage
+\input{source/imaging.tex}
+\newpage
+\input{source/3c295.tex}
+%\newpage
+%\input{source/EtiennePaper1/paper.tex}
+\newpage
+{\huge\textbf{Appendix}\par}
+\appendix
+%\input{sources/code}
+\newpage
+
+%\nocite{*}
+\newpage
+\bibliographystyle{aa}
+\bibliography{source/biblio}
+\addcontentsline{toc}{section}{Bibliography}
+
+\end{document}

@@ -1,0 +1,168 @@
+% =======================
+% === ETN definitions ===
+% =======================
+
+% paragraph macro
+\def\pg{\paragraph{}}
+
+% ++++++ variables ++++++
+\def\evector{\textbf{\emph{e}}}
+\def\Jones{\textbf{\emph{J}}}
+\def\volt{\textbf{\emph{v}}}
+\def\Vis{\textbf{V}}
+\def\Herm{H}
+\def\Bmatrix{\textbf{B}}
+\def\U{\emph{\textbf{u}}}
+\def\Kjones{\textbf{\emph{K}}}
+\def\Gjones{\textbf{\emph{G}}}
+\def\Ejones{\textbf{\emph{E}}}
+\def\Wjones{\textbf{\emph{W}}}
+\def\Coherency{\textbf{X}}
+\def\direction{\pmb{\sigma}}
+\def\lvec{\pmb{l}}
+\def\uvec{\pmb{u}}
+
+
+\def\Noisefunc{\mathcal{N}_{tt'}}
+\def\Kfunc{\mathcal{K}_{tt'}}
+\def\Errfunc#1{\mathcal{E}_{#1}}
+\def\deltu{\delta u}
+\def\deltv{\delta v}
+\def\weight#1{\omega_{pq,#1}}
+\def\deltasamp#1{\delta(#1-\underline{t}_0)}
+\def\Sampfunc#1#2{\mathcal{C}_{#1}(#2)}
+\def\DirFunc#1{\mathcal{S}_{#1}}
+\def\WeightFunc#1{\mathcal{W}_{#1}}
+\def\dudv{\delta u \delta v}
+\def\t0{\mathbf{t_0}}
+
+
+
+% operators
+\def\Var#1{\textrm{Var}\{#1\}}
+\def\Cov#1{\textrm{Cov}\{#1\}}
+\def\Exp#1{\textrm{E}\{#1\}}
+\def\Norm#1{\|#1\|}
+
+
+% Algebra
+\def\schur{\circ}
+
+% Matrices
+\def\matVt{\bm{\mathcal{V}}_t}
+\def\matVdt{\bm{\mathcal{V}}_{d,t}}
+\def\matKtd{\textbf{K}_{d,t}}
+\def\matVV{\bigdoublevee}
+\def\matR{\bm{R}}
+\def\matRt{\bm{R}_t}
+\def\matRdt{\bm{R}_{d,t}}
+
+% Vectors
+\def\vecktd{\textbf{k}_{d,t}}
+\def\vecg{\vec{g}}
+%\def\vecg{\textbf{g}}
+\def\VecHatg{\widehat{\textbf{g}}}
+\def\VecHatgt{\widehat{\textbf{g}_t}}
+\def\VecHatgO{\widehat{\textbf{g}_{0}}}
+\def\VarVecHatg{\textbf{V}_{\widehat{\textbf{g}}}}
+
+% Scalars
+\def\sqrts{\sqrt{s_d}}
+\def\gpt{g_p^{t}}
+\def\gqt{g_q^{t}}
+\def\Hatgpt{\widehat{g_p^{t}}}
+\def\Hatgqt{\widehat{g_q^{t}}}
+\def\vpqt{v_{pq}^{t}}
+\def\kpqdt{k_{pq,t}^{d}}
+\def\kpdt{k_{p,t}^{d}}
+\def\kqdt{k_{q,t}^{d}}
+\def\kpqtlm{k^{lm}_{pq,t}}
+\def\kpqtlmprime{k^{lm}_{pq,t'}}
+\def\sd{s_{d}}
+\def\Irpqlm{I^r_{pq,lm}}
+\def\Vrpqt{\widetilde{r}_{pq,t}}
+\def\Vrpqtprime{\widetilde{r}_{pq,t'}}
+
+
+% ======= Names   =====================
+\def\COH{{\sc CohJones}}
+
+% ======= Scalars =====================
+\def\u{u}
+\def\v{v}
+\def\w{w}
+\def\l{l}
+\def\m{m}
+\def\n{n}
+%\def\d{\text{d}}
+\def\d{d}
+\def\dbf{{\bm d}}
+
+
+% ======= Conjugates
+%\newcommand{\conj}[1]{{#1}^*}
+%\newcommand{\conjp}[1]{{\left(#1\right)}^*}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\conjp}[1]{\left({\overline{#1}}\right)}
+%\newcommand{\Vec}[1]{\bm{#1}}
+\def\vec#1{\ensuremath{\mathbf{#1}}}
+
+% ======= 2x2 Matrices ===============
+\def\JMat{\textbf{J}}
+\def\Skyd{\textbf{S}_d}
+\def\Vbl{\textbf{V}_{(pq)t\nu}}
+
+\newcommand{\mat}[1]{{\bm{#1}}}
+\newcommand{\JJ}{\mat{J}} % \bmath{\mathcal{J}}}
+\newcommand{\JHJ}{\JJ^H\JJ} % \bmath{\mathcal{J}}}
+\newcommand{\UL}{\mathrm{UL}}%\mathcal{ur}}
+\newcommand{\Na}{N_\mathrm{ant}}
+\newcommand{\Nbl}{N_\mathrm{bl}}
+\newcommand{\Nd}{N_\mathrm{dir}}
+
+% ======= Vectors      ===============
+\def\vbltnu{\textbf{v}_{(pq)t\nu}}
+\def\vbl{\textbf{v}_{pq}}
+\def\V{\textbf{V}}
+\def\gwirt{\bm{g_{\!_{W}}}}
+\def\dgwirt{\dbf\bm{g_{\!_{W}}}}
+\def\g{\bm{g}}
+\def\vis{\textbf{v}}
+\def\Vmeas{\textbf{P}}
+
+
+% ====== Separator    ================
+\def\separator{
+\hrule
+\begin{center}
+\textsc{to be modified after that}
+\end{center}
+\hrule
+}
+
+% ======= Kroneker product ===========
+\def\Kron{\otimes}
+
+% ======= Jacobians =====================
+\def\SimpleJacob{\bm{J}}
+\def\Jacob{\bm{\mathcal{J}}}
+%\def\JVpq{\Jacob\left\{\textbf{v}_{(pq)}\right\}}
+%\def\JVpq{\Jacob_{\!_{\textbf{v}_{pq}}}}
+\def\JVpq{\Jacob_{{\textbf{v}_{pq}},\bm{g_{\!_{W}}}}}
+%\def\JVpq{\Jacob_{{\textbf{v}_{pq}}}}
+
+\def\JVpqg{\Jacob_{{\textbf{v}_{pq}},\bm{g}}}
+\def\JVpqCg{\Jacob_{{\textbf{v}_{pq}},\bm{\conj{g}}}}
+%\def\JVpqg{\Jacob_{{\textbf{v}_{pq}}}\big|_{\bm{g}}}
+%\def\JVpqCg{\Jacob_{{\textbf{v}_{pq}}}\big|_{\bm{\conj{g}}}}
+\def\JVAtg{\JV\big|_{\vec{g}}}
+
+\def\A{\textbf{A}}
+\def\H{\textbf{H}}
+
+\def\JV{\Jacob\left\{\textbf{v}\right\}}
+%\def\JV{\Jacob_{\!_\textbf{v}}}
+\def\JV{\Jacob_{\textbf{v}}}
+%\def\JVpq{\Jacob_{\textbf{V}_{(pq)}}}
+\def\JVg{\Jacob_{\textbf{v},\bm{g}}}
+\def\JVCg{\Jacob_{\textbf{v},\bm{\conj{g}}}}
