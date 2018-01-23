@@ -1,0 +1,43 @@
+\chapter{Imaging the Extended Groth Strip without International Stations}
+
+% % % % % % % % % % % % % % % % % % % % % % %
+\section{Aims \& Methodology}
+
+\pg
+Here, we want to make wide-field image of entire LOFAR primary beam, centred on EGS, *at once*. Such image never been done in this freq. band
+\pg
+This requires direction-dependent calibration, which in turns requires good direction-independent calibration starting from good model of 3C295. This is because this source is brightest in primary beam, and its sidelobes will dominate in the image unless properly subtracted
+\pg
+Source extraction using model made from this low-res image will allow us to subtract neighbouring sources when imaging the EGS at high res.
+\pg
+Technical limitations in computing means that maximum attainable image size (in number of pixels) will limit pixel resolution to ~5'' (actual number to be determined properly!) - this in turn means that the international stations are not useful for imaging, as the resolution they allow will not be reachable due to these technical, computational limits.
+\pg
+methodology: calibrate full LOFAR bandwidth using high-res model from section above, done using the LOFAR Surveys KSP pipeline (talk about DD calibration, facetting, etc)
+finally, overlays of sources in the field compared with VLA, optical, etc
+
+
+% % % % % % % % % % % % % % % % % % % % % % %
+\section{Data Reduction}
+
+\subsection{Data \& Observation Properties}
+same as before, same dataset
+
+\subsection{Calibration Strategy}
+
+\pg
+start w/ D.I. calibration using model from before.
+\pg
+follow with D.D. calibration w/ lofar pipeline - describe the pipeline and its properties
+\pg
+show self-cal loop (before-after) in images \& gains; show improvement from direction-dependent cal. on entire field \& individual sources
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % %
+\section{Overlays \& Images}
+
+\pg
+show overlays of various radio sources in the field over their optical, IR, X-ray, etc counterparts. Discuss astrometric accuracy, calibration quality, morphology, etc etc
+
+
+\newpage

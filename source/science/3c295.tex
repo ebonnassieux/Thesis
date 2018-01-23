@@ -1,0 +1,47 @@
+\chapter{High-resolution Imaging of 3C295}
+
+% % % % % % % % % % % % % % % % % % % % % % %
+\section{Aims \& Methodology}
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % %
+\section{Data Reduction}
+
+\subsection{Data \& Observation Properties}
+\pg
+talk about surveys KSP tier, when observation occurred, how long, what frequency, describe subband structure of bandwidth, describe state of LOFAR and stations at the time, etc
+
+\subsection{Calibrating the Data}
+\pg
+strategy: self-cal different subbands independently across full lofar bandwidth starting with high-res VLA model
+\pg
+               !!! SHOW GAIN CURVES, LOTS OF PLOTS ETC
+\pg
+               !!! SHOW IMAGE OF WHICH SUBBANDS WE PICK ACROSS ENTIRE LOFAR BW
+\pg
+               !!! ANALYSE CONVERGENCE OF CALIBRATION ACROSS SUBBANDS
+\pg
+apply beam to account for different sensitivities of different baselines
+\pg
+use full-Jones solver (i.e. solve for a 2x2 complex matrix) to account for effects such as Faraday rotation etc
+\pg
+!!! SHOW JONES CHAIN WE SOLVE FOR AND EXPLAIN IT, MATHS ETC: $\mat{B}\mat{J}$ for Beam*Jones
+\pg
+!!! SHOW DIRECTION-DEPENDENT PSF EFFECT WHICH WE MODEL
+
+
+% % % % % % % % % % % % % % % % % % % % % % %
+\section{Overlays \& Spectral Analaysis}
+
+\subsection{Overlays of 3C295 at Multiple Frequencies}
+\pg
+Show overlays of our low-freq model onto images of 3c295 at various other freqs - VLA, optical, IR, X-ray, etc.
+
+\pg
+Comment on behaviour of various components, astrometric accuracy, etc
+
+\subsection{Spectral Analaysis}
+
+\pg
+Work with Astron guy to extract spectral behaviour of various components of 3C295 over multiple wavelengths, since he's got a purpose-built package

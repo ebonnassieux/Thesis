@@ -1,4 +1,4 @@
-	\documentclass[11pt,a4paper,notitlepage]{article}
+	\documentclass[11pt,a4paper,notitlepage]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[top=4cm,bottom=3cm]{geometry}
 \usepackage{amsmath}
@@ -157,25 +157,44 @@
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-\input{source/RIME.tex}
-\newpage
-\input{source/calibration.tex}
-\newpage
-\input{source/imaging.tex}
-\newpage
-\input{source/3c295.tex}
+
+\input{source/intro/intro.tex}
+
+\chapter{Analysing the Variance of Gain Solutions}
+put paper in there once it's refereed
+%\input{source/EtiennePaper1/thesis-paper.tex}
+
+%\input{source/intro.teximaging.tex}
 %\newpage
-%\input{source/EtiennePaper1/paper.tex}
-\newpage
-{\huge\textbf{Appendix}\par}
+%\input{source/calibration.tex}
+%\newpage
+
+%\chapter{Observational Work}
+
+\input{source/science/strategy.tex}
+
+\input{source/science/3c295.tex}
+
+\input{source/science/lowres-EGS.tex}
+
+\input{source/science/hires-EGS.tex}
+
+
+\chapter{Conclusion \& Future Work}
+\input{source/conclusion.tex}
+
+
+%\newpage
+%{\huge\textbf{Appendix}\par}
 \appendix
+\input{source/intro/RIME.tex}
 %\input{sources/code}
-\newpage
+%\newpage
 
 %\nocite{*}
-\newpage
+%\chapter{Bibliography}
 \bibliographystyle{aa}
 \bibliography{source/biblio}
-\addcontentsline{toc}{section}{Bibliography}
+\addcontentsline{toc}{chapter}{Bibliography}
 
 \end{document}
