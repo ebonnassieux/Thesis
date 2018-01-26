@@ -15,7 +15,7 @@
    version="1.1"
    inkscape:version="0.48.4 r9939"
    sodipodi:docname="selfcal.svg"
-   inkscape:export-filename="/home/offler/Desktop/phd/conferences/bologna 2017 - 'The Broad Impact of Low Frequency Observing'/images/selfcal.png"
+   inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/selfcal.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -42,9 +42,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="625.8954"
-     inkscape:cy="698.36206"
+     inkscape:zoom="1.4"
+     inkscape:cx="626.10627"
+     inkscape:cy="761.23643"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -364,19 +364,26 @@
        id="path3950-3-1"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:#ffcc00;stroke:#ffcc01;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#ffcc00;stroke:#ffcc01;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 680.42857,344.00511 150,40"
        id="path5920"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
-       style="fill:#ffcc00;stroke:#ffcc01;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#ffcc00;stroke:#ffcc01;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 821.5,381.50511 150,40"
        id="path5920-9"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/path5920-3.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
-       style="fill:#ffcc00;stroke:#ffcc01;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#ffcc00;stroke:#ffcc01;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 937.21429,412.57655 150.00001,40"
        id="path5920-3"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
 </svg>
