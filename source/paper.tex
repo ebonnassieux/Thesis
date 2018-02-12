@@ -449,9 +449,9 @@ The residual gains of Eq. \ref{eq.residuals.definition} can now be understood as
 \pg
 We define the residual matrix as:
 \begin{align}
-\Rmat{\tnuIndeix} =& \sum_d s_d \Kmat{d,\tnuIndeix} \left( \ghatvect_\tnuIndeix\ghatvect_\tnuIndeix^H - \gvect_\tnuIndeix\gvect_\tnuIndeix^H \right) \Kmat{d,\tnuIndeix}^H + \epsilon \label{eq.residual.matrix}
+\Rmat{\tnuIndeix} =& \sum_d s_d \Kmat{d,\tnuIndeix} \left( \ghatvect_\tnuIndeix\ghatvect_\tnuIndeix^H - \gvect_\tnuIndeix\gvect_\tnuIndeix^H \right) \Kmat{d,\tnuIndeix}^H + \epsilon \label{eq.residual.matrixform}
 \end{align}
-where we {explicitly place ourselves in the limits of our formalism, i.e.} that we do not have direction-dependent gains. We now see that at the core of Eq. \ref{eq.residual.matrix} lies $\displaystyle\VarmatTau$, where $\sum_{\tnuIndeix\in\cellindex} \VarmatTau = \VarmatC$.
+where we {explicitly place ourselves in the limits of our formalism, i.e.} that we do not have direction-dependent gains. We now see that at the core of Eq. \ref{eq.residual.matrixform} lies $\displaystyle\VarmatTau$, where $\sum_{\tnuIndeix\in\cellindex} \VarmatTau = \VarmatC$.
 The K-matrix is defined as follows:
 \begin{align}\label{kmat.def}
 \Kmat{d,\tnuIndeix} =&

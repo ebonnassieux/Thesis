@@ -24,7 +24,7 @@ Radio astronomy consists of observing the electromagnetic field at very long wav
 \pg
 However, because radio frequencies are so much lower, achieving a resolution comparable to e.g. the HST requires extremely large dishes. While there exist telescopes, both old and new, which work on this principle (from Arecibo Observatory, shown in Fig. , to the upcoming FAST telescope in China, shown in Fig. )
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{subfigure}{.43\textwidth}
 \resizebox{\hsize}{!}{\includegraphics{images/20151101114231-0_8e7cc_c7a44aca_orig.jpg}}
@@ -52,7 +52,7 @@ There are two quantities of interest to astronomers of all stripes: sensitivity 
 \pg
 To produce high-resolution maps of the radio sky, this technical limitation demands a technical solution. In practice, this solution consists of recourse to interferometric techniques. Indeed, interferometry can be thought of as the construction of a "sparse" dish, as illustrated in Fig.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{subfigure}{.43\textwidth}
 \resizebox{\hsize}{!}{\includegraphics{images/baseline-resolution.png}}
@@ -78,7 +78,7 @@ To define the baseline, we must begin by considering the geometric properties of
 
 \pg
 We have defined what a baseline corresponds to: a vector coordinate in $(u,v,w)$-space. To each baseline we associate a measurement, which we call the \emph{visibility}. 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \resizebox{\hsize}{!}{\includegraphics{images/visibility-creation.png}}
 \caption{\label{fig.visibility} There are two ways to combine the voltages from two antennas into a visibility: they are sum-correlation and $\pi$-correlation. In this manuscript, we will only concern ourselves with the latter. Image credit: Julien Girard}
@@ -90,7 +90,7 @@ The visibility associated with baseline $\mathbf{b}_{AB}$ is created by taking t
 
 \pg
 So we see that a visibility is a complex vector quantity. We also see that $\mathbf{b}_{AB} = \mathbf{b}_{BA}^*$: the information of the visibility associated with baseline BA is contained in the visibility associated with baseline AB. This means that in practice, only half of the visibilities ever need be stored. What does the visibility measurement correspond to?
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \resizebox{\hsize}{!}{\includegraphics{images/visibility-measure.png}}
 \caption{\label{fig.visibility.measure} Here, we assume that there are only two sources in the sky whose signal can be measured by our antennas. The final visibility is the sum of the visibilities associated with each individual source. Image credit: Julien Girard}
@@ -110,7 +110,7 @@ In general, interferometric design is such that the $w$ component of visibilitie
 \pg
 For the VLA, for example, the $uv$-coverage when observing the zenith will be as shown in Fig. \ref{fig.vla.uvcoverage}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \resizebox{\hsize}{!}{\includegraphics{images/vla-uvcoverage.png}}
 \caption{\label{fig.vla.uvcoverage} The VLA contains 27 radio dishes placed as shown above. Each antenna pair between those 27 gives two single baselines, here, one red and one blue. Image credit: Julien Girard}
@@ -121,7 +121,7 @@ For the VLA, for example, the $uv$-coverage when observing the zenith will be as
 
 \pg
 Individual antennas of an array can be pointed mechanically, and so the impact of pointing the interferometric array in a given direction can be minimised. But what happens to the array itself? It is useful here to go back to the illustration of Fig. \ref{fig.arecibo.vla}. Think of each dish in the array representing a "filled" segment of a massive but empty dish. By projecting our observation in a given direction, this dish goes from circular to elliptical.
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \begin{subfigure}{.40\textwidth}
 \resizebox{\hsize}{!}{\includegraphics{images/lofar-uvcoverage-zenith.png}}
