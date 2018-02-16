@@ -23,7 +23,10 @@ we extract and apply a scalar flux correction factor for each subband so that th
 
 \subsection{Data \& Observation Properties}
 \pg
-talk about surveys KSP tier, when observation occurred, how long, what frequency, describe subband structure of bandwidth, describe state of LOFAR and stations at the time, etc
+The dataset used for this PhD project is part of the LOFAR Surveys KSP Tier-1 survey, which consists of a number of 8-hour pointing covering as much of the sky visibile to LOFAR as possible. We analyse one of these pointings, an observation performed on the 28th of August 2014 and centred on the Extended Groth Strip. As part of the Tier-1 survey, it is an 8-hour-long observation. We limit ourselves to analysing only the HBA observation, meaning that we use 365 sub-bands which sample a total bandwidth of [give bandwidth]. We use all Core and Remote LOFAR stations, as well as some of the International stations which were online at the time (specifically the German stations 1-5 and 7, along with the Swedish and the British station).
+
+\pg
+The data was acquired through the LOFAR Long-Term Archive, and is thus pre-processed and flagged for RFI using the standard tools ([cite aoflagger, ndppp?]). 
 
 \subsection{Calibrating the Data}
 \pg
@@ -58,13 +61,66 @@ Because no high-resolution models exist for 3C295 at our observing frequencies, 
 \caption{\label{fig.vla.3c295}VLA observation of 3C295 at 8.7 GHz. Pixel size is $0.2''$.}
 \end{figure}
 
+\pg
+For SB035, the gain curves for all antenna when calibrating with the initial model are as shown in Fig \ref{fig.sb035.gains.pass1}. Note that, especially for the international baselines, the gain amplitudes show a lot of structure: this is unphysical, and represents the unmodelled flux being absorbed into the gain solutions.
+\begin{figure}[h!]
+\includegraphics[width=0.9\linewidth]{images/{SB035.gains.pass1}.png}
+\caption{\label{fig.sb035.gains.pass1} Gain curves for four LOFAR stations in SB035. Calibration was done using the VLA model. The blue curve shows the gain amplitude, while the green curve shows the phase. Here, only the values for the XX correlation are shown; they are indicative of the other Jones term properties.}
+\end{figure}
 
 \pg
-strategy: self-cal different subbands independently across full lofar bandwidth starting with high-res VLA model
+A few features are immediately visible in Fig. \ref{fig.sb035.gains.pass1}. Firstly, we see in the gain amplitude curves of the core and remote stations that the gains for the last 2 hours of observation are noisier than the rest. This behaviour can be seen for most core and remote stations. Thankfully, the quality-based weighting schemes ought to optimise the contribution from these noisy visibilities, and so this is not too concerning. We see that the amplitude curves for the core and remote stations are nice and flat, with little structure to be seen: this is very encouraging, as this is what we expect "physical" gain curves to look like. In other words, we see little pollution from unmodelled sources in the calibration model for core and remote stations. The phase seems reasonable, with some structure but not dominated by noise. Note that the phase is expected to wrap from $-\pi$ to $\pi$ and vice-versa, which is what the fast oscillations in the last half of the phase gains of RS407HBA correspond to.
+
+\pg
+As for the international station gains, we see the presence of structure in the amplitude gain curve. This is indicative of the presence of sky model errors, which is expected: this is, after all, the gain curves after the first pass of calibration (i.e. without self-calibration). Very little information can be extracted from the phase curves, which wrap very fast: this is expected behaviour, as longer baselines rotate faster than shorter ones.
+
+\pg
+As calibration improves, however, we expect to get more of the true sky in our model. This, in turn, ought to decrease the structure in the gain curves. Fig \ref{fig.sb035.gains.pass4} shows the gain curves for the same antennas after 3 passes of self-calibration.
+\begin{figure}[h!]
+\includegraphics[width=0.9\linewidth]{images/{SB035.gains.pass4}.png}
+\caption{\label{fig.sb035.gains.pass4} Gain curves for four LOFAR stations in SB035 after 3 passes of self-calibration. The blue curve shows the gain amplitude, while the green curve shows the phase. Here, only the values for the XX correlation are shown; they are indicative of the other Jones term properties.}
+\end{figure}
+
+\pg
+As we can see, the last two hours remain noisy compared to the first two. What is interesting here is the evolution of the amplitude gain curves for DE602HBA and SE607HBA; while there is clearly still structure in the amplitude curves, we see that some of the structure is no longer present in the curves. What this indicates is that the sky model has improved compared to what it had been, but there is still room for improvement: indeed, this is as expected, as there are many more sources than 3C295 within the primary beam. 
+
+\pg
+This self-calibration was performed over all 6 subbands simultaneously; this allowed us to constrain the flux distribution in the sky as a function of frequency, even though the absolute scale in each image is known to be wrong. The absolute scale distribution being wrong is no issue, however; indeed, for each given subband, the gains are all wrong by the same multiplicative factor. This factor changes between subbands, however, and so the corrected visibilities must be corrected by the appropriate multiplicative factor for the true position-dependent spectral indices to be found. Mathematically, we have:
+%A_\mathrm{true}(\nu) 
+\begin{align}
+\mathbf{V}_{pq}^\mathrm{corr.}(t,\nu) &= (a_\mathrm{false}(\nu) \mathbf{\tilde{G}}_{p,t}^{\nu})^{-1}{\mathbf{V}_{pq}^\mathrm{meas.}(t,\nu) }{(a_\mathrm{false}(\nu) \mathbf{\tilde{G}}^{\nu})^{-1}}\\
+\mathbf{V}_{pq}^\mathrm{meas.}(t,\nu) &=(a_\mathrm{true}(\nu) \mathbf{{G}}_{p,t}^{\nu}) \mathbf{X}_{pq}(t,\nu) (a_\mathrm{true}(\nu) \mathbf{{G}}_{p,t}^{\nu}) %}{(a_\mathrm{false}(\nu) \mathbf{\tilde{G}}_{p,t}^{\nu})(a_\mathrm{false}(\nu) \mathbf{\tilde{G}}_{q,t}^{\nu})}
+\end{align}
+where uppercase, boldface letters denote $2\times 2$ Jones matrices, and lowercase letters are scalars. Here, $a_\mathrm{false}(\nu)$ is the incorrect scaling factor applied at frequency $\nu$ by calibrating without the proper spectral indices for all the components of 3C295, while $a_\mathrm{true}(\nu)$ is the correct scaling factor. The true scaling factor is known from low-resolution calibrator analysis, while the false scaling factor is an arbitrary function of frequency.
+Assuming that our estimate for the Jones matrices is accurate (modulo the scaling factor), i.e. that $\mathbf{\tilde{G}}_{q,t}^{\nu}\approx \mathbf{{G}}_{q,t}^{\nu}$, then 
+\begin{align}
+(a_\mathrm{false}(\nu) \mathbf{\tilde{G}}_{p,t}^{\nu})^{-1}(a_\mathrm{true}(\nu) \mathbf{{G}}_{p,t}^{\nu}) &= \frac{a_\mathrm{false}(\nu)}{a_\mathrm{true}(\nu)} (\mathbf{\tilde{G}}_{p,t}^{\nu})^{-1}\mathbf{{G}}_{p,t}^{\nu}\\
+&\approx \frac{a_\mathrm{false}(\nu)}{a_\mathrm{true}(\nu)} \I
+\end{align}
+and so
+\begin{align}
+\mathbf{V}_{pq}^\mathrm{corr.}(t,\nu) &\approx  \left(\frac{a_\mathrm{false}(\nu)}{a_\mathrm{true}(\nu)}\right)^2\mathbf{X}_{pq}(t,\nu)
+\end{align}
+we can thus recover the properly-scaled visibilities in each subband by normalising the visibilities (i.e. divide by whatever $a_\mathrm{false}$ happens to be with a given calibration at a given frequency) and subsequently scaling them by $a_\mathrm{true}$ so that the average value in the corrected visibilities is equal to what's expected at this frequency.
+
+\pg
+Having calibrated our 6 subbands with the VLA model, we deconvolve them simultaneously. This allows us to improve the conditioning of the imaging inverse problem. After three passes of self-calibration, we have a spectral cube with 6 frequency slices centred on the various subbands. The stacked residual images are in Fig \ref{fig.3c295.stack.selfcal.uvcut}, before and after self-calibration. We see that noise falls by a factor of [?].
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.43\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{VLApybdsmModel.FullBW.automate.sc.pass1.app.restored.normalised.fits}.png}}
+\caption{\label{fig.3c295.stack.selfcal.uvcut.SC1} Calibrated with the VLA model: there is quite a bit of noise.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.43\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{VLApybdsmModel.FullBW.automate.sc.pass4.app.restored.normalised.fits}.png}}
+\caption{\label{fig.3c295.stack.selfcal.uvcut.SC3} Same data after 3 passes of self-calibration: the noise is decreased.}
+\end{subfigure}
+\caption{\label{fig.3c295.stack.selfcal.uvcut} Images made with 6 subbands spread across the LOFAR bandwidth.}
+\end{figure}
+The frequency-dependent model is shown in Fig. [ref]
 \pg
                !!! SHOW GAIN CURVES, LOTS OF PLOTS ETC
-\pg
-               !!! SHOW IMAGE OF WHICH SUBBANDS WE PICK ACROSS ENTIRE LOFAR BW
 \pg
                !!! ANALYSE CONVERGENCE OF CALIBRATION ACROSS SUBBANDS
 \pg
