@@ -104,7 +104,7 @@ and so
 we can thus recover the properly-scaled visibilities in each subband by normalising the visibilities (i.e. divide by whatever $a_\mathrm{false}$ happens to be with a given calibration at a given frequency) and subsequently scaling them by $a_\mathrm{true}$ so that the average value in the corrected visibilities is equal to what's expected at this frequency.
 
 \pg
-Having calibrated our 6 subbands with the VLA model, we deconvolve them simultaneously. This allows us to improve the conditioning of the imaging inverse problem. After three passes of self-calibration, we have a spectral cube with 6 frequency slices centred on the various subbands. The stacked residual images are in Fig \ref{fig.3c295.stack.selfcal.uvcut}, before and after self-calibration. We see that noise falls by a factor of [?].
+Having calibrated our 6 subbands with the VLA model, we deconvolve them simultaneously. This allows us to improve the conditioning of the imaging inverse problem. After three passes of self-calibration, we have a spectral cube with 6 frequency slices centred on the various subbands. The stacked residual images are in Fig \ref{fig.3c295.stack.selfcal.uvcut}, before and after self-calibration. We see that noise falls by a factor of 1.17. Note that this measure is not as significant as might be expected: indeed, since the scaling factors for each subband is arbitrary, the overall decrease in noise could be attributed to a single subband, should its incorrect scaling factor dominate. The overall decrease is nevertheless encouraging.
 \begin{figure}[h!]
 \centering
 \begin{subfigure}{.43\textwidth}
@@ -118,7 +118,41 @@ Having calibrated our 6 subbands with the VLA model, we deconvolve them simultan
 \end{subfigure}
 \caption{\label{fig.3c295.stack.selfcal.uvcut} Images made with 6 subbands spread across the LOFAR bandwidth.}
 \end{figure}
-The frequency-dependent model is shown in Fig. [ref]
+The frequency-dependent model is shown in Fig. \ref{fig.3c295.stack.selfcal.uvcut.model}. Note that while there is some frequency-dependent flux distribution changes, it is very small.
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.43\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{sb035-model}.png}}
+\caption{\label{fig.3c295.stack.selfcal.uvcut.SC1.model.sb035} SB035}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.43\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{sb095-model}.png}}
+\caption{\label{fig.3c295.stack.selfcal.uvcut.SC1.model.sb095} SB095}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.43\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{sb095-model}.png}}
+\caption{\label{fig.3c295.stack.selfcal.uvcut.SC1.model.sb155} SB155}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.43\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{sb095-model}.png}}
+\caption{\label{fig.3c295.stack.selfcal.uvcut.SC1.model.sb215} SB215}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.43\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{sb095-model}.png}}
+\caption{\label{fig.3c295.stack.selfcal.uvcut.SC1.model.sb275} SB275}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.43\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{sb095-model}.png}}
+\caption{\label{fig.3c295.stack.selfcal.uvcut.SC1.model.sb335} SB335}
+\end{subfigure}
+\hfill
+\caption{\label{fig.3c295.stack.selfcal.uvcut.model} Source model for each subband after 4 passes of self-calibration.}
+\end{figure}
 \pg
                !!! SHOW GAIN CURVES, LOTS OF PLOTS ETC
 \pg

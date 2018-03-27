@@ -52,7 +52,7 @@ Self-calibration and adaptive optics are the same thing, albeit meeting differen
 If amplitude and phase gains can be written as antenna-dependent, then each antenna-based error is estimated N times (once per baseline which includes this antenna). By estimating, and correcting for, these errors, one can use a simple source model to infer an improved one. This is why the method is referred to as self-cal; by calibrating `on' a good calibrator source (bright, compact and unresolved), one can drastically improve one's source model, along with one's calibration solutions.
 
 \pg
-By extending this idea to VLBI\footnote{e.g.  \citepads{1974ApJ...193..293R}}, \emph{amplitude closure} was introduced to the field along with phase closure, as described in \citepads{1983Sci...219...51R}. Astronomers were quick to apply these methods to interferometers in general.
+By extending this idea to VLBI\footnote{e.g.  \citepads{1974ApJ...193..293R}}, \emph{amplitude closure} was introduced to the field along with phase closure \citepads[as described in][]{1983Sci...219...51R}. Astronomers were quick to apply these methods to interferometers in general.
 
 \pg
 The great advantage of radio interferometry over optics, however, is that we can \emph{iterate} over progressively improved source models. This is because interferometric data is digital, and because we record phase information.
@@ -63,13 +63,13 @@ In practice, of course, self-cal will be limited by noise. More precisely, it wi
 \subsubsection{Third-Generation: Direction-Dependent Effects}
 
 \pg
-Third-generation calibration (3GC) is an extension of 2GC calibration which takes direction-dependent effects into account. At the time of writing, this is the state of the art in radio interferometric calibration.
+Third-generation calibration (3GC) is an extension of 2GC calibration which takes direction-dependent effects into account. At the time of writing, this is the cutting edge in radio interferometric calibration.
 
 \pg
-In this section, I will discuss the approach taken by [cite DDF and kMS paper when it comes out] and [cite prefactor paper if/when it is out], \emph{facet-based calibration}. The approach cannot be divorced from imaging, for the simple reason that solving for and applying Jones matrices in different directions requires image-plane knowledge of the sky brightness distribution $\Bmatrix$. The imaging challenges this methods introduces will be discussed in [href to relevant imaging section].
+In this section, I will discuss the approach taken by [cite DDF and kMS paper when it comes out] and [cite prefactor paper if/when it is out], \emph{facet-based calibration}. This method has an imaging equivalent \citepads[see][and associated papers]{2017arXiv171202078T}. The approach cannot be divorced from imaging, for the simple reason that solving for and applying Jones matrices in different directions requires image-plane knowledge of the sky brightness distribution $\Bmatrix$. The imaging challenges this methods introduces will be discussed in [href to relevant imaging section].
 
 \pg
-
+The crucial insight of this approach consists 
 
 
 

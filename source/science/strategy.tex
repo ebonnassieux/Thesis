@@ -1,10 +1,57 @@
 \chapter{Scientific Strategy}
 
+%\pg
+%This section aims to provide a general overview of our scientific aims \& chosen strategy. [describe more]
+
+\section{Science Goal}
+\pg
+One of the key topics this thesis is observational cosmology with LOFAR \& SKA pathfinders. This can be done in many ways - but this manuscript concerns itself primarily with the creation of large, deep and high-resolution surveys of the sky. While this approach is potentially extremely rewarding in terms of the science one can do with its resulting maps, it is also uniquely complicated.
+
+\pg
+Why, then, use this approach? One reason is, in fact, for the challenge itself. A high-resolution (matching HST resolution), wide-area (multiple degrees wide), high-quality radio survey has \emph{never} been achieved at the time of writing. Many surveys of the radio sky exist, of course, but they tend to combine only two of those three qualities. FIRST\citepads[see]{2015ApJ...801...26H}, for example, has achieved tremendous results with a $4''$ resolution, relatively low sensitivity, and no short baselines (thereby missing diffuse emission and extended structure). The VLASS \citepads[see]{2013arXiv1312.4602H} will aim to go to a $2.5''$ resolution, medium sensitivity, and few short baselines. %Finally, there will of course be the SKA1-MID survey once the SKA is operational; this survey is expected to provide excellent resolution, sensitivity, and good $uv$-coverage, making it sensitive to diffuse emission as well as point sources.
+
+\pg
+In this context, a sky survey made using international LOFAR would be competitive until the SKA-MID survey (and considering it maps the Northern sky rather than the Southern sky, would arguably remain competitive even then). It would also allow LOFAR to fulfill the role of pathfinder in a very literal way, by providing datasets on which algorithms and imaging strategies could be tested before handling SKA data volumes.
+
+\pg
+Making a high-resolution full-sky survey using international LOFAR is thus arguably useful in and of itself in terms of interferometric techniques \& instrumentation. What then of its science value? The two most obvious advantages of a good large-sky survey are that they are complete (i.e. they are an accurate sample of the underlying source distribution) while still giving information on rare outlier objects which may happen to lie in the field. This allows scientists a wealth of statistics from which to derive more robust estimations of population distributions and associated scientific measures of interest. Furthermore, depending on the quality of a given survey, it might even be able to provide such statistics simultaneously for various different fields of scientific interest.
+
+\pg
+Of course, LOFAR is already providing such catalogues - LOTSS [cite] is only the first of many to come. But these catalogues do not make use of the LOFAR international stations, and thus do not make full use of LOFAR's resolution ($5''$ resolution vs. $0.5''$). Of course, the reason why this is so is because of the technical challenges introduced by the use of international stations. What would their use add to a LOFAR catalogue?
+
+\pg
+A high-resolution sky survey has all the advantages listed above, but with the strong benefit of also providing high-resolution images of everyone's favourite objects and sources. It allows for better optical matching and identification, which is particularly relevant e.g. when needing to associate either a low-z or high-z sources to optical counterpart sources (in the case of the Extended Groth Strip, for example, using the international stations means matching the Hubble Space Telescope's resolution). They therefore provide a much more useful contribution to multi-wavelength datasets. It also improves the image's sensitivity to compact sources embedded in diffuse emission: if the source is better-resolved, then the emission associated with compact sources is more easily separated from emission emitted by its surroundings. This can be of tremendous help in image interpretation. Finally, actually resolving objects allows scientists to have better morphological classification for compact objects, which can be extremely useful e.g. when interested in AGN populations vs star-forming galaxy populations.
+
+\pg
+talk about AGN science
+
+\pg
+talk about star-forming science
+
+
+
 \section{3C295 and the Extended Groth Strip}
 
 \pg
-Observe \& Model 3C295 to get amplitude calibration over entire LOFAR bandwidth
+In this section, we briefly describe previous observations of the Extended Groth Strip, an extragalactic field with a rich multi-wavelength coverage described in Table \ref{table.EGS.observation}. It has been long observed as part of the All-Wavelength Extended Groth Strip International Survey collaboration (\citepads{2007ApJ...660L...1D}), which later became part of the CANDELS collaboration (\citepads{2011ApJS..197...35G}). The field is centred at $\alpha=14^h17^m,\delta=+52\deg 30'$, placing it between the tail of Ursa Major and Draco. Its size is $0.7'\times 0.1'$. It has notably been the subject of very deep Hubble Space Telescope observations, which the LOFAR VLBI imaging could attempt to match. 
 
+\begin{table}[h!]
+\begin{tabular}{cccc}
+Telescope    & Band    & Resolution  & Area \\\hline
+Chandra      & X-ray   & $0.5''-6.0''$ & $17'\times 120'$ \\
+GALEX        & UV      & $5.5''      $ & 1.25$^\text{o}$ diameter \\
+HST/ACS      & Optical & $0.1''      $ & $10' \times 67'$\\
+HST/NICMOS   & Optical & $0.35''     $ & 0.0128 deg$^2$\\
+Megacam      & Optical & $1.0''      $ & 1 deg$^2$\\
+IRAC         & IR      & $2.0''      $ & $10' \times 120'$ \\
+Spitzer      & IR      & $5.9''-19'' $ & $10'\times 90'$\\
+VLA          & Radio   & $1.2''-4.2''$ & $30' \times 80'$
+\end{tabular}
+\caption{\label{table.EGS.observation}Table recapitulating the multi-wavelength coverage of the Extended Groth Strip, with observations performed as part of the AEGIS (later, CANDELS) collaborations.}
+\end{table}
+
+\pg
+3C295 is a 3C\footnote{Third Cambridge Catalogue of Radio Sources, a 1959 survey of of the Northern radio sky} source, and thus one of the brighter sources in the Northern radio sky. It lies less than a degree away from the centre of the Extended Groth Strip, which has two important consequences: first, that it can potentially be used as a calibrator source for LOFAR; second, that unless well-modeled and subtracted at the observing instrument's maximum resolution, its sidelobes will pollute the EGS such that very little scientifically useful information might be recovered from a given observation. 
 
 \section{Imaging the Full Primary Beam}
 \pg
@@ -15,6 +62,9 @@ Perform DID calibration at low resolutions (no international baselines) to get c
 see effect of decorrelation on LOBOS sources around EGS as function of distance from 3c295 - talk about two sources of decorrelation (direction-dependent PSF, which is modelled, and gains changing with direction, which is unmodelled and will have an impact in image). See maximum impact of gain-decorrelation: we want flat decorrelation as function of distance from 3c295.
 
 \section{Imaging the EGS with LOFAR international stations}
+
+\subsection{Science Goals}
+
 \pg
 if decorrelation is merciful, proceed to patchwise imaging of EGS by using the results from the sections above (DI calibration using 3c295 model, followed by subtraction of all sources seen at low-res except within the patch we want to image; image, change patch; repeat until all EGS imaged)
 
