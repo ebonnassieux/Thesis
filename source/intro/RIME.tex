@@ -1,13 +1,13 @@
 % !TeX spellcheck = en_UK
 
-\chapter{Introduction to Mathematical Framework: the RIME Formalism}
+\chapter{Mathematical Framework: the RIME Formalism}
 \pg
 In this section, we introduce the mathematical framework which forms the basis for our algorithmic work.
 \label{section.RIME}
-While radio interferometry has historically been a complex business (\citepads{2001isra.book.....T}), modern radio interferometry is based on the Radio Interferometer's Measurement Equation, a powerful and elegant formalism which underpins modern calibration and imaging algorithms. In this section, I will give a simplified account of this formalism as described in \citepads{2011A&A...527A.106S} and its companion papers\footnote{\citepads{2011A&A...527A.107S}, \citepads{2011A&A...527A.108S} and \citepads{2011A&A...531A.159S}}. This will form the theoretical basis on which further sections will expand. I cannot overstate the importance of the RIME as the foundation of modern calibration and imaging algorithms.
+While radio interferometry has historically been a complex business \citepads{2001isra.book.....T}, modern radio interferometry is based on the Radio Interferometer's Measurement Equation, a powerful and elegant formalism which underpins modern calibration and imaging algorithms. In this section, I will give a simplified account of this formalism as described in \citetads{2011A&A...527A.106S} and its companion papers\footnote{\citetads{2011A&A...527A.107S}, \citetads{2011A&A...527A.108S} and \citetads{2011A&A...531A.159S}}. This will form the theoretical basis on which further sections will expand. I cannot overstate the importance of the RIME as the foundation of modern calibration and imaging algorithms.
 
 \pg
-For a mathematically rigorous description of the RIME, the references used in this work (particularly \citepads{2011A&A...527A.108S} and \citepads{2011A&A...531A.159S}) are obviously the first place to look. We frame the RIME in the continuity of previous theoretical frameworks of radio interferometry, while also describing it in the context of contemporary software packages and algorithmic tools.
+For a mathematically rigorous description of the RIME, the references used in this work (particularly \citetads{2011A&A...527A.108S} and \citetads{2011A&A...531A.159S}) are obviously the first place to look. We frame the RIME in the continuity of previous theoretical frameworks of radio interferometry, while also describing it in the context of contemporary software packages and algorithmic tools.
 
 \section{Setting up the RIME: a single point source}
 \label{section.RIME.setup}
@@ -20,7 +20,7 @@ Consider a single quasi-monochromatic point source in the sky. Its signal at a p
 \begin{equation}
 \volt = \Jones\evector
 \end{equation}
-where $\volt$ is the voltage measured by our antenna, $\Jones$ the Jones matrix describing the \emph{net} propagation effects which affect our source's signal. Note that $\Jones$ can be written as a series of matrix products, each individual matrix describing a physical phenomenon. They are then called a \emph{Jones chain}, and the resulting $\Jones$ is often called the \emph{total Jones matrix}.
+where $\volt$ is the voltage measured by our antenna, and $\Jones$ the Jones matrix describing the \emph{net} propagation effects which affect our source's signal. $\Jones$ can be written as a series of matrix products, each individual matrix describing a physical phenomenon. They are then called a \emph{Jones chain}, and the resulting $\Jones$ is often called the \emph{total Jones matrix}.
 
 \pg
 A visibility is the correlation of voltage from two antennas. In other words,
@@ -32,7 +32,7 @@ A visibility is the correlation of voltage from two antennas. In other words,
 where $\Jones_p$ corresponds to the signal propagation chain of antenna $p$, and $\Jones_q$ for antenna $q$. Note that a factor of 2 has been introduced here, as a matter of convention. This is due to the definition of the Stokes parameter in relation to our $\evector$ outer product.
 
 \pg
-If we choose to use $xyz$ as our coordinates, with $z$ the direction of propagation of our signal, then [Hamaker and Bregman 1996] show that the following relation holds:
+If we choose to use $xyz$ as our coordinates, with $z$ the direction of propagation of our signal, then \citetads{1996A&AS..117..137H} show that the following relation holds:
 \begin{equation}
 2 \evector \evector^\Herm = 2  \begin{bmatrix} <e_x e_x^\star> & <e_x e_y^\star> \\ <e_y e_x^\star> & <e_y e_y^\star> \end{bmatrix} = \begin{bmatrix} I+Q & U+iV \\ U-iV & I-Q \end{bmatrix} = \Bmatrix
 \end{equation}
@@ -68,17 +68,17 @@ Our aim is thus to find the Jones chain which most concisely describes the diffe
 The physical quantity measured by an interferometric array, the \emph{visibility}, is not a function of the absolute phase of our signal, but rather a function of the \emph{phase difference} between our measured voltages $\volt_p$ and $\volt_q$. In other words, it is a function of the phase difference on \emph{baseline} $pq$, which consists of antennas $p$ and $q$. The direction which minimises this difference is called the \emph{phase centre}.
 
 \pg
-We shall use the conventional coordinate system and notations (\citepads{2011A&A...527A.106S}, \citepads{2001isra.book.....T}, etc). We thus have a $z$ axis pointing towards the phase centre, and an antenna $p$ at coordinates $\U_p=(u_p,v_p,w_p)$. The phase difference between $p$ and phase centre (where, by definition, $\U=0$) for a signal arriving from direction $\pmb{\sigma}$ is then:
+We shall use the conventional coordinate system and notations (\citetads{2011A&A...527A.106S}, \citetads{2001isra.book.....T}, etc). We thus have a $z$ axis pointing towards the phase centre, and an antenna $p$ at coordinates $\U_p=(u_p,v_p,w_p)$. The phase difference between $p$ and phase centre (where, by definition, $\U=0$) for a signal arriving from direction $\pmb{\sigma}$ is then:
 \begin{equation}
-\kappa_p=2\pi i (( u_p l + v_p m + w_p (n-1) ))
+k_p=2\pi i (( u_p l + v_p m + w_p (n-1) ))
 \end{equation}
 
-where $n=\sqrt{1-l^2-m^2}$. Here, $l,m,n$ are the direction cosines\footnote{The $n-1$ term in the exponential is due to the fact that, at phase centre, $\kappa_p=0$ for all $\U$ and $n=\sqrt{1-0-0}=1$.} of $\pmb{\sigma}$, and $\U$ is defined in units of wavelength\footnote{This means that, for a given baseline $pq$, $\U$ will vary as a function of frequency.}.
+where $n=\sqrt{1-l^2-m^2}$. Here, $l,m,n$ are the direction cosines\footnote{The $n-1$ term in the exponential is due to the fact that, at phase centre, $k_p=0$ for all $\U$ and $n=\sqrt{1-0-0}=1$.} of $\pmb{\sigma}$, and $\U$ is defined in units of wavelength\footnote{This means that, for a given baseline $pq$, $\U$ will vary as a function of frequency.}.
 
 \pg 
-Having done this, we can now introduce a scalar \emph{K-Jones} matrix to represent the effect of this phase delay. Since it is scalar, it will commute with all other Jones matrices [see smirnov 2011]. It can be be written as:
+Having done this, we can now introduce a scalar \emph{K-Jones} matrix to represent the effect of this phase delay. Since it is scalar, it will commute with all other Jones matrices (see \citetads{2011A&A...527A.106S}). It can be be written as:
 \begin{equation}
-\Kjones_p = e^{-i \kappa_p}  = e^{-2\pi i ( u_p l + v_p m + w_p (n-1) )}
+\Kjones_p = e^{-i k_p}  = e^{-2\pi i ( u_p l + v_p m + w_p (n-1) )}
 \end{equation}
 
 \subsection{The Coherency Matrix}
@@ -107,7 +107,7 @@ On a practical level, using the coherency matrix $\Coherency$ allows us to write
 \label{section.RIME.MultiplePointSources}
 
 \pg
-So far, $\Bmatrix$ represents the signal from a single point source. However, the formalism can be extended to multiple point sources fairly easily. This is because electric fields -- and therefore radio signals -- are additive. If our sky contains $s$ point sources, then our RIME becomes:
+So far, $\Bmatrix$ represents the signal from a single point source. However, the formalism can be extended to multiple point sources. This is because electric fields -- and therefore radio signals -- are additive. If our sky contains $s$ point sources, then our RIME becomes:
 \begin{equation}
 \Vis_{pq} = \sum_s \Jones_{sp} \Bmatrix_s \Jones_{sq}^\Herm
 \end{equation}
@@ -145,7 +145,7 @@ If we want to be able to take diffuse emission properly into account, we must go
 \end{equation}
 
 \pg
-Here, effects such as our radio beam lie in the Jones matrices. By performing the analysis of [thompson 2001, sect 3.1], we can rewrite this expression in terms of a sine projection of the sphere onto the $(l,m)$ plane tangential at field centre. The integral then becomes:
+Here, effects such as our radio beam lie in the Jones matrices. By performing the analysis shown in Sect. 3.1 of \citetads{2001isra.book.....T}, we can rewrite this expression in terms of a sine projection of the sphere onto the $(l,m)$ plane tangential at field centre. The integral then becomes:
 \begin{equation}
 \Vis_{pq} = \int_{l,m} \Jones_p(\direction) \Bmatrix(\direction) \Jones_q^H(\direction)\frac{dl dm}{n}
 \end{equation}
@@ -178,7 +178,7 @@ Note that $\Bmatrix$ was the actual sky  brightness distribution as a function o
 \label{section.RIME.FullSky.CVZ}
 
 \pg
-Earlier calibration models and algorithm rely on the hypothesis that all baselines see the same sky. This is the \emph{fundamental premise of self-calibration}. The topic of self-cal will be covered in \cref{section.calibration.2gc}. This premise only holds when all Direction-Dependent Effects (henceforth referred to as DDEs) are identical for all baselines (and therefore for all antennas). This is a necessary condition for the apparent sky $\Bmatrix_{pq}$ to be the same for all baselines\footnote{$\Bmatrix_{pq}$ would then correspond to the `true' sky attenuated by the power beam, in the traditional view}, as it allows us to write:
+Earlier calibration models and algorithm rely on the hypothesis that all baselines see the same sky. This is the \emph{fundamental premise of self-calibration}. The topic of self-cal is covered in \cref{section.calibration.2gc}. This premise only holds when all Direction-Dependent Effects (henceforth referred to as DDEs) are identical for all baselines (and therefore for all antennas). This is a necessary condition for the apparent sky $\Bmatrix_{pq}$ to be the same for all baselines\footnote{$\Bmatrix_{pq}$ would then correspond to the `true' sky attenuated by the power beam, in the traditional view}, as it allows us to write:
 \begin{align}
 \Ejones_p(\lvec) \Wjones_p(\lvec)&= \Ejones(\lvec) \Wjones(\lvec)\\
 \Bmatrix_{pq}(\lvec) = \Bmatrix_{app}(\lvec) &= \Ejones(\lvec) \Wjones(\lvec) \Bmatrix)(\lvec) \Wjones^H(\lvec) \Ejones^H(\lvec)
@@ -201,7 +201,7 @@ Note that deriving the van Cittert-Zernike theorem (\citepads{1934Phy.....1..201
 \label{section.RIME.TimeDep.Jones}
 
 \pg
-Until this point, we have not considered any kind of time variability. In effect, \cref{eq.fullsky.RIME} describes the snapshot taken by an interferometer for a single measurement. Limiting ourselves to this scenario, however, constrains the sampling of the $uv$-plane which can be performed. Indeed, interferometers generally rely on the Earth's rotation to rotate their baselines $pq$, thus increasing $uv$-coverage at no additional cost. For \cref{eq.fullsky.RIME} to hold throughout an observation, we must therefore assume that $B_{app}$ remains constant in time over the course of the observation. In effect, this means assuming that
+Until this point, we have not considered any kind of sky variability in time. In effect, \cref{eq.fullsky.RIME} describes the snapshot taken by an interferometer for a single measurement. Limiting ourselves to this scenario, however, strongly limits the sampling of the $uv$-plane which can be performed. Indeed, interferometers generally rely on the Earth's rotation to rotate their baselines $pq$, thus increasing $uv$-coverage at no additional cost.This technique is known as \emph{super-synthesis} (\cite{supersynthesis}\footnote{\href{http://www.jpier.org/PIERB/pierb22/05.10032105.pdf}{(link to paper)}}) For \cref{eq.fullsky.RIME} to hold throughout an observation, we must therefore assume that $B_{app}$ remains constant in time over the course of the observation. In effect, this means assuming that
 \begin{equation}\label{eq.selfcal.requirement}
 \Ejones_p(t,\lvec) = \Ejones_p(\lvec) = \Ejones(\lvec) \quad \forall (t,p)
 \end{equation}
@@ -213,13 +213,13 @@ The above means that direction-dependent effects must be time-independent for \c
 \label{section.RIME.TimeDep.Decoherence}
 
 \pg
-Of course, our Jones matrices are not the only time-dependent part of the RIME formalism. To image with interferometric arrays, radio astronomers rely on the Earth's rotation to better sample $uv$-space, a technique referred to as \emph{super-synthesis} (\cite{supersynthesis}\footnote{\href{http://www.jpier.org/PIERB/pierb22/05.10032105.pdf}{(link to paper)}}). This means that $\uvec$ becomes a \emph{time-dependent} variable.
+Of course, our Jones matrices are not the only time-dependent element of the RIME formalism. As mentioned above, to image with interferometric arrays, radio astronomers rely on the Earth's rotation to better sample $uv$-space. This means that $\uvec$ becomes a \emph{time-dependent} variable.
 
 \pg
 Furthermore, if we choose to define $\uvec$ in terms of wavelength, $\uvec_p$ becomes dependent in frequency. Our time-independent, frequency-independent RIME thus becomes only valid for infinitesimal increments in time and frequency.
 
 \pg
-In practice, measurements made by any interferometric array is actually averaged over the integration time of the measurement, as well as the frequency channel size. A better formulation is therefore to explicitly write the RIME as an integration over time and frequency bins:
+In practice, measurements made by any interferometric array are actually averaged over the integration time of the measurement, as well as the frequency channel size. A better formulation is therefore to explicitly write the RIME as an integration over time and frequency bins:
 \begin{align}
 \langle \Vis_{pw} \rangle &= \frac{1}{\Delta t \Delta \nu} \int_{t_0}^{t_1} \int_{\nu_0}^{\nu_1} \Vis_{pq}(t,\nu) dv dt\\
                           &= \frac{1}{\Delta t \Delta \nu} \int_{t_0}^{t_1} \int_{\nu_0}^{\nu_1} \Jones_p(t,\nu) \Bmatrix \Jones_q^H(t,\nu)
@@ -231,7 +231,7 @@ $\Jones(t,\nu)$ describes the propagation of an electromagnetic signal through v
 \pg
 The general effect is referred to as \emph{decoherence}, and the specific case of decoherence caused by the $\Kjones$ term is referred to as \emph{smearing}.
 
-\pg Smearing increases with baseline length ($\uvec_{pq}$) and distance from phase centre ($l,m$). The noise amplitude, however, does not decrease. This means that smearing results in a decrease in sensitivity, which becomes significant when attempting to do wide-field, high-resolution images (see section [PLUG GROTH WORK SHAMELESSLY]).
+\pg Smearing increases with baseline length ($\uvec_{pq}$) and distance from phase centre ($l,m$). The noise amplitude, however, does not decrease. This means that smearing results in a decrease in sensitivity, which becomes significant when attempting to do wide-field, high-resolution images (see section \textcolor{red}{[PLUG GROTH WORK SHAMELESSLY]}).
 
 \pg 
 In the context of the RIME, smearing is an element-by-element operation, i.e. different elements do not affect each other. Treating smearing within the RIME is thus a trivial expansion of the scalar equations.
@@ -265,7 +265,7 @@ The RIME presented thus far has been for an ideal case, free of noise in our mea
 where $\sigma_{pq}$ is a $(2,2)$ matrix with real and complex parts in each component. A similar addition can be made for any of the RIMEs presented here.
 
 \pg
-This noise sets a hard limit on the sensitivity achieved for a given observation, and `reaching the noise' becomes the gold standard of calibration (\citepads{2011A&A...527A.107S}). One must then take $\sigma_{pq}$ into account properly when solving for the Jones matrices.
+This noise sets a hard limit on the sensitivity achieved for a given observation, and `reaching the noise' becomes the gold standard of calibration \citepads{2011A&A...527A.107S}. One must then take $\sigma_{pq}$ into account properly when solving for the Jones matrices.
 
 
 
