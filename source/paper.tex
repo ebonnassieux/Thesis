@@ -522,22 +522,22 @@ Weights were then calculated based on the badly-calibrated residual visibilities
 
 \begin{figure}[h!]
 \centering
-\begin{subfigure}{.43\textwidth}
+\begin{subfigure}{.49\textwidth}
 \resizebox{\hsize}{!}{\includegraphics{images/paperfig-goodcal.png}}
 \caption{\label{image.3c295.goodcal} Well-calibrated, unweighted restored image of the sky near the centre of the Extended Groth Strip. Used for comparison with the other images. {Units of colourbar are Janskys}. This image was made with data calibrated following best practice (solution intervals of 8 seconds, half the bandwidth). rms=5.87mJy/beam}
 \end{subfigure}
 \hfill
-\begin{subfigure}{.43\textwidth}
+\begin{subfigure}{.49\textwidth}
 \resizebox{\hsize}{!}{\includegraphics{images/paperfig-noweights.png}}
 \caption{\label{image.3c295.nocorr} Poorly-calibrated, unweighted restored image of the sky near the centre of the Extended Groth Strip. {Units of colourbar are Janskys}. This image was made with the same data as for Fig. \ref{image.3c295.goodcal}, but averaged in time and calibrated using larger gain solution intervals: 2 minutes and half the bandwidth. rms=86.4mJy/beam}
 \end{subfigure}
 \hfill
-\begin{subfigure}{.43\textwidth}
+\begin{subfigure}{.49\textwidth}
 \resizebox{\hsize}{!}{\includegraphics{images/paperfig-cyrilweights.png}}
 \caption{\label{image.3c295.lightcorr} Image made using the same imaging parameters and corrected visibilities as Fig. \ref{image.3c295.nocorr}, using sensitivity-optimal weighting. {Units of colourbar are Janskys}. rms=9.69mJy/beam}
 \end{subfigure}
 \hfill
-\begin{subfigure}{.43\textwidth}
+\begin{subfigure}{.49\textwidth}
 \resizebox{\hsize}{!}{\includegraphics{images/paperfig-fullweights.png}}
 \caption{\label{image.3c295.fullcorr} Image made using the same imaging parameters and corrected visibilities as Fig. \ref{image.3c295.nocorr}, using artefact-optimal weighting. {Units of colourbar are Janskys}. rms=15.8mJy/beam}
 \end{subfigure}
@@ -548,12 +548,12 @@ Weights were then calculated based on the badly-calibrated residual visibilities
 Note that applying antenna-based sensitivity-optimal weighting to the badly-calibrated data (not shown here) allows us to recover the reference image with only a very small increase in rms (increased by a factor of 1.14). Further testing on complex field simulations will be required to ascertain the usefulness of artefact-optimal weighting: it is likely that it fails to correct the image fully due to the poor conditioning of the covariance matrix used here.
 
 \begin{figure}[h!]
-\begin{subfigure}{.43\textwidth}
+\begin{subfigure}{.49\textwidth}
 \resizebox{\hsize}{!}{\includegraphics{images/paperfig-goodcal.png}}
 \caption{\label{image.3c295.goodcal-2} Well-calibrated, unweighted restored image of the sky near the centre of the Extended Groth Strip. Used for comparison with the other images. Calibration solution intervals used were 8 seconds, half the bandwidth. rms=5.87mJy/beam}
 \end{subfigure}
 \hfill
-\begin{subfigure}{.43\textwidth}
+\begin{subfigure}{.49\textwidth}
 \resizebox{\hsize}{!}{\includegraphics{images/paperfig-antweights.png}}
 \caption{\label{image.3c295.antcorr} Image made using the same imaging parameters and corrected visibilities as Fig. \ref{image.3c295.nocorr}, with the application of antenna-based, sensitivity-optimal weighting. Solution interval of 2 minutes, half the bandwidth. rms=6.69mJy/beam}
 \end{subfigure}

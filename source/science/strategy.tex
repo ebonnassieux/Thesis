@@ -8,7 +8,7 @@
 So far, we have shown the technical work done on interferometric techniques as part of this PhD. In this section, we outline the application of this work, along with other modern tools, to the creation of large, deep and high-resolution surveys of the sky. While this approach is potentially extremely rewarding in terms of the science one can do with its resulting maps, it is also uniquely complicated.
 
 \pg
-Why, then, use this approach? One reason is, in fact, for the challenge itself. A high-resolution (matching HST resolution), wide-area (multiple degrees wide), high-quality radio survey has \emph{never} been achieved at the time of writing. Many surveys of the radio sky exist, of course, but they tend to combine only two of those three qualities. FIRST\citepads[see][and references therein]{2015ApJ...801...26H}, for example, has achieved tremendous results with a $4''$ resolution, relatively low sensitivity, and no short baselines (thereby missing diffuse emission and extended structure). The VLASS \citepads[see][and references therein]{2013arXiv1312.4602H} will aim to go to a $2.5''$ resolution, medium sensitivity, and few short baselines. %Finally, there will of course be the SKA1-MID survey once the SKA is operational; this survey is expected to provide excellent resolution, sensitivity, and good $uv$-coverage, making it sensitive to diffuse emission as well as point sources.
+Why, then, use this approach? One reason is, in fact, for the challenge itself. A high-resolution (matching HST resolution), wide-area (multiple degrees wide), high-quality radio survey has \emph{never} been achieved at the time of writing. Many surveys of the radio sky exist, of course, but they tend to combine only two of those three qualities. FIRST\citepads[see][and references therein]{2015ApJ...801...26H}, for example, has achieved tremendous results with a $4''$ resolution, relatively low sensitivity, and no short baselines (thereby missing diffuse emission and extended structure). The VLASS \citepads[see][and references therein]{2013arXiv1312.4602H} will aim to go to a $2.5''$ resolution, medium sensitivity, and few short baselines. There exist many LOFAR sky surveys \citepads[cf.]{2016MNRAS.460.2385W,2017A&A...598A.104S}, but they do not yet make use of international LOFAR, and are thus limited in resolution ($\sim 5''$).%Finally, there will of course be the SKA1-MID survey once the SKA is operational; this survey is expected to provide excellent resolution, sensitivity, and good $uv$-coverage, making it sensitive to diffuse emission as well as point sources.
 
 \pg
 In this context, a sky survey made using international LOFAR would be competitive until the SKA-MID survey (and considering it maps the Northern sky rather than the Southern sky, would arguably remain competitive even then). It would also allow LOFAR to fulfill the role of pathfinder in a very literal way, by providing datasets on which algorithms and imaging strategies could be tested before handling SKA data volumes.
@@ -55,15 +55,63 @@ VLA          & Radio   & $1.2''-4.2''$ & $30' \times 80'$
 \end{table}
 
 \pg
-3C295 is a 3C\footnote{Third Cambridge Catalogue of Radio Sources, a 1959 survey of of the Northern radio sky} source, and thus one of the brighter sources in the Northern radio sky. It lies less than a degree away from the centre of the Extended Groth Strip, which has two important consequences: first, that it can potentially be used as a calibrator source for LOFAR; second, that unless well-modeled and subtracted at the observing instrument's maximum resolution, its sidelobes will pollute the EGS such that very little scientifically useful information might be recovered from a given observation. 
+3C295 is a 3C\footnote{Third Cambridge Catalogue of Radio Sources, a 1959 survey of of the Northern radio sky} source, and thus one of the brighter sources in the Northern radio sky. It lies less than a degree away from the centre of the Extended Groth Strip, which has two important consequences: first, that it can potentially be used as a calibrator source for LOFAR; second, that unless well-modeled and subtracted at the observing instrument's maximum resolution, its sidelobes will pollute the EGS such that very little scientifically useful information might be recovered from a given observation.
+
+\pg
+The first step towards acquiring a deep, high-resolution image of the Extended Groth Strip therefore consists of creating a good, high-resolution model of 3C295 at LOFAR frequencies. Creating this model is one of the key results of this thesis. Starting from a high-resolution VLA model of 3C295, subbands selected across the LOFAR bandwidth are self-calibrated in iteratively greater numbers until a given noise threshold is reached. The flux scale is then boot-strapped based on the results of \citet{arse}. This ensures that 3C295 will be adequately subtracted from all corrected visibilities - including international baselines - and thus that images made using these visibilities will not be polluted by sidelobes from 3C295. 
+
+\pg
+The work done towards this goal can be found in \cref{section.3c295}, and its result - a high-resolution spectral model of 3C295 - is shown below.
+
+\pg
+\textcolor{red}{show key result here}
 
 \section{Imaging the Full Primary Beam}
 \pg
-Perform DID calibration at low resolutions (no international baselines) to get complete, approximatemodel of entire EGS field
+After creating a high-resolution model of 3C295 to calibrate the international stations, we must create a low-resolution model of all the sources in the primary beam to both improve final calibration quality and subtract sources outside of the Extended Groth Strip when creating the final high-resolution images.
+
+\pg
+Initial direction-independent calibration is done using the same pipeline as for the Lofar Two-metre Sky Survey \citepads[LOTSS,][]{2017A&A...598A.104S}. The killMS-DDF facet-based pipeline \citepads[cf]{2016ApJS..223....2V,2015MNRAS.449.2668S,2017arXiv171202078T} is then used to perform direction-dependent calibration for the entire LOFAR primary beam. This allows us to reach a noise threshold of \textcolor{red}{give noise threshold}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\textwidth]{images/{lofar.widefield}.png}
+\caption{\label{plot.EGS.lofar.widefield} Full direction-dependent calibrated image of the LOFAR primary beam. Image made without international stations.}
+\end{figure}
+
+\pg
+This work, and its results, are shown in \cref{section.EGS.lowres}. Note that the AEGIS observations summarised in \cref{table.EGS.observation} do not cover the full LOFAR primary beam. The sources observed at low resolution are therefore matched with SDSS images. Overlays are shown to highlight the wealth of interesting sources, and their optical counterparts, which can be picked up as a byproduct of producing high-resolution maps of the radio sky. We select 12 particularly interesting sources and show the results of source matching for these candidates. Overlays of the same SDSS images with NVSS postage stamps are also shown for comparison. Many of the chosen sources do not lie within the Extended Groth Strip, and are therefore only imaged at low resolution, but follow-up images and observations could be made should the need arise.
 
 \section{Test Decorrelation}
 \pg
-see effect of decorrelation on LOBOS sources around EGS as function of distance from 3c295 - talk about two sources of decorrelation (direction-dependent PSF, which is modelled, and gains changing with direction, which is unmodelled and will have an impact in image). See maximum impact of gain-decorrelation: we want flat decorrelation as function of distance from 3c295.
+Before launching the EGS imaging run using all calibrated datasets, we measure the impact of direction-dependent effects on known sources in the field. Two direction-dependent effects are expected to dominate: decorrelation and differential gains. The first is modeled by the imager used, whereas the second is a function of the gain variability as a function of distance from the calibrator. Seven calibrator sources, lying at various distances and directions from the calibrator source, are examined. They are summarised in \cref{table.LOBOS.sources}, which is reproduced below.
+
+\begin{table}[h!]
+\begin{tabular}{ccccc}
+\# & RA [hms]    & Dec [dms]   & Dist. from EGS [deg.] & Dist. from 3C295 [deg.] \\\hline
+1  & 14:30:18.72 & 52:17:29.80 & 2.041                         & 2.904 \\
+2  & 14:19:44.44 & 54:23:04.58 & 1.928                         & 2.517 \\ 
+3  & 14:21:20.05 & 53:03:46.00 & 0.864                         & 1.743 \\
+4  & 14:21:09.41 & 51:22:32.46 & 1.294                         & 1.728 \\
+5  & 14:11:50.32 & 52:49:02.66 & 0.844                         & 0.619 \\
+6  & 14:11:20.23 & 52:12:04.30 & 0.915                         & 0.000 \\
+7  & 14:08:07.00 & 52:55:11.36 & 1.409                         & 0.869 \\
+8  & 14:08:09.76 & 52:44:46.56 & 1.354                         & 0.680 \\
+\end{tabular}
+\caption{\label{table.LOBOS.sources1}Table recapitulating the positions of all 8 chosen calibrator sources, along with their distance from the observation phase centre (EGS phase centre) and calibrator phase centre (3C295), respectively.}
+\end{table}
+%\begin{figure}[h!]
+%\includegraphics[width=0.8\linewidth]{images/EGS_LOBOS_scatterplot}
+%\caption{Position of the calibrator sources around the EGS. Note that this is not projected properly onto the celestial sphere.}
+%\label{bootes-coverage-image}
+%\end{figure}
+
+\pg
+If directional gains are measured to have little or no impact, then direction-dependent calibration of the international stations will not be required. This is the ideal scenario, as it does not require the use of fringe fitting \citepads{1984ARA&A..22...97P}. If they are measured to have a significant impact, then direction-dependent calibration will be required for international LOFAR. We expect the angular scale of differential gain evolution to be of the order of a degree, and so most of the EGS should be relatively unaffected.
+
+\pg
+\textcolor{red}{show key result + some discussion here}
+
 
 \section{Imaging the EGS with LOFAR international stations}
 

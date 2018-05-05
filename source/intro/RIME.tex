@@ -68,7 +68,7 @@ Our aim is thus to find the Jones chain which most concisely describes the diffe
 The physical quantity measured by an interferometric array, the \emph{visibility}, is not a function of the absolute phase of our signal, but rather a function of the \emph{phase difference} between our measured voltages $\volt_p$ and $\volt_q$. In other words, it is a function of the phase difference on \emph{baseline} $pq$, which consists of antennas $p$ and $q$. The direction which minimises this difference is called the \emph{phase centre}.
 
 \pg
-We shall use the conventional coordinate system and notations (\citetads{2011A&A...527A.106S}, \citetads{2001isra.book.....T}, etc). We thus have a $z$ axis pointing towards the phase centre, and an antenna $p$ at coordinates $\U_p=(u_p,v_p,w_p)$. The phase difference between $p$ and phase centre (where, by definition, $\U=0$) for a signal arriving from direction $\pmb{\sigma}$ is then:
+We shall use the conventional coordinate system and notations \citepads[][etc]{2011A&A...527A.106S,2001isra.book.....T}. We thus have a $z$ axis pointing towards the phase centre, and an antenna $p$ at coordinates $\U_p=(u_p,v_p,w_p)$. The phase difference between $p$ and phase centre (where, by definition, $\U=0$) for a signal arriving from direction $\pmb{\sigma}$ is then:
 \begin{equation}
 k_p=2\pi i (( u_p l + v_p m + w_p (n-1) ))
 \end{equation}
@@ -76,7 +76,7 @@ k_p=2\pi i (( u_p l + v_p m + w_p (n-1) ))
 where $n=\sqrt{1-l^2-m^2}$. Here, $l,m,n$ are the direction cosines\footnote{The $n-1$ term in the exponential is due to the fact that, at phase centre, $k_p=0$ for all $\U$ and $n=\sqrt{1-0-0}=1$.} of $\pmb{\sigma}$, and $\U$ is defined in units of wavelength\footnote{This means that, for a given baseline $pq$, $\U$ will vary as a function of frequency.}.
 
 \pg 
-Having done this, we can now introduce a scalar \emph{K-Jones} matrix to represent the effect of this phase delay. Since it is scalar, it will commute with all other Jones matrices (see \citetads{2011A&A...527A.106S}). It can be be written as:
+Having done this, we can now introduce a scalar \emph{K-Jones} matrix to represent the effect of this phase delay. Since it is scalar, it will commute with all other Jones matrices \citepads[see]{2011A&A...527A.106S}. It can be be written as:
 \begin{equation}
 \Kjones_p = e^{-i k_p}  = e^{-2\pi i ( u_p l + v_p m + w_p (n-1) )}
 \end{equation}
@@ -226,12 +226,12 @@ In practice, measurements made by any interferometric array are actually average
 \end{align}
 
 \pg
-$\Jones(t,\nu)$ describes the propagation of an electromagnetic signal through various physical processes. This signal has a complex phase, which is variable in both time and frequency. Since it is a rotating vector, integrating over any time or frequency band will always result in a \emph{net loss} in amplitude in the measured $\langle\Vis\rangle$. This mechanism is commonly referred to as \emph{time/bandwidth width decorrelation} or \emph{smearing} (\cite{2011A&A...527A.106S}).
+$\Jones(t,\nu)$ describes the propagation of an electromagnetic signal through various physical processes. This signal has a complex phase, which is variable in both time and frequency. Since it is a rotating vector, integrating over any time or frequency band will always result in a \emph{net loss} in amplitude in the measured $\langle\Vis\rangle$. This mechanism is commonly referred to as \emph{time/bandwidth width decorrelation} or \emph{smearing} \citepads{2011A&A...527A.106S}.
 
 \pg
 The general effect is referred to as \emph{decoherence}, and the specific case of decoherence caused by the $\Kjones$ term is referred to as \emph{smearing}.
 
-\pg Smearing increases with baseline length ($\uvec_{pq}$) and distance from phase centre ($l,m$). The noise amplitude, however, does not decrease. This means that smearing results in a decrease in sensitivity, which becomes significant when attempting to do wide-field, high-resolution images (see section \textcolor{red}{[PLUG GROTH WORK SHAMELESSLY]}).
+\pg Smearing increases with baseline length ($\uvec_{pq}$) and distance from phase centre ($l,m$). The noise amplitude, however, does not decrease. This means that smearing results in a decrease in sensitivity, which becomes significant when attempting to do wide-field, high-resolution images (see \cref{section.EGS.hires}).
 
 \pg 
 In the context of the RIME, smearing is an element-by-element operation, i.e. different elements do not affect each other. Treating smearing within the RIME is thus a trivial expansion of the scalar equations.

@@ -56,9 +56,9 @@
 \makeatother
 
 
-\usepackage{graphicx}
 %\usepackage{psfig}
 \usepackage{epstopdf}
+\usepackage{minitoc}
 \usepackage{cuted}
 \usepackage{caption}
 %\usepackage{draftwatermark}
@@ -77,6 +77,7 @@
 %\usepackage{dsfont}
 \usepackage{aalongtable}
 \usepackage{supertabular}
+%\usepackage{subfigure}
 \usepackage{mathbbol}
 \usepackage{bm}
 \usepackage{mathtools}
@@ -93,7 +94,7 @@
 \allowdisplaybreaks
 \usepackage{float}
 
-\usepackage[capitalise]{cleveref}
+\usepackage[capitalise,nameinlink]{cleveref}
 
 \bibpunct{(}{)}{;}{a}{}{,}
 
@@ -121,6 +122,15 @@
 %\input{Defs.tex}
 \newcommand{\FigDir}{../Figures/}
 
+% Clear Header Style on the Last Empty Odd pages
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else%
+  \hbox{}%
+  \thispagestyle{empty}%              % Empty header styles
+  \newpage%
+  \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
 
 \def\supertiny{ \font\supertinyfont = cmr10 at 4pt \relax \supertinyfont}
 
@@ -139,6 +149,7 @@
 
 
 \begin{document}
+\dominitoc
 %%%%%%%%%%%%%%%
 %%% PREFACE %%%
 %%%%%%%%%%%%%%%
@@ -156,41 +167,37 @@
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-
+\cleardoublepage
 \input{source/intro/intro.tex}
-
-
-
-
 \input{source/intro/RIME.tex}
 
-\chapter{Analysing the Variance of Gain Solutions}
+\cleardoublepage
+\chapter{Analysing the Varbiance of Gain Solutions}
+\minitoc
 
-\section{Foreword}
-\pg
-This section covers published work on an interferometric algorithm, along with its underlying theoretical framework. Bla bla
 \input{source/paperdefs.tex}
 \input{source/paper.tex}
 
-%\input{source/intro.teximaging.tex}
-%\newpage
-%\input{source/calibration.tex}
-%\newpage
+\cleardoublepage
 
-%\chapter{Observational Work}
 
 \input{source/science/strategy.tex}
+\cleardoublepage
+
 
 \input{source/science/3c295.tex}
+\cleardoublepage
 
 \input{source/science/lowres-EGS.tex}
+\cleardoublepage
 
 \input{source/science/hires-EGS.tex}
-
+\cleardoublepage
 
 \chapter{Conclusion \& Future Work}
+\minitoc
 \input{source/conclusion.tex}
-
+\cleardoublepage
 
 %\newpage
 %{\huge\textbf{Appendix}\par}
