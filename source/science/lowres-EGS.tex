@@ -46,15 +46,15 @@ Name    & RA [hms]    & Dec [dms]   & Likely Association            & LOFAR thum
 EGS-1   & 14:37:39.53 & 53:36:31.24 & NVSS Radio Galaxy             & \cref{fig.egs1.lofarim} \\
 EGS-2   & 14:35:27.84 & 55:07:56.32 & Radio Galaxy in Cluster       & \cref{fig.egs2.lofarim} \\ 
 EGS-3   & 14:29:34.13 & 54:43:46.93 & Radio Galaxy in Cluster       & \cref{fig.egs3.lofarim} \\
-EGS-4   & 14:31:36.62 & 52:27:33.75 &                          & \cref{fig.egs4.lofarim} \\
-EGS-5   & 14:29:48.89 & 51:10:30.52 &                          & \cref{fig.egs5.lofarim} \\
-EGS-6   & 14:26:04.09 & 51:29:35.07 &                          & \cref{fig.egs6.lofarim} \\
-EGS-7   & 14:17:55.58 & 50:08:01.75 &                          & \cref{fig.egs7.lofarim} \\
-EGS-8   & 14:14:40.42 & 51:17:41.00 &                          & \cref{fig.egs8.lofarim} \\
-EGS-9   & 14:11:36.43 & 52:54:25.53 &                          & \cref{fig.egs9.lofarim} \\
-EGS-10  & 14:07:09.90 & 55:04:22.23 &                          & \cref{fig.egs10.lofarim} \\
-EGS-11  & 14:03:16.00 & 51:43:35.23 &                          & \cref{fig.egs11.lofarim} \\
-EGS-12  & 14:02:43.49 & 51:03:14.69 &                          & \cref{fig.egs12.lofarim} \\
+EGS-4   & 14:31:36.62 & 52:27:33.75 & Radio galaxy, $z=.292$        & \cref{fig.egs4.lofarim} \\
+EGS-5   & 14:29:48.89 & 51:10:30.52 & Lobes matched individually    & \cref{fig.egs5.lofarim} \\
+EGS-6   & 14:26:04.09 & 51:29:35.07 & One lobe matched individually & \cref{fig.egs6.lofarim} \\
+EGS-7   & 14:17:55.58 & 50:08:01.75 & Radio galaxy, $z=.186$        & \cref{fig.egs7.lofarim} \\
+EGS-8   & 14:14:40.42 & 51:17:41.00 & Radio galaxy, $z$ unknown     & \cref{fig.egs8.lofarim} \\
+EGS-9   & 14:11:36.43 & 52:54:25.53 & Galaxy cluster, $z=.525$      & \cref{fig.egs9.lofarim} \\
+EGS-10  & 14:07:09.90 & 55:04:22.23 & Galaxy cluster, $z=.250$      & \cref{fig.egs10.lofarim} \\
+EGS-11  & 14:03:16.00 & 51:43:35.23 & Lobes matched individually    & \cref{fig.egs11.lofarim} \\
+EGS-12  & 14:02:43.49 & 51:03:14.69 & Radio Galaxy in Cluster       & \cref{fig.egs12.lofarim} \\
 \end{tabular}
 \caption{\label{table.egs.sources} Table recapitulating the names, positions and likely associations of all 12 chosen sources in the primary beam. These sources were primarily chosen because they had peculiar or interesting diffuse emission. The associated LOFAR image thumbnails are also given for reference.}
 \end{table}
@@ -228,7 +228,7 @@ Further pointings will be required to acquire more information on this source an
 \end{figure}
 
 \pg
-EGS-5 was chosen due to its size, and was expected to be a very classic radio galaxy. In fact, only its southern lobe was matched successfully to any other candidate using SIMBAD - NVSS J142941+510850. The northern lobe also clearly shows up in NVSS overlays. It is unfortunate that the centre of EGS-5 lies in a region of poor SDSS coverage. As it stands, the southern lobe can successfully be matched to J142941+510850, and the northern lobe to no source in SIMBAD. 
+EGS-5 was chosen due to its size, and was expected to be a very classic radio galaxy. In fact, its lobes were only matched individually. The southern lobe matches to NVSS J142941+510850 \citepads{1997ApJ...475..479W}. The northern lobe matches to NVSS J142954+511147 \citepads{1998AJ....115.1693C}. It is unfortunate that the centre of EGS-5 lies in a region of poor SDSS coverage. Either the original sources are incorrectly identified as individual radio galaxies, and are actually the lobes of a single galaxy, or our analysis of the source is flawed, and we are in fact dealing with two separate sources. The diffuse structure between them in the LOFAR band would seem to indicate that the former case is closer to the truth.
 
 
 \clearpage
@@ -260,7 +260,7 @@ EGS-5 was chosen due to its size, and was expected to be a very classic radio ga
 \end{figure}
 
 \pg
-EGS-6 was also chosen as it seemed like a very standard, classical radio-strong galaxy. Its two big lobes have matches in NVSS, but there is no likely counterpart in the SDSS image, nor in the WISE overlay. The same holds for the smaller radio galaxy to the north-west.
+EGS-6 was also chosen as it seemed like a very standard, classical radio-strong galaxy. There is no match for the centre of EGS-6. The eastern (leftwards) lobe most likely matches NVSS J142608+512921 \citepads{1998AJ....115.1693C}. The western (eastwards) lobe can be matched to SDSS J142558.51+512943.0, but to no NVSS candidate. This is somewhat concerning, as there does seem to be a source in the NVSS overlay at this position, but this source is recorded in neither SIMBAD nor NED.
 
 
 \clearpage
@@ -350,18 +350,121 @@ EGS-8 was chosen because it is a complex diffuse source. Note that the source to
 \end{figure}
 
 \pg
-This source was chosen because 
+This source was chosen because it had one strong lobe and one weak: it was expected to be a good example of a radio galaxy with a single doppler-boosted lobe. There is a likely association to the northern lobe: the galaxy cluster CFHT-W CL J141141.7+525450 \citepads{2011ApJ...734...68W}, which lies at $z=.5252$. There is no similarly likely candidate for association with the second lobe, however. It is interesting to note that there is no NVSS equivalent to either lobe.
+
+\pg
+The southern source has an NVSS equivalent, but is still dominated by artefacts in the LOFAR image. We therefore do not seek to extract information from this source at the time of writing.
+
+\clearpage
 
 \subsubsection{EGS-10}
 
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{egs10.LOFARegs}.png}}
+\caption{\label{fig.egs10.lofarim} Cutout of our LOFAR wide-field image centred on EGS-10.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{egs10.mosaic.fits.lofar}.png}}
+\caption{\label{fig.egs10.sdss.lofoverlay} SDSS image of EGS-10, with \cref{fig.egs10.lofarim} as an overlay.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{egs10.mosaic.fits.nvss}.png}}
+\caption{\label{fig.egs10.sdss.nvssoverlay} Same image as \cref{fig.egs10.sdss.lofoverlay}, with NVSS overlay.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{egs10.mosaic.fits.Wise3.4}.png}}
+\caption{\label{fig.egs10.sdss.wiseoverlay} Same image as \cref{fig.egs10.sdss.lofoverlay}, with WISE overlay.}
+\end{subfigure}
+\caption{\label{fig.egs10} Images \& Overlays for EGS-10.}
+\end{figure}
+
+\pg
+EGS-10 was selected because its region includes both interesting diffuse emission (EGS-10-1) and what appears to be a very classic example of a radio galaxy (EGS-10-2). EGS-10-1 has a very strong association candidate in 7C 140513.19+551813.00 \citepads{2009yCat.2294....0A}, the brightest galaxy in its cluster. That galaxy lies at a redshift of $z=0.2506(2)$. This association is self-consistent with the association candidates for EGS-3 and EGS-4, which are also very clearly associated with brightest galaxies in their respective galaxy clusters. This seems like a strong indication that such diffuse, turbulent emission is indeed related to the interaction between radio galaxy jets and their surrounding medium. 
+EGS-10-2, meanwhile, is likely associated with SDSS J140721.68+550504.5 \citepads{2012MNRAS.421.1569B}, which is also a known radio galaxy. This is consistent with the source being picked up in NVSS. %, and consistent with the intuitive guess that it was a radio-bright galaxy.
+
 \subsubsection{EGS-11}
 
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{egs11.LOFARegs}.png}}
+\caption{\label{fig.egs11.lofarim} Cutout of our LOFAR wide-field image centred on EGS-11.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{egs11.mosaic.fits.lofar}.png}}
+\caption{\label{fig.egs11.sdss.lofoverlay} SDSS image of EGS-11, with \cref{fig.egs11.lofarim} as an overlay.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{egs11.mosaic.fits.nvss}.png}}
+\caption{\label{fig.egs11.sdss.nvssoverlay} Same image as \cref{fig.egs11.sdss.lofoverlay}, with NVSS overlay.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{egs11.mosaic.fits.Wise3.4}.png}}
+\caption{\label{fig.egs11.sdss.wiseoverlay} Same image as \cref{fig.egs11.sdss.lofoverlay}, with WISE overlay.}
+\end{subfigure}
+\caption{\label{fig.egs11} Images \& Overlays for EGS-11.}
+\end{figure}
+
+\pg
+This source was chosen because of its size and very straight jets/lobes. While \cref{fig.egs11.lofarim} shows that there are some artefacts around this source, the general shape seems to be relatively reliable. Interestingly, we can see that each LOFAR lobe is associated with what appear like individual NVSS sources, while the emission between the lobes in the LOFAR band seems to indicate that the sources are connected. The right-hand lobe (westward) is likely associated to NVSS J140304+514453 \citepads{1998AJ....115.1693C}, while the left-hand lobe (eastward) is likely associated with 
+NVSS J140323+514440 \citepads{1996AJ....111.1945D}. Unfortunately, no SDSS counterpart is detected.
+
+\pg
+No counterpart is found at all for the southern source in any band.
+
+\clearpage
 \subsubsection{EGS-12}
 
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{egs12.LOFARegs}.png}}
+\caption{\label{fig.egs12.lofarim} Cutout of our LOFAR wide-field image centred on EGS-12.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{egs12.mosaic.fits.lofar}.png}}
+\caption{\label{fig.egs12.sdss.lofoverlay} SDSS image of EGS-12, with \cref{fig.egs12.lofarim} as an overlay.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{egs12.mosaic.fits.nvss}.png}}
+\caption{\label{fig.egs12.sdss.nvssoverlay} Same image as \cref{fig.egs12.sdss.lofoverlay}, with NVSS overlay.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{egs12.mosaic.fits.Wise3.4}.png}}
+\caption{\label{fig.egs12.sdss.wiseoverlay} Same image as \cref{fig.egs12.sdss.lofoverlay}, with WISE overlay.}
+\end{subfigure}
+\caption{\label{fig.egs12} Images \& Overlays for EGS-12.}
+\end{figure}
 
+\pg
+This source was chosen for its interesting diffuse emission. Identification was straightforward - assuming that this source is a radio-bright galaxy with jet emission, the central blob of the source, surrounded by two others, must be where its center lies. Within this blob lies a single optical counterpart. This counterpart turns out to be SDSS J140243.96+510345.8 \citepads{2009yCat.2294....0A}, the brightest galaxy in its cluster. This is consistent with other similar turbulent diffuse structures chosen in this list: EGS-12's diffuse structure is likely a marker of interactions between the jets of a radio-bright galaxy in a cluster and its surrounding inter-galactic and inter-cluster media.
 
+\pg
+No matching was done for the other two radio sources in the field, as they are unresolved and far from the main source of interest, and thus unlikely to be linked. They do, however, have NVSS counterparts, and are thus likely to be true sources.
 
+\section{Discussion}
 
+\pg
+The work done in this section had for primary goal to create a decent model of the sky seen by LOFAR's primary beam. To do this, a wide-field, low-resolution image of the fully primary beam was made: this image makes no use of the LOFAR international stations due to technical limitations. Using PyBDSM \citepads{2015ascl.soft02007M}, this model was extracted from an image made after a few rounds of direction-dependent self-calibration.
 
+\pg
+However, the scientific value of this image is not limited to its use in imaging the Extended Groth Strip using international LOFAR. Much of the image will not be recreated using the international stations, in part due to computational constraints (simple run time for such a large task) and in part due to technical limitations (performing direction-dependent calibration using international LOFAR would likely require the use of techniques as-of-yet unimplemented in the DDF-kMS pipeline). As such, we look in the large-field image for interesting or unusual sources, and attempt to match them to known sources in other bands in order to learn about them. 12 sources were selected, and the most interesting were consistently matched to brightest galaxies in clusters. This indicates that there are many sources with very interesting diffuse emission in and around the Extended Groth Strip, and some of which merit further observations to better resolve their turbulent structure.
+
+\pg
+Further work on this image is of course both possible and highly desirable: the work done here was artisanal, hand-picking sources and associating them individually to equivalents in other bands. Modern survey work, however, requires automation. Applying Bayesian fitting methods to find most likely counterparts to all the sources extracted in the field could yield useful information. However, doing this would require running yet more self-calibration to remove remaining artefacts, whereas our primary aim is to produce a high-resolution map of the Extended Groth Strip, which has the richest multi-frequency coverage and therefore the most likely to give effective matches to all the sources in the field. We therefore do not proceed to do this work on the low-resolution, wide-field image of the Extended Groth Strip and its neighbourhood, but are likely to return to the data to do this at a later date.
+
+\pg
+\textcolor{red}{show image of 3C295 calibrated w/ the full source extraction model of the primary beam, compared to result of self-cal? }
 
 \clearpage
