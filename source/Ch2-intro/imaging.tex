@@ -1,0 +1,235 @@
+% !TeX spellcheck = en_UK
+
+
+%
+%\pg
+%There exists a wide variety of methods used in imaging, from the venerable CLEAN algorithm\footnote{For an excellent beginner's introduction to CLEAN, the author heartily recommends \url{https://www.cv.nrao.edu/~abridle/deconvol/node7.html}} to cutting-edge compressed sensing and subspace deconvolution methods. We will begin this section by introducing a mathematical framework in which the problem of deconvolution can be understood, and proceed, from there, to discuss some of the deconvolution algorithms which can be used.
+%
+%\pg
+%The formalism used in this section is based, in part or in whole, on that used by Cyril Tasse in [DDF paper].
+
+\section{A Brief Introduction to Radio Astronomy}
+\pg
+Radio astronomy consists of observing the electromagnetic emission of astrophysical\footnote{And, famously, attempting to observe ``intelligent" sources \citepads[cf]{2017AAS...22911604E}} sources at very long wavelengths by means of radio antennas. These antennas measure a voltage proportional to variations in the electromagnetic field in all the directions they are sensitive to. Since astrophysical signals are weak, a good sensitivity is necessary. Achieving good sensitivity with radio antennas means having a very large collecting area - in this respect, they behave exactly the same way as optical telescopes. Similarly, when well-designed, they are diffraction-limited - this means that, once again like optical telescopes, their resolution is limited by their diameter.
+
+\pg
+However, because radio frequencies are so much lower, achieving a resolution comparable to e.g. the HST requires extremely large dishes. While there exist telescopes, both old and new, which work on this principle (from Arecibo Observatory, shown in \cref{fig.arecibo}, to the upcoming FAST telescope in China, shown in \cref{fig.FAST})
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/20151101114231-0_8e7cc_c7a44aca_orig.jpg}}
+\caption{\label{fig.arecibo} Arecibo telescope, in Puerto Rico.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/FastTelescope_8sep2015.jpg}}
+\caption{\label{fig.FAST} FAST telescope, in China}
+\end{subfigure}
+\caption{\label{fig.singleDishes} Examples of large single-dish radio telescopes.}
+\end{figure}
+
+\pg
+Calibrating radio antennas is usually a relatively straightforward matter - the signal loss and distortion as the dish converts the electromagnetic wave to a voltage can be described, based on the antenna, either as a simple scaling factor, or a complex number (giving information on phase and amplitude errors). This model of antenna loss and distortion is referred to as the \emph{antenna gain}. Solving for the antenna gains used in more complex interferometric array is a problem described in Section \ref{section.calibration}.
+
+\pg
+For now, we will assume that calibration has been performed perfectly, and that the gain-corrections have been applied to the voltage measured by our antennas. We therefore work with the true signal from astrophysical sources.
+
+\section{Interferometry: Bypassing the Diffraction Limit}
+
+\pg
+There are two quantities of interest to all astronomers: sensitivity and resolution. An instrument's sensitivity is a function of its collecting area\footnote{It is also a function of technological factors, of course, but \emph{ceteris paribus}, a more sensitive telescope means a telescope with a wider collecting area}. Resolution, for well-designed instruments\footnote{By this, we mean that we assume that an instrument is also designed to optimise resolution.}, is limited by diffraction. This introduces specific issues in the radio domain. Radio waves have very long wavelengths - often comparable to meters, rather than the 100$nm$ wavelengths of optical light. Achieving a resolution comparable to those of optical telescopes would thus require making telescopes with apertures tens of millions of times larger than those already titanic instruments!
+
+\pg
+In practice, this technical constraint on resolution is one that astronomers would be very interested in overcoming. This technical limitation therefore demands a technical solution. In practice, this solution consists of recourse to interferometric techniques. Indeed, interferometry can be thought of as the construction of a "sparse" dish, as illustrated in Fig.
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}{.43\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/baseline-resolution.png}}
+\caption{\label{fig.baseline.image} A pair of dishes can surpass the resolution limit of its components.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.43\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/arecibo-vla.png}}
+\caption{\label{fig.arecibo.vla} With enough pairs of dishes, it is possible to synthesise a much larger dish.}
+\end{subfigure}
+\caption{\label{fig.aperture.synthesis} Illustration of the underlying principle of interferometry. The 27 dishes of the VLA can be thought of as "synthesising" a similar circular dish as Arecibo. This idea is the reason why radio interferometry is historically known as "aperture synthesis" in the literature of radio astronomy. Both images are copyrighted by Addison Wesley. \textcolor{red}{CHANGE FIG B. AS THE ELLIPSE IS NOT SEE-THROUGH}}
+\end{figure}
+
+\pg
+Of course, this resolution improvement does not come for free. To understand the cost of interferometry, we must discuss the properties of its core component: the baseline.
+
+\subsection{The Baseline}
+
+\pg
+To define the baseline, we must begin by considering the geometric properties of an interferometric array. For now, let us assume that we are observing the sky above the array, a practice known as drift-scanning. A baseline then consists of the vector subtraction of the positions, in 3-dimensional space, of its two constituent antennas. Note that each antenna pair therefore has 2 corresponding baselines, since for each pair of antennas A and B we create baselines AB and BA. These distance vectors are then divided by the observing wavelength to give a dimensionless set of coordinates, known as $(u,v,w)$. These coordinates define the baseline entirely. 
+
+\subsection{The Visibility}
+
+\pg
+We have defined what a baseline corresponds to: a vector coordinate in $(u,v,w)$-space. To each baseline we associate a measurement, which we call the \emph{visibility}. 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.7\textwidth]{images/visibility-creation.png}
+\caption{\label{fig.visibility} There are two ways to combine the voltages from two antennas into a visibility: they are sum-correlation and $\pi$-correlation. In this manuscript, we will only concern ourselves with the latter. Image credit: Julien Girard}
+\end{figure}
+The visibility associated with baseline $\mathbf{b}_{AB}$ is created by taking the voltage measured by antenna A, multiply it by the complex conjugate of the voltage measured by antenna B, average over the correlator dump time (i.e. the time over which the measurement is made). This scalar quantity is then multiplied by the baseline position vector. In other words:
+\begin{equation}
+\mathbf{b}_{AB} = \langle V_{A} V_{B}^*\rangle_{\delta t, \delta \nu} \frac{\mathbf{x}_{B}-\mathbf{x}_{A}}{\nu_\mathrm{obs}}
+\end{equation}
+where $\langle \cdots \rangle_{x}$ denotes an averaging over length $x$. We see that a visibility is a complex vector quantity. We also see that $\mathbf{b}_{AB} = \mathbf{b}_{BA}^*$: the information of the visibility associated with baseline BA is contained in the visibility associated with baseline AB. This means that in practice, only half of the visibilities ever need be stored. What does the visibility measurement correspond to?
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{images/visibility-measure.png}
+\caption{\label{fig.visibility.measure} Here, we assume that there are only two sources in the sky whose signal can be measured by our antennas. The final visibility is the sum of the visibilities associated with each individual source. Image credit: Julien Girard}
+\end{figure}
+
+\pg
+Different astrophysical sources are located very far apart, and so their signals do not interfere. They are measured additively in both antennas. Provided that the signal from both sources is coherent when observed by the dishes, the correlation between the voltages measured by antennas A and B will simply be the sum of the voltage correlations associated with individual sources. % - i.e. the interferometric signal from different sources are additive.
+
+\pg
+Note that in Fig. \ref{fig.visibility.measure}, neither source is at the zenith. This introduces the notion of the \emph{effective baseline} which is shorter than the \emph{physical baseline} when measuring a signal from a source that is not at the zenith. Sources in different positions in the sky will be measured by an interferometric array, but the same array will have different effective baselines for different sources. To point an interferometric array in a specific direction in the sky, one must digitally introduce a phase delay in each antenna (or, in older interferometers, by playing with the cable length between each dish and the correlator). This ensures that the constituent antennas' sensitivities are maximised in the direction of interest.
+
+\subsection{The $uv$-plane}
+
+\pg
+In general, interferometric design is such that the $w$ component of visibilities' $(u,v,w)$ coordinates is negligible (or can be put in a frame of reference where it can usually be approximated as such). Radio astronomers tend to thus talk of a $uv$-plane rather than $uvw$-space to describe visibility space. The set of $uv$-values for all the baselines of an interferometric array is known as its $uv$-coverage, and defines the array's properties entirely.
+
+\pg
+For the VLA, for example, the $uv$-coverage when observing the zenith will be as shown in Fig. \ref{fig.vla.uvcoverage}.
+
+\begin{figure}[ht]
+\centering
+\resizebox{\hsize}{!}{\includegraphics{images/vla-uvcoverage.png}}
+\caption{\label{fig.vla.uvcoverage} The VLA contains 27 radio dishes placed as shown above. Each antenna pair between those 27 gives two single baselines, here, one red and one blue. Image credit: Julien Girard}
+\end{figure}
+
+%\pg
+%The more points an array has in $uv$-space, the greater its $uv$-coverage and the better it will observe. This coverage can be improved for free in two main ways: firstly, the use of a technique known as supersynthesis (since the interferometer "synthesises" a dish at any given time, by assuming that the sky does not evolve over a certain time frame, we can treat different times as measurements of the same sky) and taking advantage of the frequency-dependence of $uv$-coordinates.The impact of both practices will be described in greater detail in \ref{sec.imag.psf}, but know that "$uv$-tracks" simply correspond to the $uv$-coverage of an interferometer observing over some period of time.
+
+\pg
+Individual antennas of an array can be pointed mechanically, and so the loss of antenna sensitivity in the direction of interest (and therefore the loss of net interferometric array sensitivity) can be minimised. But what happens to the array itself? It is useful here to go back to the illustration of Fig. \ref{fig.arecibo.vla}. Think of each dish in the array representing a "filled" segment of a massive but empty dish. By projecting our observation in a given direction, this dish goes from circular to elliptical.
+\begin{figure}[ht]
+\centering
+\begin{subfigure}{.40\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/lofar-uvcoverage-zenith.png}}
+\caption{\label{fig.lofar.uvcoverage.zenith} $uv$-coverage of an 8-hour LOFAR observation when pointing at zenith.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.40\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/lofar-uvcoverage-elsewhere.png}}
+\caption{\label{fig.lofar.uvcoverage.elsewhere} $uv$-coverage of an 8-hour LOFAR observation when pointing 45 degrees away from zenith.}
+\end{subfigure}
+\caption{\label{fig.uvcoverage.lofar} Effect of array pointing on $uv$-coverage. By pointing the array 45 degrees in the $v$-axis, the array's $uv$-coverage (and thus maximum resolution) is decreased along the $v$-axis.}
+\end{figure}
+
+
+\subsection{The Point-Spread Function}\label{sec.imag.psf}
+
+\pg
+We have seen that the purpose an interferometric array is to overcome the diffraction limit of single-dish antennas. We have described visibilities, which are the quantities measured by an interferometric array. What remains is to describe how these measurements are related to the sky brightness distribution.
+
+\pg
+Assuming that all the antennas in an array are equivalent and perfectly calibrated, the van Cittert-Zernike theorem (\citetads{1934Phy.....1..201V}, covered in \citetads{2001isra.book.....T}) allows us to equate a visibility with a single Fourier mode of the plane tangent to the sky where the instrument is pointed. This direction is called the \emph{phase centre}, because digital phase shifts are introduced between antenna voltages before averaging so as to point each visibility in this direction. 
+
+\pg
+The Point-Spread Function (PSF) of an array is thus the Fourier transform of the array's PSF. The more element in the array, the better the PSF. However, an interferometer's PSF will always be worse than an equivalently-sized antenna dish, the UV-coverage of which is the inverse Fourier transform of a disc. This is because an interferometer behaves like a \emph{sparse} dish: the sparsity of our coverage manifests as very large point-spread function. The more baselines are available, the less sparse the UV-coverage, and so the better the PSF. This is shown in Fig. \ref{fig.vla.PSFvsUVcov}.
+\begin{figure}[h!]
+\centering
+\resizebox{\hsize}{!}{\includegraphics{images/PSFvsUVcov.png}}
+\caption{\label{fig.vla.PSFvsUVcov}Plot of the PSF associated to more and more complete UV-coverage (here, consisting of more and more elements of the VLA). Image credit: Rick Perley, 3GC4 lecture.}
+\end{figure}
+
+\pg
+This PSF can be improved by assuming that the sky is constant over periods of time (supersynthesis) or constant over fractions of the total bandwidth. This improves UV-coverage by a factor $N_\mathrm{t}\times N_\nu$. The effect of supersynthesis on the PSF is shown in Fig. \ref{fig.vla.PSFsupersynthesis}.
+\begin{figure}[h!]
+\centering
+\resizebox{\hsize}{!}{\includegraphics{images/{PSF_supersynthesis}.png}}
+\caption{\label{fig.vla.PSFsupersynthesis}Effect of supersynthesis on the UV-coverage of the full VLA. Image credit: Rick Perley, 3GC4 lecture.}
+\end{figure}
+
+\pg
+Of course, even with these techniques, the PSF is never perfect, and flux from very bright sources will contaminate the rest of the field. The source in the last image of Fig. \ref{fig.vla.PSFsupersynthesis}, for example, only appears point-like by contrast to the others. If we wish to recover faint emission - and when interested in deep extragalactic fields, that is exactly what we wish to do - then we need to ensure that the effect of the PSF in our images is mitigated, for the brighter sources at least, lest their sidelobes (tails of the PSF convolved with the source) drown out signal from fainter sources. This means \emph{deconvolving} the PSF from radio interferometric images.
+
+\subsection{From Dirty to Clean: Deconvolving the PSF}\label{section.clean}
+
+\pg
+Raw images made from radio interferometric data consist of the underlying flux distribution convolved to the array's PSF. The quantity of interest to astronomers is the underlying flux distribution. To recover that information from images, deconvolution is needed.
+
+\pg
+In practice, performing a full deconvolution on large images (easily over 25 million pixels in total) is not computationally viable. Scientists therefore resort to algorithms and techniques to accelerate imaging and deconvolution. For example, the use of Direct Fourier Transforms (DFT), which are extremely slow, is avoided when going from visibility space to image space. Similarly, one seeks to avoid having to perform full deconvolution on the dirty image, since many pixels in the image do not actually contain astrophysical signal. In this chapter, we will briefly cover the most common method of deconvolution used in radio astronomy.
+
+\pg
+We use dynamic range (DR) as a quality metric in radio images. DR is the ratio of the flux of the brightest source in the field to the flux of the faintest source in the field.  We define dynamic range as:
+\begin{equation}\label{eq.DR.imag}
+\mathrm{DR} = \frac{\mathrm{flux}_\mathrm{brightest}}{\mathrm{flux}_\mathrm{faintest}}
+\end{equation}
+The higher the DR, the deeper we image the sky, and thus the better the image. There are two big constraints to reckon with: firstly, we do not want to deconvolve the PSF from all pixels in the image, but only from those within which large amounts of underlying flux fall. Secondly, if we only deconvolve some pixels rather than performing a full deconvolution, then care must be taken not to treat artefacts in the field (which can be created from overlapping PSF sidelobes from neighbouring sources) as true flux. Doing so would lead to an attempt to deconvolve a PSF from a pixel while assuming an incorrect underlying flux value for this pixel and thus result in the introduction of further artefacts in the image.
+
+\pg
+The dominant family of deconvolution algorithms used in radio astronomy at the time of writing is CLEAN\footnote{The other main family of deconvolution algorithms, Maximum Entropy Methods (MEM), are not very widely-used at the time of writing, but remain an active area of research (cf. \citetads{2018ApJ...857...23C}).}. It attempts to optimise for the first requirement while being constrained by the second.The various CLEAN algorithms seek out the brightest pixel(s) in the image, potentially applying a mask to the image first in cases where some \emph{a priori} knowledge on flux distribution is available. It then deconvolves those pixels up to a predefined threshold (either a fraction of the initial pixel value or some factor of the estimated noise value). It does this some predefined number of times. Then, it collects the aggregate \emph{model} (the flux estimate for each deconvolved pixel up to this point), convolves the model with the PSF, and subtracts the result from the dirty image. It then begins to choose the brightest pixels again, and continues to clean until it reaches a stopping condition (usually either a flux value or a maximum number of iterations).
+
+\begin{figure}[h!]
+\centering
+\resizebox{\hsize}{!}{\includegraphics{images/{dirty-vs-clean}.png}}
+\caption{\label{fig.vla.clean} Effect of MetroCLEAN algorithm on an image of 3C295}
+\end{figure}
+
+
+\pg
+In Fig. \ref{fig.vla.clean}, we show the effect of deconvolution on a dirty image of 3C295 (a very bright \& complex source which is the subject of much of this thesis' work). Since this source includes diffuse emission, standard CLEAN is insufficient (since CLEAN assumes a sparse distribution of point-like sources). Instead, DDFacet's novel MetroCLEAN algorithm (see \citetads{2017arXiv171202078T} for more details), which deconvolves islands consisting of sets of pixels at once, was used. This allowed for a far greater dynamic range than standard CLEAN could achieve.
+
+\pg
+The problem of imaging radio interferometric data, of which deconvolution is but a subset, is still a very active field of research today. For more information on this topic, the NRAO website\footnote{See \href{https://www.cv.nrao.edu/~abridle/deconvol/node8.html\#SECTION00051000000000000000}{the CLEAN section of the NRAO website}.} is an excellent start for a general introduction to this topic, while \citet{2017arXiv171202078T} provides an outstanding entry point for cutting-edge work at the time of writing..
+
+
+\section{Weighting Schemes}
+\pg
+In \cref{section.clean}, we discuss the problem of deconvolution in radio interferometric imaging. One consideration that is not raised is the issue of conditioning. Consider two extreme cases: a field containing a single point source, and a field containing a diffuse and turbulent source, with very complex flux distribution at all scales. These cases are shown in \cref{fig.point,fig.cyga} respectively. Deconvolving the PSF from the first image using CLEAN algorithms will be child's play, but doing the same with the second will be extremely complex. The first case is said to be well-conditioned, and the second to be poorly-conditioned.
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.45\textwidth}\resizebox{\hsize}{!}{\includegraphics{images/egs-prelim.png}}
+\caption{\label{fig.point} Part of the LOFAR field near the Extended Groth Strip as seen by LOFAR.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.53\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/cyga.jpg}}
+\caption{\label{fig.cyga} Cygnus A as seen by the VLA. \href{http://images.nrao.edu/110}{Image courtesy of NRAO/AUI}}
+\end{subfigure}
+\caption{\label{fig.conditioning} Two extreme examples of good and poor conditioning. \cref{fig.point} shows a field with a few point-like sources. \cref{fig.cyga} shows a very complex \& diffuse structure.}
+\end{figure}
+
+\pg
+The better the conditioning, the easier the deconvoution and the closer to the ground truth its result. As such, when the true underlying structure of a source is poorly-known, getting the best conditioning possible for deconvolution becomes a key concern. Thankfully, because the actual measurements taken with interferometers are the Fourier modes of the sky brightness distribution, they can be weighted when reconstructing the images to fulfill specific requirements. In particular, Briggs weighting \citepads{1995AAS...18711202B} gives a sliding parameter between \emph{natural} weighting, where each visibility is weighed equivalently (this optimises noise in the field) and \emph{uniform} weighting, which gives each visibility a weight inversely proportional to $uv$-plane density. Uniform weighting optimises for resolution at the cost of image signal-to-noise.
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.48\textwidth}\resizebox{\hsize}{!}{\includegraphics{images/natural.png}}
+\caption{\label{fig.natural} Image made with LOFAR data and natural weighting.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/uniform.png}}
+\caption{\label{fig.uniform} Image made with the same data as \cref{fig.natural} and uniform weighting.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.48\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/briggs0.png}}
+\caption{\label{fig.briggs0} Image made with the same data as \cref{fig.natural} and Briggs weighting.}
+\end{subfigure}
+\caption{\label{fig.briggs-weighting}Impact of different weighting schemes on interferometric image reconstruction. All the images shown above are deconvolved.}
+\end{figure}
+
+\pg
+\cref{fig.briggs-weighting} clearly shows that imaging done with the same data but different weighting schemes give radically different deconvolved images. Images made with uniform (\cref{fig.uniform}) or Briggs (\cref{fig.briggs0}) weighing are much sharper, with uniform weighting (\cref{fig.uniform}) giving such resolution that the sources are nearly invisible in the field (though they are present - the contrast was not upped so as to show all three images on the same flux scale). 
+
+\pg
+Note that the weighting schemes shown here rely only on a choice between normalising visibilities by local $uv$-density vs. signal-to-noise, with Briggs weighting providing a formal method for going from one regime to another or optimising between both. Other weighting schemes exist - one can attempt to optimise data size vs decorrelation\footnote{As data is averaged, decorrelation becomes more and more important in the field. See \cref{section.RIME} for more details.}, for example \citepads[see][and related work]{2016MNRAS.462.2542A}. This can help ensure a homogeneous conditioning of the deconvolution problem in the image, by ensuring that the PSF is as peaked as possible throughout the field of interest.
+
+\pg
+Finally, one type of weighting scheme of note is simple data flagging \citepads[cf.]{2010ascl.soft10017O}. This consists of assigning a null weight to those data points considered too corrupted by various instrumental or atmospheric effects (typically, Radio Frequency Interference - RFI) to be scientifically useful. Those weights which are not deemed too corrupted are assigned a unit weight. This corresponds to simply dropping those data points which would corrupt the image reconstruction by introducing unphysically strong fringes in the image.
+
+\pg
+Flagging is also useful to remove corrected visibilities for which near-zero gains are found: the associated corrected visibilities will consist of some number divided by a near-zero number, for which numerical errors can introduce very large errors. ``Clipping" these visibilities after calibration helps improve the final images.

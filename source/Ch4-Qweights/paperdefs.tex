@@ -1,0 +1,227 @@
+% =======================
+% === ETN definitions ===
+% =======================
+
+%\def\pg{ }%\paragraph{}}
+
+\newcommand\bydefn{\hspace{3pt}\stackrel{\mathclap{\mbox{\tiny{def}}}}{=}\hspace{3pt}}
+\newcommand\approxdefn{\hspace{3pt}\stackrel{\mathclap{\mbox{\tiny{def}}}}{\approx}\hspace{3pt}}
+% ++++++ variables ++++++
+\def\estC{\widehat{\bm{C}}_{\matGains}}
+\def\sdnu{s_d^\nu}
+\def\tnuIndeix{\tau}
+\def\Noisefunc{\mathcal{N}_{\tnuIndeix\tnuIndeix'}}
+\def\Kfunc{\mathcal{K}_{\tnuIndeix\tnuIndeix'}}
+\def\Errfunc#1{\mathcal{E}_{#1}}
+\def\deltu{\delta u}
+\def\deltv{\delta v}
+\def\deltl{\delta l}
+\def\deltm{\delta m}
+
+\def\weight#1{\omega_{pq,#1}}
+\def\deltasamp#1{\delta\left(#1-\underline{t}_0\right)}
+\def\Sampfunc#1#2{\mathcal{C}_{#1}\left(#2\right)}
+\def\DirFunc#1{\phi_{#1}}
+\def\FluxFunc#1{\mathcal{S}_{#1}}
+\def\WeightFunc#1{\mathcal{W}_{#1}}
+\def\dudv{\delta u \delta v}
+\def\t0{\mathbf{\tnuIndeix_0}}
+\def\Rpqt{\tilde{r}_{pq}^\tnuIndeix}
+\def\CovMat{\bm{C}}
+\def\Order#1{\mathcal{O}\big(#1\big)}
+\def\Apqtlm{\mathcal{A}_{pq,\tnuIndeix}^{lm}}
+\def\Apqtlmprime{\mathcal{A}_{pq,\tnuIndeix'}^{lm}}
+\def\Spqt{S_{pq,\tnuIndeix}}
+\def\Spqtprime{S_{pq,\tnuIndeix'}}
+\def\diag#1{\text{Diag}\left\{#1\right\}}
+\def\noise{\bm{n}}
+
+
+\def\gvect{\textbf{g}}
+\def\ghatvect{\hat{\textbf{g}}}
+\def\Ghatvect{\hat{\textbf{G}}}
+
+
+% operators
+\def\Var#1{\textrm{Var}\{#1\}}
+\def\Cov#1{\textrm{Cov}\{#1\}}
+\def\Exp#1{\textrm{E}\{#1\}}
+\def\tExp#1{\textrm{E}_{\mathcal{C}}\{#1\}}
+\def\Norm#1{\|#1\|}
+\def\hadam{\circ}
+
+
+% Algebra
+\def\schur{\circ}
+
+% Matrices
+\def\dblW{\bm{\Omega}}
+\def\dblS{\bm{\beta}}
+\def\dblF{\bm{\Gamma}}
+\def\matGains{\bm{\tilde{\gamma}}}
+\def\vecw{\bm{w}}
+
+\def\matVt{\bm{{V}}_{pq}^{t\nu}}
+\def\matk{\bm{k}}
+\def\muelC{\bm{\mathcal{C}}}
+\def\muelV{\bm{{V}}}
+\def\muelVr{\bm{{\tilde{V}}}}
+\def\muelK{\bm{\mathcal{K}}}
+\def\muelS{\bm{\mathcal{S}}}
+\def\matS{\bm{S}}
+\def\matW{\bm{W}}
+\def\matw{\bm{w}}
+\def\matVtau{\bm{{V}}_{pq}^{\tnuIndeix}}
+\def\matVdt{\bm{{V}}_{d,\tnuIndeix}}
+\def\matJ#1{\bm{{J}}_{#1,t\nu}}
+\def\opvec#1{\mathrm{vec}\{#1\}}
+\def\muelM{\bm{\mathcal{M}}}
+\def\muely{\tilde{\bm{{{y}}}}}
+\def\muelyr{\bm{{\tilde{y}}}}
+\def\1{\bm{\mathbb{1}}}
+\def\muelF{\bm{\mathcal{F}}}
+\def\muelW{\bm{\mathcal{W}}}
+\def\hatmuelM{\bm{\mathcal{\hat{M}}}}
+\def\muelMr{\bm{\mathcal{\tilde{M}}}}
+\def\Bmat#1{\bm{{B}}_{#1}}
+\def\muelB{\bm{\mathcal{B}}}
+\def\matKtd{\textbf{K}_{d,\tnuIndeix}}
+\def\matVV{\bigdoublevee}
+\def\matR{\bm{R}}
+\def\matRt{\bm{R}_\tnuIndeix}
+\def\matRdt{\bm{R}_{d,\tnuIndeix}}
+\def\const{\mathrm{const.}}
+
+\def\Rmat#1{\bm{r}_{#1}}
+\def\Kmat#1{\bm{K}_{#1}}
+%\def\Varmat{\bm{\hat{V}}_{\ghatvect}}
+\def\Varmat{\widehat{\bm{V}_{\ghatvect}}}
+\def\VarmatTau{\widehat{\bm{V}}_{\ghatvect_\tnuIndeix}}
+%\def\VarmatTau{\widehat{\bm{V}_{\ghatvect_\tnuIndeix}}}
+%\def\VarmatC{\bm{\hat{V}}_{\cellindex}}
+\def\VarmatC{\widehat{\bm{V}_{\cellindex}}}
+\def\VarmatCprime{\widehat{\bm{V}_{\cellindex'}}}
+\def\VarmatTauprime{\widehat{\bm{V}}_{\ghatvect_{\tnuIndeix'}}}
+\def\ExpVarmat{\bm{V}_{\ghatvect_\tnuIndeix}}
+\def\kappamat#1{\bm{\kappa}_{#1}}
+\def\cellindex{\mathcal{C}}
+\def\gptnu{g_p^{t\nu}}
+\def\gqtnu{g_q^{t\nu}}
+
+% Vectors
+\def\vecktd{\textbf{k}_{d,\tnuIndeix}}
+\def\vecg{\vec{g}}
+%\def\vecg{\textbf{g}}
+\def\VecHatg{\widehat{\textbf{g}}}
+\def\VecHatgt{\widehat{\textbf{g}_\tnuIndeix}}
+\def\VecHatgO{\widehat{\textbf{g}_{0}}}
+\def\VarVecHatg{\textbf{V}_{\widehat{\textbf{g}}}}
+
+% Scalars
+\def\kbd#1{\kappa_{#1}^d}
+\def\sqrts{\sqrt{s_d}}
+\def\gpt{g_p^{\tnuIndeix}}
+\def\gjt{g_j^{\tnuIndeix}}
+\def\gqt{g_q^{\tnuIndeix}}
+\def\gdjt{g_j^{\tnuIndeix'}}
+\def\gdqt{g_q^{\tnuIndeix'}}
+\def\Hatgpt{\widehat{g_p^{\tnuIndeix}}}
+\def\Hatgp{\widehat{g_p}}
+\def\Hatgqt{\widehat{g_q^{\tnuIndeix}}}
+\def\Hatgdqt{\widehat{g_q^{\tnuIndeix'}}}
+\def\Hatgdpt{\widehat{g_p^{\tnuIndeix'}}}
+\def\Hatgjt{\widehat{g_j^{\tnuIndeix}}}
+\def\Hatgdjt{\widehat{g_j^{\tnuIndeix'}}}
+\def\vpqt{v_{pq}^{\tnuIndeix}}
+\def\kpqdt{k_{pq,\tnuIndeix}^{d}}
+\def\kpqdtprime{k_{pq,\tnuIndeix'}^{d}}
+\def\kpdt{k_{p,\tnuIndeix}^{d}}
+\def\kpdtprime{k_{p,\tnuIndeix'}^{d}}
+\def\kqdt{k_{q,\tnuIndeix}^{d}}
+\def\kqdtprime{k_{q,\tnuIndeix'}^{d}}
+\def\kpqtlm{k^{lm}_{pq,\tnuIndeix}}
+\def\kpqtlmprime{k^{lm}_{pq,\tnuIndeix'}}
+\def\sd{s_{d}}
+\def\Irpqlm{I^r_{pq,lm}}
+\def\Irpqlmprime{I^r_{p'q',lm}}
+\def\Vrpqt{\widetilde{\gamma}_{pq,\tnuIndeix}}
+\def\Vrpjt{\widetilde{g}_{pj,\tnuIndeix}}
+\def\Vrpqtprime{\widetilde{\gamma}_{pq,\tnuIndeix'}}
+\def\Vrjqtprime{\widetilde{\gamma}_{jq,\tnuIndeix'}}
+\def\I{\bm{\mathrm{I}}}
+\def\J{\bm{\mathrm{J}_2}}
+\def\kvect#1{\bm{k}_{#1}}
+
+% ======= Names   =====================
+\def\COH{{\sc CohJones}}
+
+% ======= Scalars =====================
+\def\u{u}
+\def\v{v}
+\def\w{w}
+\def\l{l}
+\def\m{m}
+\def\n{n}
+%\def\d{\text{d}}
+\def\d{d}
+\def\dbf{{\bm d}}
+
+
+% ======= Conjugates
+%\newcommand{\conj}[1]{{#1}^*}
+%\newcommand{\conjp}[1]{{\left(#1\right)}^*}
+%\newcommand{\Vec}[1]{\bm{#1}}
+\def\vec#1{\ensuremath{\mathbf{#1}}}
+
+% ======= 2x2 Matrices ===============
+\def\JMat{\textbf{J}}
+\def\Skyd{\textbf{S}_d}
+\def\Vbl{\textbf{V}_{\left(pq\right)t\nu}}
+
+
+% ======= Vectors      ===============
+\def\vbltnu{\textbf{v}_{\left(pq\right)t\nu}}
+\def\vbl{\textbf{v}_{pq}}
+\def\V{\textbf{V}}
+\def\gwirt{\bm{g_{\!_{W}}}}
+\def\dgwirt{\dbf\bm{g_{\!_{W}}}}
+\def\g{\bm{g}}
+\def\vis{\textbf{v}}
+\def\Vmeas{\textbf{P}}
+
+
+% ====== Separator    ================
+\def\separator{
+\hrule
+\begin{center}
+\textsc{to be modified after that}
+\end{center}
+\hrule
+}
+
+% ======= Kroneker product ===========
+\def\Kron{\otimes}
+
+% ======= Jacobians =====================
+\def\SimpleJacob{\bm{J}}
+\def\Jacob{\bm{\mathcal{J}}}
+%\def\JVpq{\Jacob\left\{\textbf{v}_{\left(pq\right)}\right\}}
+%\def\JVpq{\Jacob_{\!_{\textbf{v}_{pq}}}}
+\def\JVpq{\Jacob_{{\textbf{v}_{pq}},\bm{g_{\!_{W}}}}}
+%\def\JVpq{\Jacob_{{\textbf{v}_{pq}}}}
+
+\def\JVpqg{\Jacob_{{\textbf{v}_{pq}},\bm{g}}}
+\def\JVpqCg{\Jacob_{{\textbf{v}_{pq}},\bm{\conj{g}}}}
+%\def\JVpqg{\Jacob_{{\textbf{v}_{pq}}}\big|_{\bm{g}}}
+%\def\JVpqCg{\Jacob_{{\textbf{v}_{pq}}}\big|_{\bm{\conj{g}}}}
+\def\JVAtg{\JV\big|_{\vec{g}}}
+
+\def\A{\textbf{A}}
+\def\H{\textbf{H}}
+
+\def\JV{\Jacob\left\{\textbf{v}\right\}}
+%\def\JV{\Jacob_{\!_\textbf{v}}}
+\def\JV{\Jacob_{\textbf{v}}}
+%\def\JVpq{\Jacob_{\textbf{V}_{\left(pq\right)}}}
+\def\JVg{\Jacob_{\textbf{v},\bm{g}}}
+\def\JVCg{\Jacob_{\textbf{v},\bm{\conj{g}}}}

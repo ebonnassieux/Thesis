@@ -145,7 +145,7 @@
 \title{PhD manuscript}
 
 % +++ IMPORT DEFINITIONS +++
-\input{source/Defs.tex}
+\input{source/auxil/Defs.tex}
 
 
 \begin{document}
@@ -167,49 +167,60 @@
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
+ 
+% % % Chapter 1 - foreword
 \cleardoublepage
-\input{source/intro/intro.tex}
-\input{source/intro/RIME.tex}
+\input{source/Ch1-Foreword/foreword.tex}
 
+
+% % % Chapter 2 - intro
 \cleardoublepage
-\chapter{Analysing the Varbiance of Gain Solutions}
+\input{source/Ch2-intro/intro.tex}
+
+
+% % % Chapter 3 - RIME
+\cleardoublepage
+\input{source/Ch3-RIME/RIME.tex}
+
+
+% % % Chapter 4 - covweights paper
+\cleardoublepage
+\chapter{Analysing the Variance of Gain Solutions}
 \minitoc
+\input{source/Ch4-Qweights/paperdefs.tex}
+\input{source/Ch4-Qweights/paper.tex}
 
-\input{source/paperdefs.tex}
-\input{source/paper.tex}
 
+% % % Chapter 5 - strategy
 \cleardoublepage
+\input{source/Ch5-Strategy/strategy.tex}
 
 
-\input{source/science/strategy.tex}
+% % % Chapter 6 - 3C295 hi-res model
 \cleardoublepage
+\input{source/Ch6-3C295/3c295.tex}
 
 
-\input{source/science/3c295.tex}
+% % % Chapter 7 - lowres-EGS
 \cleardoublepage
+\input{source/Ch7-loresEGS/lowres-EGS.tex}
 
-\input{source/science/lowres-EGS.tex}
-\cleardoublepage
 
-\input{source/science/hires-EGS.tex}
+% % % Chapter 8 - hires-EGS
 \cleardoublepage
+\input{source/Ch8-hiresEGS/hires-EGS.tex}
 
 \chapter{Conclusion \& Future Work}
-\minitoc
-\input{source/conclusion.tex}
 \cleardoublepage
+\minitoc
+\input{source/Ch9-Conclusion/conclusion.tex}
 
-%\newpage
-%{\huge\textbf{Appendix}\par}
-%\appendix
-%\input{source/intro/RIME.tex}
-%\input{sources/code}
-%\newpage
 
 %\nocite{*}
-%\chapter{Bibliography}
+% % % Bibliography
+\cleardoublepage
 \bibliographystyle{aa}
-\bibliography{source/biblio}
+\bibliography{source/auxil/biblio}
 \addcontentsline{toc}{chapter}{Bibliography}
 
 \end{document}
