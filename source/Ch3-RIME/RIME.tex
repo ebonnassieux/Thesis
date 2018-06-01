@@ -1,9 +1,10 @@
 % !TeX spellcheck = en_UK
 
-\chapter{Mathematical Framework: the RIME Formalism}
+\chapter{Mathematical Framework: the RIME Formalism}\label{section.RIME}
+\minitoc
+
 \pg
 In this section, we introduce the mathematical framework which forms the basis for our algorithmic work.
-\label{section.RIME}
 While radio interferometry has historically been a complex business \citepads{2001isra.book.....T}, modern radio interferometry is based on the Radio Interferometer's Measurement Equation, a powerful and elegant formalism which underpins modern calibration and imaging algorithms. In this section, I will give a simplified account of this formalism as described in \citetads{2011A&A...527A.106S} and its companion papers\footnote{\citetads{2011A&A...527A.107S}, \citetads{2011A&A...527A.108S} and \citetads{2011A&A...531A.159S}}. This will form the theoretical basis on which further sections will expand. I cannot overstate the importance of the RIME as the foundation of modern calibration and imaging algorithms.
 
 \pg
@@ -20,7 +21,7 @@ Consider a single quasi-monochromatic point source in the sky. Its signal at a p
 \begin{equation}
 \volt = \Jones\evector
 \end{equation}
-where $\volt$ is the voltage measured by our antenna, and $\Jones$ the Jones matrix describing the \emph{net} propagation effects which affect our source's signal. $\Jones$ can be written as a series of matrix products, each individual matrix describing a physical phenomenon. They are then called a \emph{Jones chain}, and the resulting $\Jones$ is often called the \emph{total Jones matrix}.
+where $\volt$ is the voltage measured by our antenna, and $\Jones$ the Jones matrix describing the \emph{net} propagation effects - atmospheric, astrophysical, and instrumental - which affect our source's signal. $\Jones$ can be written as a series of matrix products, each individual matrix describing a physical phenomenon. They are then called a \emph{Jones chain}, and the resulting $\Jones$ is often called the \emph{total Jones matrix}.
 
 \pg
 A visibility is the correlation of voltage from two antennas. In other words,

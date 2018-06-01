@@ -94,6 +94,23 @@
 \allowdisplaybreaks
 \usepackage{float}
 
+
+
+
+
+% % % % % % % % % import psl shit
+%\usepackage{fontspec}
+%\usepackage{lmodern}
+\usepackage{lipsum}
+\usepackage{./PSLstuff/psl-cover}
+
+
+
+
+
+
+
+
 \usepackage[capitalise,nameinlink]{cleveref}
 
 \bibpunct{(}{)}{;}{a}{}{,}
@@ -132,7 +149,7 @@
 \makeatother
 
 
-\def\supertiny{ \font\supertinyfont = cmr10 at 4pt \relax \supertinyfont}
+%\def\supertiny{ \font\supertinyfont = cmr10 at 4pt \relax \supertinyfont}7
 
 
 
@@ -154,7 +171,9 @@
 %%% PREFACE %%%
 %%%%%%%%%%%%%%%
 \pagenumbering{roman}
-\input{titlepage/reports}
+%\input{titlepage/reports}
+\input{source/auxil/CoverLetter}
+\maketitle
 \addtocontents{toc}{~\hfill\textbf{Page}\par}
 %\input{source/synopsis.tex}
 %\newpage
@@ -163,7 +182,7 @@
 %%%%%%%%%%%%%%%%%%%%
 %%% START THESIS %%%
 %%%%%%%%%%%%%%%%%%%%
-\newpage
+\tableofcontents
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
@@ -185,9 +204,6 @@
 
 % % % Chapter 4 - covweights paper
 \cleardoublepage
-\chapter{Analysing the Variance of Gain Solutions}
-\minitoc
-\input{source/Ch4-Qweights/paperdefs.tex}
 \input{source/Ch4-Qweights/paper.tex}
 
 
