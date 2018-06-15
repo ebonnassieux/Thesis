@@ -1,7 +1,9 @@
 
 \section{The Low-$\nu$ Sky: Emission Mechanisms}
 \pg
-This section aims to bring a brief introduction to the emission mechanisms which dominate at low frequencies, and thus determine the physics accessible to extragalactic astronomers working in this band. Specifically, it will briefly describe thermal radiation detected at low frequencies (associated with dust \& protoplanetary disks, and therefore a tracer of star formation) along with free-free radiation (which is emitted from ionised plasma outflows, and thus a tracer of various physical objects e.g. young stellar objects - cf. \citet{2017ApJ...834..206C} - and starburst regions - cf. \citet{2015A&A...574A.114V}) and synchrotron radiation, which is a tracer of more violent and energetic processes (and thus associated with supernova remnants, AGN, or radio halos - cf. \citet{2010A&A...509A..68C}).
+This section aims to bring a brief introduction to the emission mechanisms which dominate at low frequencies, and thus determine the physics accessible to extragalactic astronomers working in this band. Specifically, it will briefly describe
+%thermal radiation detected at low frequencies (associated with dust \& protoplanetary disks, and therefore a tracer of star formation) along with 
+free-free radiation (which is emitted from ionised plasma outflows, and thus a tracer of various physical objects e.g. young stellar objects - cf. \citet{2017ApJ...834..206C} and references therein - and starburst regions - cf. \citet{2015A&A...574A.114V}) and synchrotron radiation, which is a tracer of more violent and energetic processes (and thus associated with supernova remnants, AGN, or radio halos - cf. \citet{2010A&A...509A..68C}).
 
 \pg
 Of course, each individual galaxy will have differing contributions from different mechanisms - in practice, when studying galactic populations, the overall flux at a given frequency will simply be summed up for each galaxy and become one point in a Spectral Energy Distribution, or SED. However, when studying individual objects, it can be critical to understand which emission mechanism dominates at what frequencies. %: it will be very difficult to find traces of star formation in the emission from a galaxy dominated by an AGN, for example. Along with a brief introduction of the main emission mechanisms, then, we will give the characteristic spectrum of each, to show how different types of emission can be differentiated in practice.
@@ -19,7 +21,7 @@ For example, the radio and far-infrared spectrum for nearby M82 are shown in Fig
 Synchrotron radiation is the dominant mode of emission for extragalactic sources at low wavelengths. As such, it will be covered in greater detail that the other mechanisms above, which are important in other bands (and therefore relevant for multi-spectral analysis) but much less relevant to LOFAR observations. This section draws heavily from Garret Cotter's \href{http://www-astro.physics.ox.ac.uk/~garret/teaching/}{high-energy astrophysics lectures}, as well as Alan Loh's \href{http://theses.md.univ-paris-diderot.fr/LOH_Alan_2_va_20160930.pdf}{doctoral thesis} and \href{https://www.cv.nrao.edu/course/astr534/SelfAbsorption.html}{the NRAO online course}.
 
 \pg
-Synchrotron radiation (or "magnetobremsstrahlung") occurs when the trajectory of a high-energy charged particle is deflected by a magnetic field. As the German name suggests, it is the magnetic equivalent of free-free radiation. It is the tracer of extremely violent processes, such as AGN jets. In the low-energy regime, it is also known as cyclotron radiation, after the device in which it was first measured in a laboratory. %, and in non-relativistic regimes, it is known as gyro radiation. 
+Synchrotron radiation (or "magnetobremsstrahlung") occurs when the trajectory of a relativistic charged particle is deflected by a magnetic field. As the German name suggests, it is the magnetic equivalent of free-free radiation. It is the tracer of very energetic processes, such as the interaction between AGN jets and the intergalactic medium. In the low-energy regime, it is also known as cyclotron radiation, after the device in which it was first measured in a laboratory. %, and in non-relativistic regimes, it is known as gyro radiation. 
 
 \pg
 The synchrotron power spectrum of a population of electrons with exactly the same energy is a function of its Lorentz factor and its emission angle\footnote{The emission angle is the angle between the electron's velocity and its radial velocity.} \citepads{1994hea2.book.....L}. The typical radiation spectrum for a single electron is shown in \cref{fig.synchrotron.1electrion} as a function of the critical frequency, which is itself a function of the emission angle and the synchrotron frequency\footnote{Which is itself a function of the Lorentz factor and the magnetic field strength - $\nu_\mathrm{sync}=\frac{\gamma^2 e B}{2\pi m_e c}$ .}: $\nu_c=3/2\nu_\mathrm{sync}\sin(\theta)$.
@@ -46,30 +48,30 @@ To answer these questions, we must recall that so far, we have assumed that ever
 \end{figure}
 
 \pg
-In the optically-thick regime, we know that the most effective radiation mechanism is simple black-body radiation, and so the power spectrum at a given frequency can be defined in terms of an ``electron temperature". In the Rayleigh-Jeans approxmation (valid as we are explicitly in the low-frequency regime), this gives $S_\nu \propto \nu{5/2}$, or $\alpha=5/2$. 
+In the optically-thick regime, we know that the most efficient radiation mechanism is simple black-body radiation, and so the power spectrum at a given frequency can be defined in terms of an ``electron temperature". In the Rayleigh-Jeans approxmation (valid as we are explicitly in the low-frequency regime), this gives $S_\nu \propto \nu{5/2}$, or $\alpha=5/2$. 
 In the optically-thin regime, meanwhile, we recover a mixture of the underlying power-law distribution ($S_\nu \propto e^{-\nu}$) and black-body radiation (which has a frequency-dependent $\alpha$). Empirically, we generally observe $\alpha \sim 0.7$.
 
 
-\subsection{Thermal Radiation}
-\pg
-Also known as black-body radiation, its spectral intensity is given by Planck's law, given in Eq. \ref{eq.planck}.
-\begin{equation}\label{eq.planck}
-%B_\lambda (\lambda,T) = \frac{2hc^2}{\lambda^5}\left(e^{\frac{hc}{\lambda k_BT}}-1\right)^{-1}
-B_\nu(\nu,T) = \frac{2h\nu^3}{c^2}\left(e^\frac{h\nu}{k_BT}-1\right)^{-1}
-\end{equation}
-where $B_\lambda$ is the flux density at frequency $\nu$ for a source with temperature $T$, and $k_B=1.381 \left[J/K\right]$ is the Boltzmann constant. Near protostellar disks, synchrotron emission is absorbed by the ambient interstellar medium, heating it up to an average of $\sim 10^4$ (see \citetads{2009ApJS..181..255A}, \citetads{1978ppim.book.....S} and references therein). This gives the following spectral curve:
-
-\begin{figure*}[!h]
-\centering
-\includegraphics[width=0.8\textwidth]{images/ThermalEmission.png}
-\caption{\label{plot.thermal}Log-Log plot of blackbody radiation emitted by a particle at $10^4$ Kelvin. Note that the y-axis is arbitrary, since it will in practice be modulated by the number of particles in a region, radiation efficiency, resolution etc.}
-\end{figure*}
-\pg
-This is the dominant mode of emission for distant galaxies in the infrared band. In the LOFAR regime, it is not expected to dominate for extragalactic sources, but ought to be detected for resolved galaxies.
+%\subsection{Thermal Radiation}
+%\pg
+%Also known as black-body radiation, its spectral intensity is given by Planck's law, given in Eq. \ref{eq.planck}.
+%\begin{equation}\label{eq.planck}
+%%B_\lambda (\lambda,T) = \frac{2hc^2}{\lambda^5}\left(e^{\frac{hc}{\lambda k_BT}}-1\right)^{-1}
+%B_\nu(\nu,T) = \frac{2h\nu^3}{c^2}\left(e^\frac{h\nu}{k_BT}-1\right)^{-1}
+%\end{equation}
+%where $B_\lambda$ is the flux density at frequency $\nu$ for a source with temperature $T$, and $k_B=1.381 \left[J/K\right]$ is the Boltzmann constant. Near protostellar disks, synchrotron emission is absorbed by the ambient interstellar medium, heating it up to an average of $\sim 10^4$ (see \citetads{2009ApJS..181..255A}, \citetads{1978ppim.book.....S} and references therein). Assuming that the interstellar medium is optically thick at all frequencies, this gives the following spectral curve:
+%
+%\begin{figure*}[!h]
+%\centering
+%\includegraphics[width=0.8\textwidth]{images/ThermalEmission.png}
+%\caption{\label{plot.thermal}Log-Log plot of blackbody radiation emitted by a particle at $10^4$ Kelvin. Note that the y-axis is arbitrary, since it will in practice be modulated by density, radiation efficiency, resolution etc.}
+%\end{figure*}
+%\pg
+%This is the dominant mode of emission for distant galaxies in the infrared band, but is not expected to contribute in the LOFAR regime for extragalactic sources. It ought to be detected for nearby resolved galaxies, however.
 
 \subsection{Free-Free Radiation}
 \pg
-Free-free or ``bremsstrahlung" (``braking") radiation occurs when the trajectory of a charged particle is deflected by an electric field. This non-thermal emission mechanism is the dominant mechanism in HII regions (which contain ionised hydrogen), where star formation has previously taken place. It is called free-free emission because it is produced by free electrons deviating off ionised hydrogen without being captured. % as shown in Fig. \ref{plot.freefree}
+Free-free or ``bremsstrahlung" (``braking") radiation occurs when the trajectory of a charged particle is deflected by an electric field. This non-thermal emission mechanism is the dominant mechanism in HII regions (which contain ionised hydrogen), where star formation has previously taken place. It is called free-free emission because it is produced by free electrons deviating off ionised hydrogen without being captured. When the underlying electron distribution is Maxwellian, it is referred to as thermal Bremsstrahlung.% as shown in Fig. \ref{plot.freefree}
 %\begin{figure*}[!h]
 %\centering
 %\includegraphics[width=0.3\textwidth]{images/bremsstrahlung.png}
