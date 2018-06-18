@@ -1,0 +1,266 @@
+\chapter{Imaging 3C295 with International LOFAR}\label{section.3c295}
+\minitoc
+% % % % % % % % % % % % % % % % % % % % % % %
+\section{Aims \& Methodology}
+\pg
+Our aim in this section is to create a high-resolution (0.1$''$) model of 3C295, which did not exist when this project began for LOFAR frequencies. This means creating a model that will allow us to find good phase-calibration solutions for LOFAR international baselines, and thus use the international stations to create a high-resolution image of the EGS.
+%While we also solve for amplitude gains, we know that we will need to correct the total source flux in each frequency subband as our initial spectral model is not necessarily correct.
+
+\pg
+One major constraint in this project is that 3C295 is fully resolved at these resolutions, which makes deconvolution difficult. As such, we consistently use a $uv$-cut of $100$km throughout our imaging in this section, to limit the impact of diffuse emission (which is very hard to deconvolve properly, and introduces artefacts in the image when improperly done) on our images. This choice of $uv$-cut is a compromise between removing diffuse emission in the images and providing sufficiently good conditioning to the calibration inverse problem\footnote{The more uncorrupted (i.e. flagged for RFI) visibilities are available, the better the estimation of gain solutions - see \citetads{2015MNRAS.449.2668S} for the demonstration.}. Provided that the phases of short-baseline gains do not evolve over the self-calibration procedure, then the information on flux structure associated to these spatial fringes is not lost. 
+
+\pg
+Another constraint is that the model needs to be applicable for the full LOFAR bandwidth. We therefore select 6 sub-bands out of the total LOFAR HBA bandwidth, evenly spread throughout the bandwidth as shown in Fig. \ref{fig.freqsamp}. This approach allows us to benefit from the improved conditioning of high-frequency data (since the diffraction limit on angular resolution is proportional to frequency) throughout the LOFAR bandwidth. By starting calibration with a model extracted from a VLA observation of 3C295 with a similar angular resolution, self-calibrating over the initial 6 subbands, then self-calibrating once with 60 subbands (centred on the initial 6) and then the full bandwidth, we expect to achieve good signal-to-noise. Then, we bootstrap the model such that the spectral index of its integrated flux is compatible with \citetads{arse}.
+
+\pg
+The resulting model is expected to be reliable enough to calibrate our Groth Strip data for the full LOFAR array and the entire HBA bandwidth. Direction-dependent gains can then be used for baselines with only core and remote stations, but not those with international stations - direction-dependent effects are expected to arise in the final images due to this. Quantifying the impact of this problem is the subject of \cref{section.decorr}.
+
+% % % % % % % % % % % % % % % % % % % % % % %
+\section{Data Reduction}
+
+\pg
+As outlined in \cref{section.RIME}, calibration is the process of solving for Jones matrices, which are associated to individual antennas. Here, the only source in our model (the source that dominates, by far, on the total emission in the field) is 3C295; we can thus limit ourselves to \textit{direction-independent} calibration, which is equivalent to performing direction-dependent calibration in the direction of 3C295 only. The associated RIME can be written as:
+\begin{align}
+\Vis_{pq}^{t,\nu} &= \Gjones_p^{t,\nu} \left( \sum_{s=3C295} \Ejones_{sp}^{t,\nu} \Kjones_{sp}^{t,\nu} \Bmatrix \left(\Kjones_{sq}^{t,\nu}\right)^H \left(\Ejones_{sq}^{t,\nu}\right)^H \right) \left(\Gjones_q^{t,\nu}\right)^H\\
+		  &= \Gjones_p^{t,\nu} \Ejones_{3C295,p}^{t,\nu} \Bmatrix_{3C295}^{t,\nu} \left(\Ejones_{3C295,q}^{t,\nu}\right)^H \left(\Gjones_q^{t,\nu}\right)^H\\
+		  &= \Jones_{3C295,p}^{t,\nu} \Bmatrix_{3C295}^{t,\nu} \left(\Jones_{3C295,q}^{t,\nu}\right)^H
+\end{align}
+where we explicitly model the LOFAR beam during both calibration and imaging, so as to ensure that the true sensitivity of each baseline to this out-of-phase-centre calibrator is taken into account appropriately.
+
+\pg
+What interests us here is therefore the $\Jones_{3C295,p}^{t,\nu}$ for all international stations $p$ and at all times and frequencies $t,\nu$. We improve conditioning by using time and frequency solution intervals of a minute and 8 subbands; at those times where this interval is too large, the quality-based weighting scheme is expected to compensate. Choosing such large intervals also helps self-calibration converge faster. We do not explicitly resort to physics-based solutions to constrain the calibration solutions: we solve for the full 8 parameters of each complex $2\times 2$ Jones matrix.
+
+\pg
+We begin by using a simple spectral index of $\alpha=-0.8$, which is typical of synchrotron sources at these frequencies. It is not strictly correct, but gives a good first-order approximation of the integrated flux of 3C295 as a function of frequency. In so doing, we introduce a frequency- and baseline-dependent error factor:
+\begin{align}
+\hatJones_{3C295,p}^{t,\nu} &\approx \alpha_{pq}^\nu \Jones_{3C295,p}^{t,\nu}
+\end{align}
+where $\hatJones_{3C295,p}^{t,\nu}$ is our estimation of the Jones matrix $\Jones_{3C295,p}^{t,\nu}$ for time $t$ and frequency $\nu$, and the baseline-dependence of $\alpha_{pq}^\nu$ arises because 3C295 is not at phase centre. If it was, then $\alpha$ would be a function of frequency alone. $\alpha$ varies smoothly as a function of frequency. 
+Because we solve for the full Jones matrix, we cannot apply phase-only corrections over multiple self-calibration rounds, as is standard practice. Over self-calibration rounds, we expect that $\alpha$ will change, but that it will remain smooth in frequency. The integrated flux of 3C295 over different passes of self-calibration is shown in \cref{fig.SC.ampfluct}: as this figure shows, the model amplitude can diverge significantly over the self-calibration process, sometimes even moving closer to the inital integrated flux, but often moving farther. 
+
+% images:
+% IMAGES/3c295.fromVLA.6sb.withbeam.pass[1-5].int.model.fits IMAGES/3c295.fromVLA.60sb.withbeam.pass[1-3].int.model.fits IMAGES/MSlist.fullBW.LOBOS6.MSlist.fullBW.txt.uniform.int.model.fits
+% script: /home/offler/plotSCamp.py
+\begin{figure}[h]
+\includegraphics[width=0.8\linewidth]{images/AmpFluct.png}
+\caption{\label{fig.SC.ampfluct} Amplitude fluctuation of the models resulting from self-calibration iterations, expressed as a ratio of the model's integrated flux divided by the Scaife \& Healde integrated flux model at the appropriate frequency. Note that the integrated model flux for 324sb-pass1 (the penultimate data in this plot) was lost to a careless command: the value shown here is just the average of the two neighbouring values.}
+\end{figure}
+
+\pg
+Because $\alpha$ is smooth in frequency, we can apply a frequency-dependent amplitude correction (i.e. we can ``bootstrap") by relying on the work of Scaife \& Heald \citep[see][]{arse}. This correction will be done in the imaging plane, since $alpha$ is a function of $uv$-position (but not sky position). This is, again, because 3C295 does not lie at phase centre: if it did, the correction could be done equivalently in visibility or image space. By performing it in the image-plane, we rid ourselves of the $uv$-dependence. The resulting signal-to-noise improvement is shown in \cref{fig.SCrms}. It is calculated on the bootstrapped residual images resulting from each round of the self-calibration process - as such, the only thing that changes is the noise, since the signal is corrected to be the appropriate constant As we can see, the noise falls nicely with self-calibration passes. Tragically, the results from the first full-bandwidth calibration run with the 60-subband model were lost before this plot could be made, and so only the results from the second full-bandwidth self-calibration pass remain. We can see that it is a small improvement over the 60-subband model. 
+\begin{figure}[h]
+\includegraphics[width=0.8\linewidth]{images/SCrms.png}
+\caption{\label{fig.SCrms} Bootstrapped residual RMS for each calibration pass. Note that the data for 324sb-pass1 (the penultimate data in this plot) were lost to a careless command: the value shown here is just the average of the two neighbouring values.}
+\end{figure}
+
+\pg
+The large decrease in RMS between the last 6-subband residual image and the first 60-subband residual image in \cref{fig.SCrms} is significant: we would expect a similar jump when going from 60 to 324 subbands. The fact that we do not is a strong indicator that we are digging into the limits of what our strategy can achieve by the end of the second full-bandwidth self-calibration pass. This is likely due to the fact that our initial sky model (and all subsequent models) only include 3C295: the fact that all the other sources in the primary beam are not included in the model is bound to introduce bias our gain solutions and artefacts in our images. This is a likely explanation for this behaviour.
+
+\pg
+We want good phase and amplitude gain estimates without concern for the overall scaling factor: this means that we want to find the correct brightness distribution at a given frequency, knowing that the overall scaling factor will be wrong, and correcting the images accordingly afterwards. We self-calibrate over the full LOFAR bandwidth so that the spectral flux distribution (i.e. where the flux of 3C295 lies at different frequencies) can be recovered in greater depth as we introduce more and more of the full bandwidth. We do not begin self-calibration with the full bandwidth, as a single pass of self-calibration with 6 subbands takes about an hour and a half, whereas it takes a full 3 days with the full bandwidth. The full bandwidth is therefore only self-calibrated on once, at the very end. We begin our self-calibration with 6 subbands, chosen across the LOFAR bandwidth, calibrated simultaneously. The chosen subbands, and their position in the total bandwidth, are shown here:
+\begin{figure}[h]
+\begin{floatrow}
+\ffigbox{%
+  \includegraphics[width=0.5\textwidth]{images/FreqSampLabelled}
+}{%
+  \caption{\label{fig.freqsamp}Position of subbands chosen across full LOFAR bandwidth}%
+}
+\capbtabbox{%
+  \begin{tabular}{|cc|} \hline
+  Subband & $\nu_\mathrm{min} - \nu_\mathrm{max}$ \\ \hline
+  SB035   &  117.45-117.69\\
+  SB095   & 129.21-129.41\\
+  SB155   & 140.93-141.12\\
+  SB215   & 152.65-152.84\\
+  SB275   & 164.37-164.56\\
+  SB335   &  176.08-176.28 \\\hline
+  \end{tabular}\vspace{1.2cm}
+}{%
+  \caption{Frequency bounds for the subbands chosen}%
+}
+\end{floatrow}
+\end{figure}
+
+\pg
+Because no high-resolution models exist for 3C295 at our observing frequencies, which span quite a large bandwidth, we start by making a model from a high-resolution image taken at 8.7GHz, shown in \cref{fig.vla.3c295}. We start with a model which is as close to the expected ``true" brightness distribution because the self-calibration problem is not convex: while the calibration inverse problem itself is convex (i.e. we expect to converge towards the ``true" gains regardless of the initial conditions, given enough SNR), the degeneracy introduced by imaging in the self-calibration procedure means that one could well get stuck in a local minimum. An exhaustive method would be to perform a full Monte Carlo analysis, testing every possible flux distribution for every pixel at every frequency to ensure that we do, in fact, find the model and gains which give the global minimum fit, rather than a local minimum fit. This would be extremely time-consuming, however, and falls outside the scope of this work. We therefore simply try to start as close as possible to where we expect the global minimum to fall.
+
+\pg
+We acquire the initial calibration model by extracting features from a NASA/IPAC Extragalactic Database\footnote{\hyperref[here]{https://ned.ipac.caltech.edu/}} image of 3C295 \citepads[see][]{1991AJ....101.1623P}, shown in Fig. \ref{fig.vla.3c295}. This feature extraction is carried out using PyBDSM \citepads{2015ascl.soft02007M}, changing all extracted Gaussians into points\footnote{This practice ensures that wrongly-estimated Gaussians do not end up introducing unphysical bias during calibration.}.
+\begin{figure}[h]
+\includegraphics[width=0.8\linewidth]{images/{3C_295_I_8.7GHz_lbs2003.fits}.png}
+\caption{\label{fig.vla.3c295}VLA observation of 3C295 at 8.7 GHz. Pixel size is $0.2''$.}
+\end{figure}
+% command: python ~/Scripts/PngCutoutFromFits.py --filename 3C_295_I_8.7GHz_lbs2003.fits --RA 14:09:33.418 --Dec 52:26:13 --size .12 --vmin -0.5 --vmax 4 --invert
+\pg
+Because we apply a $uv$-cut of 1km when calibrating, and a $uv$-cut of 100km when imaging, we need to make sure that we do not introduce spurious structure in the core and remote station gains. Similarly, we can check the quality of our self-calibration by looking at the structure of the international station gains. Gain structure can consist both of genuine atmospheric \& instrumental effects, but can also consist of unmodeled flux being absorbed into the gain solutions. At first, this is unavoidable: if flux is resolved by a baseline but not included in the model, then it will be absorbed into the gains. As we improve our model, we expect the gain curves to flatten and become smoother. If this happens for our international station gains, then we have a strong indication that we are in fact recovering physical signal rather than adding artefacts into our model. Similarly, we expect core and remote station gains to remain mostly static: if this is the case, then our strategy does not bias our gain solutions for these stations away from the underlying truth. 
+
+\pg
+Let us begin by checking whether our core and remote station gains change over time due to our self-calibration procedure. Here, we look at the gains of SB155, on which we applied the initial and final gain solutions. This subband was included in the 60-subband self-calibration step, but not the 6-subband self-calibration step.
+\begin{figure}[h!]
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{SB155.CS005HBA0.firstpass}.png}
+\caption{\label{fig.sb155.gains.cs201.before} CS005, first calibration}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{SB155.CS005HBA0.lastpass}.png}
+\caption{\label{fig.sb155.gains.cs201.after} CS005, last calibration}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{SB155.RS305HBA.firstpass}.png}
+\caption{\label{fig.sb155.gains.RS305.before} RS305, first calibration}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{SB155.RS305HBA.lastpass}.png}
+\caption{\label{fig.sb155.gains.RS305.afer} RS305, last calibration}
+\end{subfigure}
+\caption{\label{fig.sb155.gains.CR} Gain amplitude \& phase for CS201 of SB155}
+\end{figure}
+
+\pg
+As we can see from \cref{fig.sb155.gains.CR}, there is little change in amplitude structure between the first pass of calibration (with the model extracted from \cref{fig.vla.3c295}) and the last pass of calibration (after the successive self-calibration passes). Similarly, there is little apparent change in phase structure (structure which is difficult to see, as the phase wraps from $-\pi$ to $\pi$). It is important to note, however, that there is a difference in the \textit{level} of the amplitude curve: in the first pass of calibration, the average amplitude value is generally higher than in the last pass of calibration. This is expected behaviour, as there is less diffuse emission in the $uv$-cut imaging model of 3C295 than in the initial calibration model. This is equivalent to applying a choice of weighting scheme which down-weighs diffuse emission (i.e. a form of uniform weighting).
+
+\pg
+As for the international station gains, they are shown below for three of the seven international stations used for our observation, in \cref{fig.sb155.gains.international}. We show only one of the four German stations. As we can see, while structure very clearly remains in some of these amplitude curves (notable in the last two hours \cref{fig.sb155.gains.DE602.after}), some of the structure disappears from these amplitude curves. It should be noted that the last two hours of the observation are generally much noisier than the first 6; the last quarter of these plots show this. Quality-based weighting schemes compensate for this effect, and minimise the associated image deterioration. Note that the phase wraps extremely fast in these plots: this is because it is given with reference to CS001HBA0, the first antenna in our array. Because the international stations are much farther away from this core station than other core or remote stations are, we expect the associated phase solutions to wrap faster.
+\begin{figure}[h!]
+%\begin{subfigure}{.49\\textwidth}
+%\includegraphics[width=\linewidth]{images/{SB155.DE601HBA.firstpass}.png}
+%\caption{\label{fig.sb155.gains.DE601.before} DE601, first calibration}
+%\end{subfigure}
+%\begin{subfigure}{.49\\textwidth}
+%\includegraphics[width=\linewidth]{images/{SB155.DE601HBA.lastpass}.png}
+%\caption{\label{fig.sb155.gains.DE601.after} DE601, last calibration}
+%\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+\includegraphics[width=\linewidth]{images/{SB155.DE602HBA.firstpass}.png}
+\caption{\label{fig.sb155.gains.DE602.before} DE602, first calibration}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+\includegraphics[width=\linewidth]{images/{SB155.DE602HBA.lastpass}.png}
+\caption{\label{fig.sb155.gains.DE602.after} DE602, last calibration}
+\end{subfigure}
+%\begin{subfigure}{.49\textwidth}
+%\includegraphics[width=\linewidth]{images/{SB155.DE603HBA.firstpass}.png}
+%\caption{\label{fig.sb155.gains.DE603.before} DE603, first calibration}
+%\end{subfigure}
+%\begin{subfigure}{.49\textwidth}
+%\includegraphics[width=\linewidth]{images/{SB155.DE603HBA.lastpass}.png}
+%\caption{\label{fig.sb155.gains.DE603.after} DE603, last calibration}
+%\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{SB155.SE607HBA.firstpass}.png}
+\caption{\label{fig.sb155.gains.SE607.before} SE607, first calibration}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{SB155.SE607HBA.lastpass}.png}
+\caption{\label{fig.sb155.gains.SE607.after} SE607, last calibration}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{SB155.UK608HBA.firstpass}.png}
+\caption{\label{fig.sb155.gains.UK608.before} UK608, first calibration}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{SB155.UK608HBA.lastpass}.png}
+\caption{\label{fig.sb155.gains.UK608.after} UK608, last calibration}
+\end{subfigure}
+
+\caption{\label{fig.sb155.gains.international} Gain amplitude \& phase for international stations of SB155}
+\end{figure}
+
+\pg
+So far, we have shown the gain solutions for one subband, out of a total of 324 used subbands. The spectral behaviour of the amplitude and phase solutions can give us insight into whether we are absorbing true flux or calibration artefacts into our model: if our calibration model becomes more accurate to the true underlying flux, we expect e.g. the phase of core station calibration solutions to remain the same (as we are improving high-resolution details of our model) while our international station calibration solutions would become flatter in amplitude. Similarly, we expect to see large-scale frequency-dependent behaviour in the phase solutions of international stations, with smaller fluctuations around this behaviour: the effect of differential TEC, ionospheric turbulence, etc. Indeed, while the core stations (and, to a lesser extent, the remote stations) can be approximated as having the ``same ionosphere" above them, this is not the case for international stations: this is the source of the difficulties in calibrating these stations. As such, for international stations, we expect to see complex structure in the phase gain solutions, characteristic of the differences between the local atmosphere above the core and the international stations. For core stations, we only expect to see structure characteristic of scintillation in the phase gain solutions. 
+
+\pg
+\cref{fig.fullBW.CS005,fig.fullBW.CS201HBA0} show the gain solution phases and amplitudes for all times and frequency in our observation. Some patches of the plot are empty (horizontal red bands): this is because some subbands had very poor data, and their use in self-calibration corrupted the final image. They are more numerous for the first calibration pass than the last, as the solutions were not sought for some cases.
+
+\begin{figure}[h!]
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{CS005HBA0.firstpass.fullBW}.png}
+\caption{\label{fig.fullBW.gains.CS005.before} CS005HBA0, first calibration, full bandwidth}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{CS005HBA0.lastpass.fullBW}.png}
+\caption{\label{fig.fullBW.gains.CS005.after} CS005HBA0, last calibration, full bandwidth}
+\end{subfigure}
+\caption{\label{fig.fullBW.CS005} Plots showing the amplitude and phase solutions for CS005HBA0 at the start and end of self-calibration, respectively. Some areas are empty: in the case of the first calibration, this is because the solutions were not calculated for all subbands. For the last calibration, this is because some subbands were found to be corrupted, and their solutions are thus not shown here.}
+\end{figure}
+\begin{figure}[h!]
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{CS201HBA0.firstpass.fullBW}.png}
+\caption{\label{fig.fullBW.CS201HBA0.before} CS201HBA0, first calibration, full bandwidth}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{CS005HBA0.lastpass.fullBW}.png}
+\caption{\label{fig.fullBW.CS201HBA0.after} CS201HBA0, last calibration, full bandwidth}
+\end{subfigure}
+\caption{\label{fig.fullBW.CS201HBA0} Plots showing the amplitude and phase solutions for CS201HBA0 at the start and end of self-calibration, respectively. Some areas are empty: in the case of the first calibration, this is because the solutions were not calculated for all subbands. For the last calibration, this is because some subbands were found to be corrupted, and their solutions are thus not shown here.}
+\end{figure}
+
+\pg
+As we can see, the behaviour of both phase and amplitude gains remains much the same for core stations, before and after self-calibration. This is a good sign: it means that we do not lose the large-scale structure in our observation as we self-calibrate. We see in \cref{fig.fullBW.RS305HBA} that remote stations have much more phase structure as a function of frequency. This structure shows that the ionosphere above the remote Dutch stations is different from that above the core stations: this is an expected result. The fact that the structure does not change significantly before and after the self-calibration run indicates that the remote stations gains, just as the core stations gains, do not absorb true flux into their gain solutions during the self-calibration process. It can thus be taken as a sign that our self-calibration is trustworthy for these stations.
+\begin{figure}[h!]
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{RS305HBA.firstpass.fullBW}.png}
+\caption{\label{fig.fullBW.RS305HBA.before} RS305HBA, first calibration, full bandwidth}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{RS305HBA.lastpass.fullBW}.png}
+\caption{\label{fig.fullBW.RS305HBA.after} RS305HBA, last calibration, full bandwidth}
+\end{subfigure}
+\caption{\label{fig.fullBW.RS305HBA} Plots showing the amplitude and phase solutions for RS305HBA at the start and end of self-calibration, respectively. Some areas are empty: in the case of the first calibration, this is because the solutions were not calculated for all subbands. For the last calibration, this is because some subbands were found to be corrupted, and their solutions are thus not shown here.}
+\end{figure}
+
+\pg
+Finally, we examine the gain solutions for international stations. This is where we expect to see the most significant amplitude and phase structure, but also where we expect gain structure to change between the start and end of the self-calibration process. If this is the case, it would mean that the unmodeled astrophysical signal that is initially absorbed into international station gain solutions is introduced into the model over multiple iterations. Notably, we expect a big change in amplitude solutions; phase solutions are harder to read, as we expect the ionosphere to be drastically different between core and international stations. As such, they will include both true phase structure and the contribution of unmodeled flux.
+
+\begin{figure}[h!]
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{DE601HBA.firstpass.fullBW}.png}
+\caption{\label{fig.fullBW.DE601HBA.before} DE601HBA, first calibration, full bandwidth}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{DE601HBA.lastpass.fullBW}.png}
+\caption{\label{fig.fullBW.DE601HBA.after} DE601HBA, last calibration, full bandwidth}
+\end{subfigure}
+\caption{\label{fig.fullBW.DE601HBA} Plots showing the amplitude and phase solutions for DE601HBA at the start and end of self-calibration, respectively. Some areas are empty: in the case of the first calibration, this is because the solutions were not calculated for all subbands. For the last calibration, this is because some subbands were found to be corrupted, and their solutions are thus not shown here.}
+\end{figure}
+\begin{figure}[h!]
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{DE602HBA.firstpass.fullBW}.png}
+\caption{\label{fig.fullBW.DE602HBA.before} DE602HBA, first calibration, full bandwidth}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{DE602HBA.lastpass.fullBW}.png}
+\caption{\label{fig.fullBW.DE602HBA.after} DE602HBA, last calibration, full bandwidth}
+\end{subfigure}
+\caption{\label{fig.fullBW.DE602HBA} Plots showing the amplitude and phase solutions for DE602HBA at the start and end of self-calibration, respectively. Some areas are empty: in the case of the first calibration, this is because the solutions were not calculated for all subbands. For the last calibration, this is because some subbands were found to be corrupted, and their solutions are thus not shown here.}
+\end{figure}
+\begin{figure}[h!]
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{DE603HBA.firstpass.fullBW}.png}
+\caption{\label{fig.fullBW.DE603HBA.before} DE603HBA, first calibration, full bandwidth}
+\end{subfigure}
+\begin{subfigure}{.49\textwidth}
+\includegraphics[width=\linewidth]{images/{DE603HBA.lastpass.fullBW}.png}
+\caption{\label{fig.fullBW.DE603HBA.after} DE603HBA, last calibration, full bandwidth}
+\end{subfigure}
+\caption{\label{fig.fullBW.DE603HBA} Plots showing the amplitude and phase solutions for DE603HBA at the start and end of self-calibration, respectively. Some areas are empty: in the case of the first calibration, this is because the solutions were not calculated for all subbands. For the last calibration, this is because some subbands were found to be corrupted, and their solutions are thus not shown here.}
+\end{figure}
+
+\pg
+We see that some of the structure in the amplitude gains shown in \cref{fig.fullBW.DE601HBA} goes away over the course of self-calibration, though one of the two arcs present in the plot appears to decrease in amplitude. For \cref{fig.fullBW.DE602HBA}, we see that the pattern in the amplitude plot clearly changes - the fact that the pattern in \cref{fig.fullBW.DE602HBA.before} does not appear to be either dispersion or scintillation pattern would indicate that it consists of unmodeled flux. While some structure remains in the last 2 hours and low frequencies for this antenna's gain solution amplitudes, the last 2 hours of the observation are generally poor compared to the first six: we expect that the quality-based weighting scheme will minimise the impact of these poor calibration solutions on the final images. In \cref{fig.fullBW.DE603HBA}, we see that the self-calibration process was clearly less effective than it was for DE602HBA: while some of the structure was minimised (in the first two hours particularly: we go from the peculiar ``ellipse" pattern to something which looks more like scintillation), a lot clearly remains. Our self-calibration process could therefore likely be taken further. However, in our last step, we use 324 out of the full 366 subbands (leaving some out due to poor quality); a single round of self-calibration with this full dataset takes 5000 minutes on the best supercomputer available for this work. Because a single round of self-calibration would, at this point, take as much time as imaging a portion of the EGS, we treat the self-calibration process as ``having converged" at this point: while it could be yet improved, we have reached a signal-to-noise of 2.78$\mu$Jy. 
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % %
+\section{Overlays \& Spectral Analaysis}
+
+\pg
+The final, high-resolution, multi-frequency, bootstrapped model of 3C295 - which gives a spectral index for each pixel in the model - is shown below. TODO: discuss it etc
+
+\begin{figure}[h]
+\includegraphics[width=0.8\linewidth]{images/{MSlist.fullBW.LOBOS6.MSlist.fullBW.txt.uniform.int.convmodel.bootstrap.fits}.png}
+\caption{\label{fig.3c295.final} Final model of 3C295.}
+\end{figure}
+
+\pg
+TODO - comment on behaviour of various components, astrometric accuracy, etc - spectral behaviour too! Fits images are ready, but pretty pngs are not.
