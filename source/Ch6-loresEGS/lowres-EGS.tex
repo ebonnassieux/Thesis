@@ -73,8 +73,8 @@ Direction-dependent calibration was required, as the field of view is large enou
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.95\textwidth]{images/{EGS.widefield.regions}.png}
-\caption{\label{fig.EGS.widefield.regions} Facet distribution for the full direction-dependent calibrated image of the LOFAR primary beam. Image made without international stations.}
+\includegraphics[width=0.95\textwidth]{images/{image_full_ampphase_di_m.NS_Smooth.noise01.fitsnoisemap.facets}.png}
+\caption{\label{fig.EGS.widefield.regions} Facet distribution for the full direction-dependent calibrated image of the LOFAR primary beam. Image made without international stations. Note that 3C295 is easily found in the image: the dominant calibration artefacts are centred around it.}
 \end{figure}
 
 \pg
@@ -115,8 +115,25 @@ Direction-dependent self-calibration dramatically improves the noise level in th
 \pg
 These sources nevertheless remain in the field, as shown in \cref{image.egs.widefield.ddsc.zoom}. Note that the noise level is not constant throughout the image: this is because the array is not uniformly sensitive to the entire sky, but has a specific beam response. Correcting for this beam response in the image-plane gives integrated flux rather than apparent flux. A full catalogue of the sources in this image is given in \cref{appendix.widefield.catalog}, \cref{widefield.survey.catalog} % gives rise to this effect. 
 
+\pg
+Finally, the quality-based weighting schemes developed in \cref{chapter.paper} were applied throughout this procedure. Noise maps made with and without the weighting scheme are shown in \cref{image.egs.widefield.weights}. A few things are important to note in this comparison. Firstly, the weighting schemes decrease the noise by a factor of $\sim10$: for the noise-map to be visible without weighting schemes, the contrast of the weighted image needed to be pushed way low. For reference, \cref{image.egs.widefield.weighted} is the same image (albeit without the facets shown explicitly) as \cref{fig.EGS.widefield.regions}. The noise distribution is more clearly visible in that figure. Relatedly, by comparing that image and \cref{image.egs.widefield.noweights}, we note that the unweighted image has a different noise per facet, unlike the weighted image. This is due to the fact that a single visibility will be calibrated better or worse depending on the facet which the flux model is used for calibration. It is no coincidence that the facet containing 3C295 is the only one with a noise even remotely comparable to the weighted image's: it is the facet with the best signal-to-noise. This becomes significant when taking into account the fact that the last 2 hours of this observation are much noisier than the first 6: the quality-based weights will decrease their overall contribution \textit{throughout the image}, whereas not using them will lead to different facets having stronger or lesser contributions from these noisy visibilities - and therefore different noise levels. This is also why fringes can clearly be seen in some facets: a single visibility (or a set of a few visibilities) are particularly badly-calibrated, and the associated fringe dominates in the facet. Linking back to \cref{chapter.paper}, because we have a gain solution per visibility \textit{and per facet}, we have one noise-PSF per facet; this suggests that the quality-based weighting scheme could likely be extended to a direction-dependent formalism.
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.65\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{./image_full_ampphase_di_m.NS_Smooth_noW.noise01.fitsnoisemap.weights.compare}.png}}
+\caption{\label{image.egs.widefield.noweights} OFAR wide-field image cutout, self-calibrated from \cref{image.egs.widefield.noddsc} with direction-dependent Jones terms, made without using quality-based weights.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.65\textwidth}
+\resizebox{\hsize}{!}{\includegraphics{images/{./image_full_ampphase_di_m.NS_Smooth.noise01.fitsnoisemap.weights.compare}.png}}
+\caption{\label{image.egs.widefield.weighted} LOFAR wide-field image cutout, self-calibrated from \cref{image.egs.widefield.noddsc} with direction-dependent Jones terms, made with quality-based weights.}
+\end{subfigure}
+\caption{\label{image.egs.widefield.weights} Impact of quality-based weighting scheme on the final image.}
+\end{figure}
 
 
+\clearpage
 
 % % % % % % % % % % % % % % % % % % % % % % %
 \section{Overlays \& Images}\label{sec.lowresEGS.overlays}
@@ -124,7 +141,7 @@ These sources nevertheless remain in the field, as shown in \cref{image.egs.wide
 %\subsection{Selected Sources}
 
 \pg
-We select 12 sources in the wide-field image, which is shown in \cref{plot.EGS.lofar.widefield}. Our selection is primarily based on whether sources have interesting or peculiar diffuse emission, though some are chosen for being particularly classic examples of radio galaxies. We scan the image from south to north and east to west (scanning upwards then shifting to the right in the image). The source positions are given in \cref{table.egs.sources}.
+We select 12 sources in the wide-field image, which is shown in \cref{plot.EGS.lofar.widefield}. Our selection is primarily based on whether sources have interesting or peculiar diffuse emission, though some are chosen for being particularly classic examples of radio galaxies. We scan the image from south to north and east to west (scanning upwards then shifting to the right in the image). The positions of the brightest sources ($>1$Jy)are given in \cref{table.egs.sources}.
 
 
 \begin{figure}[h!]
