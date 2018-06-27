@@ -23,7 +23,7 @@ As outlined in \cref{section.RIME}, calibration is the process of solving for Jo
 \begin{align}
 \Vis_{pq}^{t,\nu} &= \Gjones_p^{t,\nu} \left( \sum_{s=3C295} \Ejones_{sp}^{t,\nu} \Kjones_{sp}^{t,\nu} \Bmatrix \left(\Kjones_{sq}^{t,\nu}\right)^H \left(\Ejones_{sq}^{t,\nu}\right)^H \right) \left(\Gjones_q^{t,\nu}\right)^H\\
 		  &= \Gjones_p^{t,\nu} \Ejones_{3C295,p}^{t,\nu} \Bmatrix_{3C295}^{t,\nu} \left(\Ejones_{3C295,q}^{t,\nu} \Gjones_q^{t,\nu}\right)^H\\
-		  &= \Jones_{3C295,p}^{t,\nu} \Bmatrix_{3C295}^{t,\nu} \left(\Jones_{3C295,q}^{t,\nu}\right)^H
+		  &= \Jones_{3C295,p}^{t,\nu} \Bmatrix_{3C295}^{t,\nu} \left(\Jones_{3C295,q}^{t,\nu}\right)^H\label{3c295.dirin.cal}
 \end{align}
 where we explicitly model the LOFAR beam during both calibration and imaging, so as to ensure that the true sensitivity of each baseline to this out-of-phase-centre calibrator is taken into account appropriately.
 
@@ -88,7 +88,7 @@ Because no high-resolution models exist for 3C295 at our observing frequencies, 
 A good initial test of our hypothesis that we can start from a ``good enough" point to reach a global minimum is to self-calibrate on a two-point model. We perform this test, keeping only the two brightest pixels of the model shown above to test whether we converge to the same structure. The result is shown as an overlay in \cref{fig.sc.2pt}: as we can see, we recover the same structure as the full VLA model. We therefore start from this full model for our ``proper" self-calibration procedure.
 \begin{figure}[h]
 \includegraphics[width=0.8\linewidth]{images/{3C_295_I_8.7GHz_lbs2003.J2000.fits2ptmodel}.png}
-\caption{\label{fig.sc.2pt} Overlay of the model resulting from a self-calibration process starting from a two-point model. The overlays rise exponentially, from the $5\sigma$ level to the maximum pixel value in the image.}
+\caption{\label{fig.sc.2pt} Overlay of the model resulting from a self-calibration process starting from a two-point model. The overlays rise exponentially, from the $5\sigma$ level to the maximum pixel value in the image. This image is very similar to the LOFAR image made with a single pass of calibration using the full VLA model.}
 \end{figure}
 
 \pg
