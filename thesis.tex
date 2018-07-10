@@ -61,6 +61,7 @@
 \usepackage{minitoc}
 \usepackage{cuted}
 \usepackage{caption}
+\captionsetup{justification=raggedright,singlelinecheck=false}
 %\usepackage{draftwatermark}
 \usepackage[bookmarks=false]{hyperref} %\usepackage{hyperref}
 %\usepackage[capitalise]{cleveref}
@@ -189,28 +190,31 @@
  
 % % % Chapter 1 - foreword
 \cleardoublepage
-\input{source/Ch1-Foreword/foreword.tex}
+\input{source/Ch0-Foreword/foreword.tex}
+
+\cleardoublepage
+\input{source/Ch1-ThisThesis/intro.tex}
 
 
 % % % Chapter 2 - intro
 \cleardoublepage
-\input{source/Ch2-intro/intro.tex}
+\input{source/Ch2-techniques/techniques.tex}
 
-
-% % % Chapter 3 - RIME
-\cleardoublepage
-\input{source/Ch3-RIME/RIME.tex}
+%
+%% % % Chapter 3 - RIME
+%\cleardoublepage
+%\input{source/Ch3-RIME/RIME.tex}
 
 
 % % % Chapter 4 - covweights paper
 \cleardoublepage
 \input{source/Ch4-Qweights/paper.tex}
-
-
-% % % Chapter 5 - strategy
-\cleardoublepage
-\input{source/Ch5-Strategy/strategy.tex}
-
+%
+%%
+%%% % % Chapter 5 - strategy
+%%\cleardoublepage
+%%\input{source/Ch5-Strategy/strategy.tex}
+%
 
 % % % Chapter 6 - lowres-EGS
 \cleardoublepage
@@ -227,9 +231,10 @@
 \cleardoublepage
 \input{source/Ch8-hiresEGS/hires-EGS.tex}
 
-\chapter{Conclusion \& Future Work}
 \cleardoublepage
-\minitoc
+\chapter{Conclusion \& Future Work}
+%\cleardoublepage
+%\minitoc
 \input{source/Ch9-Conclusion/conclusion.tex}
 
 
@@ -240,12 +245,12 @@
 \bibliography{source/auxil/biblio}
 \addcontentsline{toc}{chapter}{Bibliography}
 
-% % % Appendices
-\appendix
-\chapter{Wide-field catalog of sources in the LOFAR primary beam centred on the EGS}\label{appendix.widefield.catalog}
-
-\pg
-What follows is a full catalogue of sources found in the wide-field image of the LOFAR primary beam, centred on the EGS, made in \cref{section.EGS.lowres}. These sources are unsorted, and 3C295 is not present in this catalog.
-\input{source/auxil/widefield.egs.catalog.sorted.tex}
+%% % % Appendices
+%\appendix
+%\chapter{Wide-field catalog of sources in the LOFAR primary beam centred on the EGS}\label{appendix.widefield.catalog}
+%
+%\pg
+%What follows is a full catalogue of sources found in the wide-field image of the LOFAR primary beam, centred on the EGS, made in \cref{section.EGS.lowres}. These sources are unsorted, and 3C295 is not present in this catalog.
+%\input{source/auxil/widefield.egs.catalog.sorted.tex}
 
 \end{document}

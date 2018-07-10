@@ -1,5 +1,37 @@
 \pg
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vehicula dui vel sem elementum viverra. Nullam molestie egestas finibus. Vestibulum at rhoncus massa, ac mollis nulla. Nam vitae vestibulum ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur lobortis quam eget dui pretium pulvinar. Quisque consequat dapibus justo, eu blandit lacus auctor id. Vivamus vestibulum diam id feugiat posuere. Morbi ut vehicula urna, id laoreet turpis. Nam dignissim magna augue, et rhoncus felis lacinia nec. Praesent convallis ultrices hendrerit.
+In this chapter, we conclude this thesis manuscript with an overview of the results achieved over this doctorate and a discussion of individual items in this larger context. We will follow the structure of the manuscript. These conclusions \& discussions are intended to supplement the conclusions \& discussions at the end of each chapter.
+
+
+
+
+\section{Algorithmic Work}
 
 \pg
-Praesent porta lacus est. Duis tempor augue augue, ac pharetra nisi viverra sed. Integer tristique risus ac metus aliquam, in pretium felis porttitor. Sed eu ipsum vitae tortor faucibus ultrices. Cras sem erat, eleifend eget massa et, dapibus vulputate velit. Duis semper non odio in semper. Mauris quis massa rhoncus ante ullamcorper faucibus. Nam quis sollicitudin diam. Maecenas et posuere augue, ac aliquam sapien. Curabitur ac tristique ante. Sed tempor tellus a magna vehicula fringilla. Suspendisse arcu lacus, bibendum vitae velit vel, posuere commodo ipsum. Suspendisse et congue sem. Maecenas maximus quam sed interdum dignissim. Etiam ac tempor risus. Quisque vel nisi arcu. Nunc consectetur, nisl nec blandit egestas, dolor felis tincidunt odio, et iaculis lacus nunc in sem. Suspendisse potenti. Aenean est ante, egestas ac nulla eu, suscipit maximus orci. Etiam suscipit neque sed diam hendrerit, eu iaculis risus laoreet. Sed venenatis ultricies justo porta placerat. Quisque ac convallis nunc. Suspendisse et risus enim.
+One of the aims of this PhD was to develop new interferometric tools \& techniques and to apply them to LOFAR data to investigate AGN sources in extragalactic sources. This was arguably accomplished successfully: the quality-based weighting scheme developed during this PhD has been successfully throughout.
+
+\pg
+The theoretical framework of the cov-cov relationship, which links the variance and covariance in the visibilities to the variance and covariance between pixels in images made with these visibilities, was shown to hold on real data by improving images made with both direction-independent and direction-dependent calibration. This relationship tells us that the variance in images made from interferometric data is the result of two contributions. The first, which corresponds to thermal (or uncorrelated) noise in the visibilities, is constant throughout the image. The second, which corresponds to sky brightness distribution absorbed into the gain solutions - i.e. correlated noise in the calibration residual visibilities - gives rise to what we call a noise-PSF: a distinctive shape which is convolved with every source in the field (in the case where the true gains are direction-independent), and which gives the distribution function of which calibration artefacts are a single realisation.
+
+\pg
+The quality-based weighting schemes developed in this section can then be understood as ways to change the noise-distribution: one minimises the constant component of the noise-map, while the other seeks to flatten the noise-PSF. 
+
+%\pg
+%describe cov-cov
+%\begin{figure}[h]
+%\includegraphics[width=0.8\linewidth]{images/{covcov}.png}
+%\caption{\label{fig.covcov}VLA observation of 3C295 at 8.7 GHz. Pixel size is $0.2''$.}
+%\end{figure}
+
+
+, and is likely going to be revisited at a future time to be expanded to more complex cases. Much work nevertheless remains: in both improving the conditioning of the covariance matrix estimation, a necessary prerequisite for its successful application, and in attempting to generalise the framework to account for DDEs, more sophisticated interval solutions (e.g. convolution with a Gaussian with characteristic width equal to the solution interval rather than simple binning), and other modern features of calibration solvers. Similarly, the effect of sky model incompleteness has yet to be investigated thoroughly, and simulation work to this effect could bring great insight on this still-open question.
+
+\pg
+For the second item, a high-resolution, frequency-dependent model of 3C295 was successfully obtained. With this model, the international LOFAR stations were calibrated well enough that other calibrator sources were visible and morphologically-interesting, even with strong Briggs weighting (optimising for resolution at the cost of signal-to-noise). Other sources in the field were visible; with the proper subtraction of 3C295 and the other sources in the field, a dirty map of the EGS would be within easy reach, and all that remains would be to deconvolve it. This is a relatively straightforward but time-consuming operation. Afterwards, the necessary checks (integrated flux, source completeness, astrometric accuracy) will need to be performed before the image is scientifically useful. 
+
+
+\pg
+Much work thus remains. Due to a series of setbacks and complications, only very preliminary results were obtained by the end of the doctorate's three-year period. These preliminary results are shown in this manuscript, and while they are not of science-grade quality (no astrometric corrections, proper flux bootstrapping, strategy likely needs revisiting for best results) they are nevertheless useful markers of the wealth of information available in the EGS, even with the flawed strategy used. Depending on computational resources \& work-hours available, future work could include anything from the creation of a dirty map of the EGS with the data available (which, depending on the runtime for visibility modeling, could be done in time for the defense of this thesis) to a reboot of the strategy, starting explicitly from a model including 3C295 and all other sources at low resolutions (and then improving on 3C295 at high resolutions only). It is a shame that the patchwise imaging of the EGS could not be performed by the end of the thesis, but the author hopes to be able to complete it in due time.
+
+%
+%\pg
+%The algorithmic work done in this PhD was extremely fruitful, though its applications to data were less so. Much future work remains: in particular, imaging the EGS has not yet been done, due to technical \& time constraints (1 day / subband to model visibilities for out-of-field source subtraction). 

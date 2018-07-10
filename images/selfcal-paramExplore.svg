@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="selfcal-paramExplore.svg">
+  <defs
+     id="defs4">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5276"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5145"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path3794"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3011"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3005"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect2993"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect2989"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5145-0"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5145-1"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5145-1-7"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5145-1-7-9"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5145-1-7-1"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5145-1-7-7"
+       is_visible="true" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="270.59958"
+     inkscape:cy="464.63486"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1006"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.91814858px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 150,455.82176 0,286.61892"
+       id="path2987"
+       inkscape:path-effect="#path-effect2989"
+       inkscape:original-d="m 150,455.82176 0,286.61892"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.87942153px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 139.88669,732.36218 262.94995,0"
+       id="path2991"
+       inkscape:path-effect="#path-effect2993"
+       inkscape:original-d="m 139.88669,732.36218 262.94995,0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="280"
+       y="757.36218"
+       id="text2995"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan2997"
+         x="280"
+         y="757.36218">X</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="115"
+       y="597.36218"
+       id="text2999"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan3001"
+         x="115"
+         y="597.36218">G</tspan></text>
+    <path
+       style="fill:none;stroke:#1000ff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 200,722.36218 c 7.56476,-0.15763 5.7208,-0.47836 10.71429,-2.14285 0.71428,-0.2381 1.41241,-0.53168 2.14285,-0.71429 0.23099,-0.0578 0.50133,0.10648 0.71429,0 0.30117,-0.15059 0.39485,-0.60781 0.71428,-0.71429 0.003,-10e-4 2.14218,6.9e-4 2.14286,0 0.16836,-0.16836 -0.16836,-0.54592 0,-0.71428 0.33672,-0.33672 1.09186,0.33672 1.42857,0 0.16836,-0.16836 -0.16836,-0.54593 0,-0.71429 0.16836,-0.16836 0.50133,0.10648 0.71429,0 0.30117,-0.15058 0.41312,-0.5637 0.71428,-0.71428 0.21296,-0.10648 0.50133,0.10648 0.71429,0 0.30117,-0.15059 0.41312,-0.5637 0.71429,-0.71429 0.21295,-0.10648 0.50132,0.10648 0.71428,0 0.30117,-0.15058 0.41312,-0.5637 0.71429,-0.71428 0.21296,-0.10648 0.54592,0.16835 0.71428,0 0.16836,-0.16836 -0.16836,-0.54593 0,-0.71429 0.16836,-0.16836 0.50133,0.10648 0.71429,0 0.30117,-0.15059 0.41312,-0.5637 0.71428,-0.71429 0.21296,-0.10648 0.54593,0.16836 0.71429,0 0.16836,-0.16836 -0.16836,-0.54592 0,-0.71428 0.16836,-0.16836 0.54593,0.16836 0.71429,0 0.37646,-0.37646 0.33782,-1.05211 0.71428,-1.42857 0.16836,-0.16836 0.54593,0.16836 0.71429,0 0.37646,-0.37647 0.47619,-0.95238 0.71428,-1.42857 0.2381,-0.4762 0.47619,-0.95239 0.71429,-1.42858 1.63276,-3.26551 -0.44298,0.73831 2.14286,-3.57142 1.87237,-3.12062 -0.61567,0.51704 1.42857,-3.57143 0.15058,-0.30117 0.5637,-0.41312 0.71428,-0.71429 0.33672,-0.67343 0.43466,-1.44378 0.71429,-2.14286 0.19773,-0.49431 0.54593,-0.92349 0.71428,-1.42857 0.0753,-0.22587 -0.0577,-0.4833 0,-0.71428 0.18262,-0.73045 0.53168,-1.41242 0.71429,-2.14286 0.0577,-0.23099 -0.10648,-0.50133 0,-0.71429 0.15058,-0.30117 0.5637,-0.41311 0.71429,-0.71428 0.10648,-0.21296 -0.0753,-0.48841 0,-0.71429 0.16835,-0.50507 0.54592,-0.92349 0.71428,-1.42857 0.15059,-0.45175 -0.15058,-0.97682 0,-1.42857 0.16836,-0.50508 0.58516,-0.91207 0.71429,-1.42857 0.11549,-0.46197 -0.15059,-0.97682 0,-1.42857 0.10648,-0.31944 0.6078,-0.39485 0.71428,-0.71429 0.15059,-0.45175 -0.0934,-0.96163 0,-1.42857 0.14766,-0.7383 0.59051,-1.40018 0.71429,-2.14286 0.19571,-1.17428 0,-2.38095 0,-3.57143 0,-1.90476 0,-3.80952 0,-5.71428 0,-6.90476 0,-13.80953 0,-20.71429 0,-1.90476 0,-3.80952 0,-5.71428 0,-0.71429 -0.14008,-1.44245 0,-2.14286 0.15334,-0.76668 1.94252,-3.29095 2.14286,-3.57143 0.71428,-0.95238 1.42857,-1.90476 2.14285,-2.85714 0.2381,-0.2381 0.50394,-0.45136 0.71429,-0.71429 0.74368,-0.9296 1.30106,-2.01535 2.14286,-2.85714 0.019,-0.0191 4.21048,-2.80072 4.28571,-2.85714 0.26937,-0.20203 0.44491,-0.51226 0.71429,-0.71429 0.68677,-0.51508 1.4725,-0.89229 2.14285,-1.42857 0.52587,-0.42069 0.88983,-1.02451 1.42857,-1.42857 0.42592,-0.31944 0.98559,-0.41897 1.42858,-0.71429 0.99053,-0.66036 1.92753,-1.39917 2.85714,-2.14286 0.26293,-0.21034 0.40165,-0.58923 0.71428,-0.71428 0.91148,-0.36459 1.94567,-0.3497 2.85715,-0.71429 0.31263,-0.12505 0.41311,-0.5637 0.71428,-0.71428 5.4293,-2.71465 0.4221,-0.10553 2.85715,-0.71429 0.73044,-0.18261 1.41241,-0.53167 2.14285,-0.71428 0.23099,-0.0578 0.48841,0.0753 0.71429,0 0.50508,-0.16836 0.91207,-0.58516 1.42857,-0.71429 0.46197,-0.11549 0.95238,0 1.42857,0 1.90476,0 3.80953,0 5.71429,0 1.90476,0 3.80952,0 5.71428,0 0.95238,0 1.91772,-0.15657 2.85715,0 1.93339,-1.21398 1.84699,1.09185 2.85714,1.42857 0.45175,0.15059 0.97682,-0.15058 1.42857,0 0.63888,0.21296 0.82623,1.1274 1.42857,1.42857 0.21296,0.10648 0.48841,-0.0753 0.71429,0 0.50507,0.16836 0.93425,0.51656 1.42857,0.71429 0.69907,0.27963 1.44378,0.43466 2.14286,0.71428 1.63276,0.65311 1.89444,1.13667 3.57142,2.14286 1.36958,0.82175 2.91614,1.32111 4.28572,2.14286 0.28873,0.17324 0.47619,0.47619 0.71428,0.71428 0.4762,0.4762 0.90271,1.00788 1.42858,1.42858 0.67034,0.53627 1.45608,0.91349 2.14285,1.42857 0.26938,0.20203 0.47619,0.47619 0.71429,0.71428 0.95238,0.95238 1.96233,1.85048 2.85714,2.85715 1.01286,1.13946 1.90476,2.38095 2.85714,3.57142 0.95239,1.19048 1.97102,2.33085 2.85715,3.57143 0.30945,0.43323 0.3817,1.01284 0.71428,1.42858 0.63104,0.78879 1.49618,1.36683 2.14286,2.14285 0.54958,0.65949 0.91349,1.45609 1.42857,2.14286 0.20203,0.26937 0.5637,0.41312 0.71429,0.71429 0.10648,0.21295 -0.16836,0.54592 0,0.71428 0.33672,0.33672 1.00265,-0.21296 1.42857,0 0.30117,0.15059 0.47619,0.47619 0.71428,0.71429 0.71429,0.23809 1.45082,0.41769 2.14286,0.71428 0.9787,0.41945 1.87844,1.00913 2.85714,1.42857 1.76258,0.75539 7.26121,2.04354 7.85715,2.14286 5.92708,0.98785 11.88251,0.71429 17.85714,0.71429 2.14286,0 4.28571,0 6.42857,0 0.95238,0 1.92744,0.2066 2.85714,0 3.59018,-0.79782 3.55455,-1.65541 6.42858,-3.57143 2.13784,-1.42523 1.42064,0.15395 3.57142,-2.85714 0.6189,-0.86646 0.86424,-1.9542 1.42858,-2.85715 0.63095,-1.00952 1.4825,-1.8666 2.14285,-2.85714 2.2255,-3.33824 -1.39874,0.85557 2.14286,-3.57143 0.63104,-0.7888 1.58253,-1.30236 2.14286,-2.14286 0.29532,-0.44298 0.33782,-1.05211 0.71428,-1.42857 1.61936,-1.61936 1.57269,0.42607 2.85715,-2.14286 0.21295,-0.42591 -0.21296,-1.00265 0,-1.42857 0.30117,-0.60234 1.00788,-0.9027 1.42857,-1.42857 0.53628,-0.67035 0.91349,-1.45608 1.42857,-2.14286 0.20203,-0.26937 0.5637,-0.41311 0.71428,-0.71428 0.33672,-0.67344 0.59051,-1.40018 0.71429,-2.14286 0.11743,-0.70456 0,-1.42857 0,-2.14286 0,-2.14285 0,-4.28571 0,-6.42857 0,-1.42857 0,-2.85714 0,-4.28571 0,-0.71429 0.2508,-1.47405 0,-2.14286 -1.06503,-2.84008 -2.32355,-3.75212 -4.28571,-5.71428 -1.66667,-1.66667 -3.33334,-3.33334 -5,-5 -0.2381,-0.2381 -0.42556,-0.54105 -0.71429,-0.71429 -0.91305,-0.54783 -1.94409,-0.88074 -2.85714,-1.42857 -0.28874,-0.17324 -0.47619,-0.47619 -0.71429,-0.71429 -1.19047,-1.19047 -2.27806,-2.49362 -3.57143,-3.57143 -0.91455,-0.76212 -1.94259,-1.38073 -2.85714,-2.14285 -1.54567,-1.28806 -2.74005,-2.99766 -4.28571,-4.28572 -0.409,-0.34083 -1.01958,-0.37345 -1.42858,-0.71428 -1.55204,-1.29337 -2.85714,-2.85715 -4.28571,-4.28572 -0.47619,-0.47619 -0.86824,-1.05501 -1.42857,-1.42857 -0.88596,-0.59064 -1.9542,-0.86423 -2.85714,-1.42857 -1.00953,-0.63095 -1.86661,-1.4825 -2.85715,-2.14286 -0.44298,-0.29532 -1.01284,-0.3817 -1.42857,-0.71428 -0.78879,-0.63104 -1.35406,-1.51182 -2.14286,-2.14286 -0.41573,-0.33259 -0.97204,-0.44037 -1.42857,-0.71429 -1.64054,-0.98432 -5.21882,-3.73243 -5.71428,-5.71428 -0.1155,-0.46197 0,-0.95238 0,-1.42857 0,-1.90476 0,-3.80953 0,-5.71429 0,-0.23809 0,-0.47619 0,-0.71428 0,-0.47619 0.45175,-1.57916 0,-1.42858 -0.95832,0.31944 -1.42857,1.42858 -2.14286,2.14286"
+       id="path3007"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#e11e1e;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:none"
+       d="m 200,722.36218 0,-50 70,0 0,-70 60,0 0,-30 30,0 0,-10 -20,0"
+       id="path3009"
+       inkscape:path-effect="#path-effect3011"
+       inkscape:original-d="m 200,722.36218 0,-50 70,0 0,-70 60,0 0,-30 30,0 0,-10 -20,0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.59821427px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 267.36607,611.84879 2.99107,-8.97322 2.99107,8.97322 -5.98214,0"
+       id="path5143"
+       inkscape:path-effect="#path-effect5145"
+       inkscape:original-d="m 267.36607,611.84879 2.99107,-8.97322 2.99107,8.97322 z"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.59821427px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 197.00893,680.77736 200,671.80414 l 2.99107,8.97322 -5.98214,0"
+       id="path5143-3"
+       inkscape:path-effect="#path-effect5145-0"
+       inkscape:original-d="M 197.00893,680.77736 200,671.80414 l 2.99107,8.97322 z"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.59821427px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 327.36607,581.84879 2.99107,-8.97322 2.99107,8.97322 -5.98214,0"
+       id="path5143-2"
+       inkscape:path-effect="#path-effect5145-1"
+       inkscape:original-d="m 327.36607,581.84879 2.99107,-8.97322 2.99107,8.97322 z"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.59821427px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 261.7991,669.37111 8.97322,2.99107 -8.97322,2.99107 0,-5.98214"
+       id="path5143-2-7"
+       inkscape:path-effect="#path-effect5145-1-7"
+       inkscape:original-d="m 261.7991,669.37111 8.97322,2.99107 -8.97322,2.99107 z"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.59821427px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 319.7991,599.37111 8.97322,2.99107 -8.97322,2.99107 0,-5.98214"
+       id="path5143-2-7-8"
+       inkscape:path-effect="#path-effect5145-1-7-9"
+       inkscape:original-d="m 319.7991,599.37111 8.97322,2.99107 -8.97322,2.99107 z"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.59821427px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 350.65624,569.0854 8.97322,2.99107 -8.97322,2.99107 0,-5.98214"
+       id="path5143-2-7-0"
+       inkscape:path-effect="#path-effect5145-1-7-1"
+       inkscape:original-d="m 350.65624,569.0854 8.97322,2.99107 -8.97322,2.99107 z"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.59821427px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 349.70089,565.35325 -8.97322,-2.99107 8.97322,-2.99107 0,5.98214"
+       id="path5143-2-7-6"
+       inkscape:path-effect="#path-effect5145-1-7-7"
+       inkscape:original-d="m 349.70089,565.35325 -8.97322,-2.99107 8.97322,-2.99107 z"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="180"
+       y="482.36218"
+       id="text5249"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5251"
+         x="180"
+         y="482.36218"
+         style="font-size:12px;fill:#ff0000;fill-opacity:1">Calibration then Imaging</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="180"
+       y="502.36218"
+       id="text5249-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5251-1"
+         x="180"
+         y="502.36218"
+         style="font-size:12px;fill:#001fff;fill-opacity:1">Calibration and Imaging</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.98325902px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 169.99163,509.85532 0,-43.50151 165.01674,0 0,43.50151 -165.01674,0"
+       id="path5274"
+       inkscape:path-effect="#path-effect5276"
+       inkscape:original-d="m 169.99163,509.85532 0,-43.50151 165.01674,0 0,43.50151 z"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:0.56400003;fill:#001fff;fill-opacity:0;stroke:#000000;stroke-width:2.30299997;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path5278"
+       sodipodi:cx="190"
+       sodipodi:cy="547.36218"
+       sodipodi:rx="75"
+       sodipodi:ry="35"
+       d="m 265,547.36218 a 75,35 0 1 1 -150,0 75,35 0 1 1 150,0 z"
+       transform="matrix(0.17745914,-0.10245609,0.09965338,0.17260472,254.11828,485.83504)"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:0.56400003;fill:#001fff;fill-opacity:0;stroke:#000000;stroke-width:0.67502791;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path5278-0"
+       sodipodi:cx="190"
+       sodipodi:cy="547.36218"
+       sodipodi:rx="75"
+       sodipodi:ry="35"
+       d="m 265,547.36218 a 75,35 0 1 1 -150,0 75,35 0 1 1 150,0 z"
+       transform="matrix(0.59839722,-0.34548482,0.33603401,0.58202798,34.754229,316.90769)"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:0.56400003;fill:#001fff;fill-opacity:0;stroke:#000000;stroke-width:0.36723337;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path5278-0-2"
+       sodipodi:cx="190"
+       sodipodi:cy="547.36218"
+       sodipodi:rx="75"
+       sodipodi:ry="35"
+       d="m 265,547.36218 a 75,35 0 1 1 -150,0 75,35 0 1 1 150,0 z"
+       transform="matrix(1.0999405,-0.63505097,0.61767902,1.0698514,-237.54853,125.25433)"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="160"
+       y="562.36218"
+       id="text5318"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/Selfcal-paramExplore.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5320"
+         x="160"
+         y="562.36218"
+         style="font-size:10px">Confidence Intervals</tspan></text>
+  </g>
+</svg>
