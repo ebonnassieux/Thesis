@@ -1,7 +1,10 @@
 \minitoc
 
 \pg
-In this chapter, we conclude this thesis manuscript with an overview of the results achieved over this doctorate and a discussion of individual items in this larger context. We will follow the structure of the manuscript. These conclusions \& discussions are intended to supplement the conclusions \& discussions at the end of each chapter.
+In this chapter, we conclude this thesis manuscript with an overview of the results achieved over this doctorate and a discussion of individual items in this larger context. We follow the structure of the manuscript. These conclusions \& discussions are intended to supplement the conclusions \& discussions at the end of each chapter with a synthetic overview of the results of this doctoral thesis.
+
+\pg
+The projects undergone as part of this doctoral degree have strong opportunities for future work, both in terms of the algorithmic work \& its application. These will be outlined in detail in the relevant section. It is worth immediately pointing out that, due to a series of setbacks and complications, only preliminary results were obtained for the application to data by the end of the doctorate's three-year period. These preliminary results are shown in this manuscript, and while they are not of science-grade quality (no astrometric corrections, proper flux bootstrapping, strategy likely needs revisiting for best results) they are nevertheless useful markers of the wealth of information available in the EGS. %, even with the flawed strategy used. Depending on computational resources \& work-hours available, future work could include anything from the creation of a dirty map of the EGS with the data available (which, depending on the runtime for visibility modeling, could be done in time for the defense of this thesis) to a reboot of the strategy, starting explicitly from a model including 3C295 and all other sources at low resolutions (and then improving on 3C295 at high resolutions only). It is a shame that the patchwise imaging of the EGS could not be performed by the end of the thesis, but the author hopes to be able to complete it in due time.
 
 
 
@@ -42,7 +45,7 @@ This relationship was strongly tested through simulations, verifying the noise-P
 \caption{\label{whatever} {Noise-map of sky with correlated gain errors and three point sources. The colourbars of (a), (b) and (c) have dimensionless units, while that of (d) is in Jansky. Note the presence of structure in the residuals (c): these show the limits of our hypothesis that sources are well-separated.}}
 \end{figure}
 
-\subsection{Quality-based Weighting Schemes}
+\subsection{Quality-based Weighting Schemes}\label{sec.qweights.conclusion}
 
 \pg
 The quality-based weighting schemes developed in this section can then be understood as ways to change the noise-distribution: one minimises the constant component of the noise-map, while the other seeks to flatten the noise-PSF. Only the first was implemented for use on real data: the other suffered from poor conditioning. This weighting scheme consists of down-weighting each visibility by an estimate of the variance of residual.
@@ -86,16 +89,108 @@ Of these four points, only the first three were successfully carried out. Modeli
 
 \subsection{Imaging the LOFAR primary beam}
 
-\subsection{Using 3C295 to self-calibrate the international stations}
-
-\subsection{Quantifying the impact of international station directional gain errors}
+\pg
+We begin by creating a decent model of the sky seen by LOFAR's primary beam. To do this, a wide-field, $6''$-resolution image of the fully primary beam was made: this image makes no use of the LOFAR international stations due to technical limitations (memory use). Using PyBDSM \citepads{2015ascl.soft02007M}, this model was extracted from an image made after a few rounds of direction-dependent self-calibration.
 
 \pg
-For the second item, a high-resolution, frequency-dependent model of 3C295 was successfully obtained. With this model, the international LOFAR stations were calibrated well enough that other calibrator sources were visible and morphologically-interesting, even with strong Briggs weighting (optimising for resolution at the cost of signal-to-noise). Other sources in the field were visible; with the proper subtraction of 3C295 and the other sources in the field, a dirty map of the EGS would be within easy reach, and all that remains would be to deconvolve it. This is a relatively straightforward but time-consuming operation. Afterwards, the necessary checks (integrated flux, source completeness, astrometric accuracy) will need to be performed before the image is scientifically useful. 
+This model is still in a very preliminary stage: astrometric errors have not been corrected for, nor has integrated flux bootstrapping been performed. As such, this image (and the model extracted from it) is not of science-grade quality. Even so, and preliminary as it is, it is sensitive and wide-field enough to pick up a good number of interesting diffuse sources. 12 of these were selected to form a so-called ``primary beam galactic zoo" of sources. They were then matched to NVSS, NVSS \& WISE images to find counterparts: the results are shown in \cref{table.egs.sources1}, which is a repeat of \cref{table.egs.sources}.
+
+\pg
+Most of the source associations were straightforward, with some of the objects picked out from the wide-field image being well-studied in their own right. Others were not so straightforward, allowing only for individual lobe matching at best. Of course, these results are artisanal in the sense that only a handful of sources were chosen out of over 30000 PyBDSM-identified sources in the field: that these are, by eye, the most interesting in morphological terms does not mean that they are necessarily the most scientifically interesting. Indeed, a proper investigation would require identifying source populations in the LOFAR image after astrometric corrections \& bootstrapping, so as to add a data point in the SEDs of relevant galaxies after matching them with equivalents in other bands. This would represent part of the future work to perform on this dataset, though it would be fruitful to image the full primary beam (and the EGS) using all 40 available hours of observations beforehand, rather than limit ourselves to the 8 used in this doctorate.
+
+\begin{table}[h!]
+\begin{tabular}{ccccc}
+Name    & RA [hms]    & Dec [dms]   & Likely Association            & LOFAR thumbnail \\\hline
+EGS-1   & 14:37:39.53 & 53:36:31.24 & NVSS Radio Galaxy             & \cref{fig.egs1.lofarim} \\
+EGS-2   & 14:35:27.84 & 55:07:56.32 & Radio Galaxy in Cluster       & \cref{fig.egs2.lofarim} \\ 
+EGS-3   & 14:29:34.13 & 54:43:46.93 & Radio Galaxy in Cluster       & \cref{fig.egs3.lofarim} \\
+EGS-4   & 14:31:36.62 & 52:27:33.75 & Radio galaxy, $z=.292$        & \cref{fig.egs4.lofarim} \\
+EGS-5   & 14:29:48.89 & 51:10:30.52 & Lobes matched individually    & \cref{fig.egs5.lofarim} \\
+EGS-6   & 14:26:04.09 & 51:29:35.07 & One lobe matched individually & \cref{fig.egs6.lofarim} \\
+EGS-7   & 14:17:55.58 & 50:08:01.75 & Radio galaxy, $z=.186$        & \cref{fig.egs7.lofarim} \\
+EGS-8   & 14:14:40.42 & 51:17:41.00 & Radio galaxy, $z$ unknown     & \cref{fig.egs8.lofarim} \\
+EGS-9   & 14:11:36.43 & 52:54:25.53 & Galaxy cluster, $z=.525$      & \cref{fig.egs9.lofarim} \\
+EGS-10  & 14:07:09.90 & 55:04:22.23 & Galaxy cluster, $z=.250$      & \cref{fig.egs10.lofarim} \\
+EGS-11  & 14:03:16.00 & 51:43:35.23 & Lobes matched individually    & \cref{fig.egs11.lofarim} \\
+EGS-12  & 14:02:43.49 & 51:03:14.69 & Radio Galaxy in Cluster       & \cref{fig.egs12.lofarim} \\
+\end{tabular}
+\caption{\label{table.egs.sources1} Table recapitulating the names, positions and likely associations of all 12 chosen sources in the primary beam. These sources were primarily chosen because they had peculiar or interesting diffuse emission. The associated LOFAR image thumbnails are also given for reference.}
+\end{table}
+
+\subsection{Imaging the EGS with LOFAR-VLBI}
+
+\subsubsection{Using 3C295 to self-calibrate the international stations}
+
+\pg
+This work is complimentary to that of the LOFAR long-baseline team, and relies heavily on their research \citepads[e.g.]{2016A&A...595A..86J}. In essence, we rely on the fact that 3C295 is a bright, dominant source in the EGS primary beam: assuming that the overall contribution from fainter sources in the field (which peak at $\sim4$Jy, to 3C295's $\sim99$Jy at that frequency) is negligible, then self-calibration on 3C295 ought to yield both an improved model of that source \textbf{and} good gain solutions for the international LOFAR stations.
+
+\pg
+As it turns out, this was a bold assumption to make: the model resulting from our self-calibration is still rife with calibration artefacts. Based on our understanding of the cov-cov relationship, many of these can be understood as being due to sky brightness being absorbed into the gain solutions: gain inspection bears this theory out, showing unexpected and correlated structure in our international station gain amplitude solutions. 
+
+\pg
+Multiple avenues remain open to go beyond this issue: using the full low-resolution primary beam sky model from \cref{section.EGS.lowres} could be one way to improve our images. However, we would still find ourselves with much unmodeled emission on the baselines including an international station. Another possible avenue of improvement would be through the use the EHT-imager tools: these rely on fitting model data to closure quantities (amplitude \& phase), which are unaffected by antenna-based errors. This is currently being tested by the long baseline working group.
+
+\pg
+Finally, one avenue of inquiry which is likely to yield results would be in the application of amplitude \& phase smoothing on our gain solutions: this corresponds to a regularisation of the calibration inverse problem, improving its conditioning by applying a prior which encourages smooth gain solutions. This prior is physically-motivated, in the sense that we expect the true, underlying gain solutions to be smooth, and so jagged structure in the gains can generally be assimilated to source flux being absorbed into the gain solutions. The tools to perform this smoothing are already developed and being tested on LOTTS DR2 by Cyril Tasse, Tim Shimwell, and Martin Hardcastle. They were not applied here because we used full-Jones calibration solutions, whereas the DR2 pipeline solves for scalar gain solutions. Once the smoothing framework is generalised to polarisation, however, its application could result in dramatic improvements in international station gain solutions.
+
+\pg
+All these avenues of research are, of course, only possible because we find ourselves in very specific circumstances: the presence of a very bright resolved source in a famous (and therefore relatively well-known) extragalactic field. As such, we have the freedom to explore methods which supplement those of the LBCS team, who are more strongly constrained in that their aim is to provide a solid, reliable catalog of sources suitable for calibrating the international LOFAR stations. This, in turns, requires a solid, reliable strategy, in ways that our relatively straightforward application to a single field does not.
+
+\subsubsection{Quantifying the impact of international station directional gain errors}
+
+\pg
+This work is strongly linked to the self-calibration on 3C295: depending on the quality of both the model and the gain solutions attained (i.e. of how the quality of our solution to the overall inverse problem of radio interferometry), directional gain errors will be more or less present across the primary beam.
+
+\pg
+We choose 8 nearby sources from the LBCS, spread around both the EGS and 3C295. These are reprinted below, in copies of \cref{table.LOBOS.sources} and \cref{lbcs-coverage-image}. Two direction-dependent effects are expected to arise, one as a function of distance from phase centre (i.e. from the EGS) and the other as a function of distance from the direction-independent calibration source (i.e. from 3C295). These distances are summarised  in \cref{table.LOBOS.sources1} and \cref{lbcs-coverage-image1} below.
 
 
 \pg
-Much work thus remains. Due to a series of setbacks and complications, only very preliminary results were obtained by the end of the doctorate's three-year period. These preliminary results are shown in this manuscript, and while they are not of science-grade quality (no astrometric corrections, proper flux bootstrapping, strategy likely needs revisiting for best results) they are nevertheless useful markers of the wealth of information available in the EGS, even with the flawed strategy used. Depending on computational resources \& work-hours available, future work could include anything from the creation of a dirty map of the EGS with the data available (which, depending on the runtime for visibility modeling, could be done in time for the defense of this thesis) to a reboot of the strategy, starting explicitly from a model including 3C295 and all other sources at low resolutions (and then improving on 3C295 at high resolutions only). It is a shame that the patchwise imaging of the EGS could not be performed by the end of the thesis, but the author hopes to be able to complete it in due time.
+The direction-dependent effect which is function of distance from the EGS, decorrelation, is modeled in the DDF/kMS pipeline. As such, we do not expect this effect to dominate. The other direction-dependent effect, function of distance from 3C295, however, is not modeled: this effect corresponds to directional gain errors. Direction-independent calibration is only exact in the direction of the calibrator source when a single source is present in the field of view; this is because, in reality, the astrophysical signal from each source in the field of view reaches us through a slightly different ionosphere, are in areas of the antenna beam which are 
+of varying sensitivity, etc. Some of these models can be modeled and corrected to some degree (e.g. LOFAR beam), while others cannot at the time of writing (ionospheric effects). 
+
+\begin{table}[h!]
+\begin{tabular}{ccccc}
+\# & RA [hms]    & Dec [dms]   & Dist. from EGS [deg.] & Dist. from 3C295 [deg.] \\\hline
+1  & 14:30:18.72 & 52:17:29.80 & 2.041                         & 2.904 \\
+2  & 14:19:44.44 & 54:23:04.58 & 1.928                         & 2.517 \\ 
+3  & 14:21:20.05 & 53:03:46.00 & 0.864                         & 1.743 \\
+4  & 14:21:09.41 & 51:22:32.46 & 1.294                         & 1.728 \\
+5  & 14:11:50.32 & 52:49:02.66 & 0.844                         & 0.619 \\
+6  & 14:11:20.23 & 52:12:04.30 & 0.915                         & 0.000 \\
+7  & 14:08:07.00 & 52:55:11.36 & 1.409                         & 0.869 \\
+8  & 14:08:09.76 & 52:44:46.56 & 1.354                         & 0.680 \\
+\end{tabular}
+\caption{\label{table.LOBOS.sources1}Table giving the positions of our 8 LBCS sources and their distance from both the centre of the EGS and 3C295.}
+\end{table}
+\begin{figure}[h!]
+\includegraphics[width=.93\linewidth]{images/{image_full_ampphase_di_m.NS_Smooth.noise01.fitslbcs.egs.positions}.png}
+\caption{Position of the calibrator sources around the EGS, overlaid on the widefield EGS image. LBCS is 3C295.}
+\label{lbcs-coverage-image1}
+\end{figure}
+
+\pg
+With our final model of 3C295 and gain solutions, flawed as they are, we find that there is little direction-dependent variation in calibration artefact intensity for the various LBCS sources in the field. This is a strong encouragement to continue the project and move on to imaging the EGS using international LOFAR stations.
+
+\subsection{Future Work}
+
+\pg
+As mentioned in \cref{sec.qweights.conclusion}, there is much work ahead of us with regards to the algorithmic work developed in this doctoral thesis. Not only can the theoretical framework be expanded to include more complex cases, but those results which it already provides are limited by the conditioning of our estimation of the visibility covariance matrix. There is therefore room for both expanding on and improving existing results.
+
+\pg
+As for the application to data, it is very encouraging to see that not only are multiple LBCS sources resolved into physically-sensible morphologies (dual-lobe galaxies, etc), but in some instances are even resolved into multiple physically-sensible sources. Many of the LBCS candidates appear to be double or even triple sources. This would indicate that the directional gain errors for many of the LBCS sources are not so strong that they deteriorate the image beyond the recovery of such morphological information; since calibration artifacts, DDEs included, are more present near bright sources, the fact that they are not strong enough to pollute LBCS sources is a very promising indicator for the faint sourcers in the EGS.
+
+\pg
+However, we were not able to create images of this field before the end of this doctoral degree: creating this image (and performing the associated quality-control and source extraction) is therefore very high indeed on the priority for future work. The preliminary results shown in this manuscript are not of science-grade quality (no astrometric corrections, proper flux bootstrapping, strategy likely needs revisiting for best results), but they are nevertheless useful markers of the wealth of information available in the EGS as seen with the full LOFAR array. %, even with the flaws in our strategy. 
+
+
+%
+%\pg
+%For the second item, a high-resolution, frequency-dependent model of 3C295 was successfully obtained. With this model, the international LOFAR stations were calibrated well enough that other calibrator sources were visible and morphologically-interesting, even with strong Briggs weighting (optimising for resolution at the cost of signal-to-noise). Other sources in the field were visible; with the proper subtraction of 3C295 and the other sources in the field, a dirty map of the EGS would be within easy reach, and all that remains would be to deconvolve it. This is a relatively straightforward but time-consuming operation. Afterwards, the necessary checks (integrated flux, source completeness, astrometric accuracy) will need to be performed before the image is scientifically useful. 
+%
+%
+%\pg
+%Much work thus remains. Due to a series of setbacks and complications, only very preliminary results were obtained by the end of the doctorate's three-year period. These preliminary results are shown in this manuscript, and while they are not of science-grade quality (no astrometric corrections, proper flux bootstrapping, strategy likely needs revisiting for best results) they are nevertheless useful markers of the wealth of information available in the EGS, even with the flawed strategy used. Depending on computational resources \& work-hours available, future work could include anything from the creation of a dirty map of the EGS with the data available (which, depending on the runtime for visibility modeling, could be done in time for the defense of this thesis) to a reboot of the strategy, starting explicitly from a model including 3C295 and all other sources at low resolutions (and then improving on 3C295 at high resolutions only). It is a shame that the patchwise imaging of the EGS could not be performed by the end of the thesis, but the author hopes to be able to complete it in due time.
 
 %
 %\pg
