@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/offler/Desktop/phd/thesis/ThesisEtienne/images/BadConditioning.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="regularise.svg">
+  <defs
+     id="defs4">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3046"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3023"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3019"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3005"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect2995"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect2991"
+       is_visible="true" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.70000001"
+     inkscape:cx="127.87241"
+     inkscape:cy="599.76244"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="982"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:29.46195793px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.45516324"
+       x="155.31989"
+       y="387.7084"
+       id="text3007"
+       inkscape:export-filename="/home/ebonnassieux/Desktop/phd/thesis/ThesisEtienne/images.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan3011"
+         x="155.31989"
+         y="387.7084"
+         style="font-size:23.60542107px;line-height:1.25;font-family:sans-serif;stroke-width:2.45516324">Parameters</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:29.46195793px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.45516324"
+       x="-223.86075"
+       y="17.83074"
+       id="text3013"
+       transform="rotate(-90)"
+       inkscape:export-filename="/home/ebonnassieux/Desktop/phd/thesis/ThesisEtienne/images.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan3015"
+         x="-223.86075"
+         y="17.83074"
+         style="font-size:16.17481422px;line-height:1.25;font-family:sans-serif;stroke-width:2.45516324">Chi²</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.45516324px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 32.561719,374.72545 V 80.10586"
+       id="path3017"
+       inkscape:path-effect="#path-effect3019"
+       inkscape:original-d="M 32.561719,374.72545 V 80.10586"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/ebonnassieux/Desktop/phd/thesis/ThesisEtienne/images.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.8713001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 19.771466,362.44963 H 412"
+       id="path3021"
+       inkscape:path-effect="#path-effect3023"
+       inkscape:original-d="M 19.771466,362.44963 H 412"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/ebonnassieux/Desktop/phd/thesis/ThesisEtienne/images.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.61158824px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 86.354419,113.54067 27.798441,159.47856 13.89922,12.26759 27.79843,12.26759 -0.53063,1.06098 42.22829,-13.32857 h 13.89922 l 27.79844,49.07034 14.28058,13.36149 h 73.65489 l 12.27582,-12.27582 12.27582,-36.82744 12.27581,-85.93072 7.06638,-99.22223"
+       id="path3044"
+       inkscape:path-effect="#path-effect3046"
+       inkscape:original-d="m 86.354419,113.54067 27.798441,159.47856 13.89922,12.26759 27.79843,12.26759 -0.53063,1.06098 42.22829,-13.32857 h 13.89922 l 27.79844,49.07034 14.28058,13.36149 h 73.65489 l 12.27582,-12.27582 12.27582,-36.82744 12.27581,-85.93072 7.06638,-99.22223"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/ebonnassieux/Desktop/phd/thesis/ThesisEtienne/images.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       sodipodi:nodetypes="cccccccccccccc" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:2.45516324px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 199.51282,126.75396 36.82745,184.13724 12.27581,24.55163 24.55163,12.27582 24.55164,-12.27582 12.27581,-24.55163 36.82745,-184.13724"
+       id="path3724"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/ebonnassieux/Desktop/phd/thesis/ThesisEtienne/images.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:98.20652771px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.45516324"
+       x="76.754654"
+       y="318.25668"
+       id="text4533"
+       inkscape:export-filename="/home/ebonnassieux/Desktop/phd/thesis/ThesisEtienne/images.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="76.754654"
+         y="318.25668"
+         style="font-size:16.36775398px;line-height:1;stroke-width:2.45516324"
+         id="tspan4539">Initial Problem</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:98.20652771px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.45516324"
+       x="147.95439"
+       y="119.38847"
+       id="text4545"
+       inkscape:export-filename="/home/ebonnassieux/Desktop/phd/thesis/ThesisEtienne/images.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan4543"
+         x="147.95439"
+         y="119.38847"
+         style="font-size:16.36775398px;fill:#ff0000;stroke-width:2.45516324">Regularisation</tspan></text>
+  </g>
+</svg>
