@@ -4,13 +4,14 @@
 \section{Aims \& Methodology}
 
 \pg
-In this section, we describe the work done to make a wide-field image of the entire LOFAR primary beam, centred on EGS. A large-field, image of this field has never yet been made at such low frequencies. Due to technical limitations, the maximum attainable image size (in terms of number of pixels) will limit resolution to about $5''$. As such, the international stations are not used for this part of the project.
+In this section, we describe the work done to make a wide-field image of the entire LOFAR primary beam, centred on the Extended Groth Strip (EGS). A large-field, image of this field has never yet been made at such low frequencies. Due to technical limitations, the maximum attainable image size (in terms of number of pixels) will limit resolution to about $5''$. As such, we do not use the international stations for this part of the project, as their contribution would be averaged out within a single pixel. They are only used in later parts of the project, when imaging 3C295 and calibrator sources in the field at high resolutions.
 A more complete sky model can be created from this image, and %, allowing for one last round of self-calibration on the 3C295 high-resolution model. 
-bright out-of-field sources can be subtracted from high-resolution images of the Extended Groth Strip so that their sidelobe emission do not contaminate the final images. To achieve this, we require direction-dependent calibration. Because we do not use the international LOFAR stations, we do not need a high-resolution model of 3C295. %  This ensures that we do not ``hard-set" errors in our high-resolution model caused by other sources in the field. 
+bright out-of-field sources can be subtracted from high-resolution images of the EGS so that their sidelobe emission do not contaminate the final images. %  This ensures that we do not ``hard-set" errors in our high-resolution model caused by other sources in the field. 
+To achieve this, we require direction-dependent calibration. Because we do not use the international LOFAR stations, we do not need a high-resolution model of 3C295. 
 
 \pg
-We aim to achieve a sensitivity of a few hundreds of $\mu$Jy using visibilities recorded between $110-180$ MHz. This corresponds to a sensitivity of $\sim20$ $\mu$Jy at 1.4 GHz for typical synchrotron radio sources, which have spectral indices of $\alpha\sim -0.7$ (where $S_\nu \propto \nu^\alpha$). Reaching this sensitivity goal over the full LOFAR primary beam requires direction-dependent calibration.
-Our methodology is therefore to calibrate the full LOFAR bandwidth using the LOFAR Surveys KSP pipeline, which performs a facet-based direction-dependent calibration. We then perform source analysis on the most interesting objects in the field, using ancillary data from NVSS \citepads[NRAO VLA Sky Survey, ]{1998AJ....115.1693C}, SDSS \citepads[Sloan Digital Sky Survey, ]{2000AJ....120.1579Y} and WISE \citepads{2010AJ....140.1868W} surveys and cross-referenced using SIMBAD \citepads{2000A&AS..143....9W}. Overlays for those sources will be shown in \cref{sec.lowresEGS.overlays}.
+We aim to achieve a sensitivity of a few hundreds of $\mu$Jy using visibilities recorded between $110$ and $180$ MHz. This corresponds to a sensitivity of $\sim20$ $\mu$Jy at 1.4 GHz for typical synchrotron radio sources, which have spectral indices of $\alpha\sim -0.7$ (where $S_\nu \propto \nu^\alpha$). Reaching this sensitivity over the full LOFAR primary beam requires direction-dependent calibration.
+Our methodology is therefore to calibrate the full LOFAR bandwidth using the LOFAR Surveys KSP pipeline, which performs a facet-based direction-dependent calibration. We then perform source analysis on the most interesting objects in the field, using ancillary data from NVSS \citepads[NRAO VLA Sky Survey, ]{1998AJ....115.1693C}, SDSS \citepads[Sloan Digital Sky Survey, ]{2000AJ....120.1579Y} and WISE \citepads{2010AJ....140.1868W} surveys and cross-referenced using SIMBAD \citepads{2000A&AS..143....9W}. Overlays for those sources will be shown in \cref{sec.lowresEGS.overlays} in a ``radio-source zoo" intended to show the reader what sources a typical LOFAR extragalactic field contains.
 
 
  % % % % % % % % % % % % % % % % % % % % % %
@@ -19,13 +20,13 @@ Our methodology is therefore to calibrate the full LOFAR bandwidth using the LOF
 
 \subsection{Data \& Observation Properties}
 \pg
-The dataset used for this PhD project is part of the LOFAR Surveys KSP, and consists of a number of 8-hour pointings covering as much of the sky visibile to LOFAR as possible. We analyse one of these pointings, an observation performed on the 28th of August 2014 and centred on the Extended Groth Strip. It is an 8-hour-long observation; there exist another 4 8-hour pointings in the same direction, but these data are not reduced in this project. We limit ourselves to analysing only the HBA observation, meaning that we use 365 sub-bands which sample a total bandwidth of 110-182 MHz. We use all Core and Remote LOFAR stations, as well as some of the International stations which were online at the time (specifically the German stations 1-5 and 7, along with the Swedish and the British station).
+The dataset used for this PhD project is part of the LOFAR Surveys KSP, and consists of a number of 8-hour pointings covering as much of the sky visibile to LOFAR as possible. We analyse a subset of this dataset, a single one of these pointings, an observation performed on the 28th of August 2014 and centred on the EGS. It is an 8-hour-long observation; there exist another four 8-hour pointings in the same direction, but these data are not reduced in this project. We limit ourselves to analysing only the HBA observation, meaning that we use 365 sub-bands which sample a total bandwidth of 110-182 MHz. We use all Core and Remote LOFAR stations. When imaging 3C295 and other sources in the field with the international stations, we only use those which were online at the time (specifically the German stations 1-5 and 7, along with the Swedish and British stations).
 
 \pg
 The observation is centred on the EGS, and not on 3C295. This means that our calibrator source is not at phase centre, which can potentially introduce problems. Thankfully, new developments in imaging \citepads{2017arXiv171202078T} ensure that the direction-dependent PSF (one of the problems introduced by an off-centre calibrator) is properly modeled and corrected for. This means that direction-independent calibration will be exactly correct in the direction of 3C295, and a good model of this source can be made.
 
 \pg
-The data was acquired through the LOFAR Long-Term Archive, and is thus pre-processed and flagged for RFI using the standard tools \citepads[NDPPP and AOFlagger; see][ respectively]{2018ascl.soft04003V,2010ascl.soft10017O}. The next step is therefore to calibrate the data.
+The data was retrieved from the LOFAR Long-Term Archive, and is thus pre-processed and flagged for RFI using the standard tools \citepads[NDPPP and AOFlagger; see][ respectively]{2018ascl.soft04003V,2010ascl.soft10017O}. The next step is therefore to calibrate the data.
 
 \subsection{Reducing the Data}
 
@@ -43,25 +44,25 @@ The calibration strategy consists of a first round of direction-independent cali
 \begin{equation}
 \Vis_{pq} = \Gjones_p \bigg( \sum_s \Ejones_{sp} \Kjones_{sp} \Bmatrix_{s} \Kjones_{sq}^H \Ejones_{sq}^H \bigg) \Gjones_q^H
 \end{equation}
-which is the same as \cref{eq.multiple.source.RIME}. To account for the faceting explicitly, we can write:
+which is the same as \cref{eq.multiple.source.RIME}. Here, $\Kjones_{sp}=k_{sp}\I$. $\Kjones_{sp}$ therefore commutes with all other Jones matrices, and we can write: $\Kjones_{sp}\Kjones_{sq}^H=k_{s,pq}$ To account for the faceting explicitly, we can write:
 \begin{equation}
-\Vis_{pq} = \Gjones_p \sum_{\Omega}\left( \Ejones_{\Omega p} \left( \sum_{s\in\Omega}\Kjones_{sp} \Bmatrix_{s} \Kjones_{sq}^H\right) \Ejones_{\Omega q}^H \right) \Gjones_q^H
+\Vis_{pq} = \Gjones_p \sum_{\Omega}\left( \Ejones_{\Omega p} \left( \sum_{s\in\Omega}\Bmatrix_{s} k_{s,pq}\right) \Ejones_{\Omega q}^H \right) \Gjones_q^H
 \end{equation}
 where $\Omega$ indices denote different facets, and $s$ indices denote individual sources. Because we make the approximation that the $\Ejones$ term is constant within a facet, we directly write $\Ejones_{\Omega p}$ rather than $\Ejones_{sp}$. Each source in a given facet is assumed to have similar direction-dependent gains, and their cumulative signal-to-noise allows for better estimations of this direction-dependent gain than would be possible if solving for each source individually. 
 Thus:
 \begin{equation}
-\Vis_{pq} = \Gjones_p \sum_{\Omega}\bigg( \sum_{s\in\Omega} \Ejones_{\Omega p} \Kjones_{sp} \Bmatrix_{s} \Kjones_{sq}^H \Ejones_{\Omega q}^H \bigg) \Gjones_q^H
+\Vis_{pq} = \Gjones_p \sum_{\Omega}\bigg( \sum_{s\in\Omega} \Ejones_{\Omega p} \Bmatrix_{s} k_{s,pq} \Ejones_{\Omega q}^H \bigg) \Gjones_q^H
 \end{equation}
 
 \pg
-We begin with direction-independent calibration to find an estimate of $\Gjones_p\forall p$. This first step is done because this part of the Jones chain is the same throughout the sky, and its inverse solution can therefore be applied directly to the visibilities as follows:
+We begin with direction-independent calibration to find an estimate of $\Gjones_p\quad\forall p$. This first step is done because this part of the Jones chain is the same throughout the sky, and its inverse solution can therefore be applied directly to the visibilities as follows:
 \begin{align}
 \Vis_{pq}^\mathrm{corr} &= \Ghatjones_p^{-1} \Vis_{pq} \left( \Ghatjones_q^H \right)^{-1}\\
-						&= \Ghatjones_p^{-1}\Gjones_p \sum_{\Omega}\bigg( \sum_{s\in\Omega} \Ejones_{\Omega p} \Kjones_{sp} \Bmatrix_{s} \Kjones_{\Omega q}^H \Ejones_{sq}^H \bigg) \Gjones_q^H \left( \Ghatjones_q^H \right)^{-1}
+						&= \Ghatjones_p^{-1}\Gjones_p \sum_{\Omega}\bigg( \sum_{s\in\Omega} \Ejones_{\Omega p} \Bmatrix_{s} k_{\Omega,pq} \Ejones_{sq}^H \bigg) \Gjones_q^H \left( \Ghatjones_q^H \right)^{-1}
 \end{align}
-In so doing, we assume that $\left(\Ejones_{sp}\forall s,p\right) =1$ when solving for $\Ghatjones$. In general, this is of course invalid. For the calibrator source, however, we have $\Ejones_{sp} =1 \forall p$ by construction. Because we can choose the calibrator source, the presence of a sufficiently bright source (in our case, an unresolved 3C295) will give extremely good estimations of $\Gjones$. We then have $\Ghatjones_p^{-1}\Gjones_p\sim \I$, and
+In so doing, we assume that $\Ejones_{sp}=1quad \forall s,p$ when solving for $\Ghatjones$. In general, this is of course invalid. For the calibrator source, however, we have $\Ejones_{sp} =1 \quad\forall p$ by construction. Because we can choose the calibrator source, the presence of a sufficiently bright source (in our case, an unresolved 3C295) will give extremely good estimations of $\Gjones$. We then have $\Ghatjones_p^{-1}\Gjones_p\sim \I$, and
 \begin{align}
-\Vis_{pq}^\mathrm{corr} &\sim \sum_{\Omega}\left( \sum_{s\in\Omega} \Ejones_{\Omega p} \Kjones_{sp} \Bmatrix_{s} \Kjones_{sq}^H \Ejones_{\Omega q}^H \right)\label{eq.vcorr}
+\Vis_{pq}^\mathrm{corr} &\sim \sum_{\Omega}\left( \sum_{s\in\Omega} \Ejones_{\Omega p} \Bmatrix_{s} k_{s,pq} \Ejones_{\Omega q}^H \right)\label{eq.vcorr}
 \end{align}
 and direction-dependent calibration then consists of solving for $\Ehatjones_{\Omega p} = \Ghatjones_p^{-1}\Gjones_p\Ejones_{\Omega p} \sim \Ejones_{\Omega p}$ for all facets -- this means that, if there are errors in the direction-independent gain solutions, they will bias all direction-dependent gain solutions.
 
@@ -79,7 +80,7 @@ Direction-dependent calibration is required, as the field of view is large enoug
 \end{figure}
 
 \pg
-The direction-dependent calibration was done using 121 facets, spread as shown in \cref{fig.EGS.widefield.regions}. Some facets converge faster or better than others, and so artefacts due to direction-dependent effects may remain in certain areas of the image but not others. Calibration is done solving for scalar, complex Jones matrices, rather than a physics-based or diagonal-and-rotation matrix.
+The direction-dependent calibration was done using 121 facets, spread as shown in \cref{fig.EGS.widefield.regions}. Some facets converge faster or better than others, and so artefacts due to direction-dependent effects may remain in certain areas of the image but not others. %Calibration is done solving for scalar, complex Jones matrices, rather than a physics-based or diagonal-and-rotation matrix.
 The final image was imaged with a $uv$-cut, keeping only baselines longer than 100m. This is because shorter baselines were not used during calibration, and so discarded for imaging. The image resolution is $1.5''$, and the image was created using both quality-based weighting schemes and Briggs weighting, with a Briggs factor of $-0.5$. This means that the imaging was skewed slightly in favour of uniform weighting (weighting visibilities by local $uv$-density) rather than natural weighting (same weight for all visibilities). Imaging and calibration were done using the LOFAR beam model used in AWImager \citepads{awimager}, so the image gives integrated flux values rather than apparent flux values. Deconvolution was performed on the full bandwidth\footnote{This improves the conditioning of the imaging inverse problem, as it means that bright structure present across the full band (e.g. hotspots) can be deconvolved with the smaller PSF peak of the hightest-frequency band.} using SSD-clean with an external mask.
 
 \begin{figure}[h!]
@@ -93,7 +94,7 @@ The final image was imaged with a $uv$-cut, keeping only baselines longer than 1
 \resizebox{\hsize}{!}{\includegraphics{images/{image_full_ampphase_di_m.NS.app.restored.fits}.png}}
 \caption{\label{image.egs.widefield.doddsc} LOFAR wide-field image cutout, self-calibrated from \cref{image.egs.widefield.noddsc} with direction-dependent Jones terms.}
 \end{subfigure}
-\caption{\label{image.egs.widefield.ddsc} Wide-field image cutouts of the full primary beam, centred on the EGS, before and after selfcal.}
+\caption{\label{image.egs.widefield.ddsc} Wide-field image cutouts of the full primary beam, centred on the EGS, before and after selfcal over multiple facets. Note the massive decrease in artefacts centred on 3C295, but these are not the only artefacts decreased. \cref{image.egs.widefield.ddsc.zoom} show zoomed-in cutouts of this field as proof that the calibration artefacts around fainter sources decrease as well as a consequence of direction-dependent calibration.}
 \end{figure}
 
 \pg
@@ -110,7 +111,7 @@ Direction-dependent self-calibration dramatically improves the noise level in th
 \resizebox{\hsize}{!}{\includegraphics{images/{widefiled.DD}.png}}
 \caption{\label{image.egs.widefield.doddsc.zoom} LOFAR wide-field image cutout, self-calibrated from \cref{image.egs.widefield.noddsc} with direction-dependent Jones terms.}
 \end{subfigure}
-\caption{\label{image.egs.widefield.ddsc.zoom} Cutouts of smaller regions of \cref{image.egs.widefield.ddsc}.}
+\caption{\label{image.egs.widefield.ddsc.zoom} Cutouts of smaller regions of \cref{image.egs.widefield.ddsc}, intended to show that calibration artefacts around fainter sources decrease as well as those around 3C295.}
 \end{figure}
 
 \pg
@@ -119,7 +120,7 @@ These sources nevertheless remain in the field, as shown in \cref{image.egs.wide
 \section{Effect of Quality-based Weighting Scheme}
 
 \pg
-Finally, the quality-based weighting scheme developed in \cref{chapter.paper} was applied throughout this procedure. Noise maps made with and without the weighting scheme are shown in \cref{image.egs.widefield.weights}. A few things are important to note in this comparison. Firstly, the weighting schemes decrease the noise by a factor of $\sim10$: for the noise-map to be visible without weighting schemes, the contrast of the weighted image needed to be pushed way low. For reference, \cref{image.egs.widefield.weighted} is the same image (albeit without the facets shown explicitly) as \cref{fig.EGS.widefield.regions}. The noise distribution is more clearly visible in that figure. Relatedly, by comparing that image and \cref{image.egs.widefield.noweights}, we note that the unweighted image has a different noise per facet, unlike the weighted image. This is due to the fact that a single visibility will be calibrated better or worse depending on the facet which the flux model is used for calibration. It is no coincidence that the facet containing 3C295 is the only one with a noise even remotely comparable to the weighted image's: it is the facet with the best signal-to-noise. This becomes significant when taking into account the fact that the last 2 hours of this observation are much noisier than the first 6: the quality-based weights will decrease their overall contribution \textit{throughout the image}, whereas not using them will lead to different facets having stronger or lesser contributions from these noisy visibilities - and therefore different noise levels. This is also why fringes can clearly be seen in some facets: a single visibility (or a set of a few visibilities) are particularly badly-calibrated, and the associated fringe dominates in the facet. Linking back to \cref{chapter.paper}, because we have a gain solution per visibility \textit{and per facet}, we have one noise-PSF per facet; this suggests that the quality-based weighting scheme could likely be extended to a direction-dependent formalism.
+Finally, the quality-based weighting scheme developed in \cref{chapter.paper} was applied throughout this procedure. Noise maps made with and without the weighting scheme are shown in \cref{image.egs.widefield.weights}. A few things are important to note in this comparison. Firstly, the weighting schemes decrease the noise by a factor of $\sim10$: for the noise-map to be visible without weighting schemes, the contrast of the weighted image needed to be pushed way low. For reference, \cref{image.egs.widefield.weighted} is the same image (albeit without the facets shown explicitly) as \cref{fig.EGS.widefield.regions} - though its levels have been changed to better illustrate the effect of the quality-based weighting scheme. This is why we can't see much at all in that image: it is the contrast between \cref{image.egs.widefield.weighted} and \cref{image.egs.widefield.noweights} which is relevant here. The noise distribution is more clearly visible in that figure. Relatedly, by comparing that image and \cref{image.egs.widefield.noweights}, we note that the unweighted image has a different noise per facet, unlike the weighted image. This is due to the fact that a single visibility will be calibrated better or worse depending on the signal-to-noise of individual facets, constrained by the direction-independent calibration which uses the highest signal-to-noise available. It is no coincidence that the facet containing 3C295 is the only one with a noise even remotely comparable to the weighted image's: it is the facet with the best signal-to-noise. This becomes significant when taking into account the fact that the last 2 hours of this observation are much noisier than the first 6: the quality-based weights will decrease their overall contribution \textit{throughout the image}, whereas not using them will lead to different facets having stronger or lesser contributions from these noisy visibilities - and therefore different noise levels. This is also why fringes can clearly be seen in some facets: a single visibility (or a set of a few visibilities) are particularly badly-calibrated, and the associated fringe dominates in the facet. Linking back to \cref{chapter.paper}, because we have a gain solution per visibility \textit{and per facet}, we have one noise-PSF per facet; this suggests that the quality-based weighting scheme could likely be extended to a direction-dependent formalism.
 
 \begin{figure}[h!]
 \centering
@@ -150,7 +151,7 @@ We select 12 sources in the wide-field image, which is shown in \cref{plot.EGS.l
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\textwidth]{images/{lofar.widefield}.png}
-\caption{\label{plot.EGS.lofar.widefield} Full direction-dependent calibrated image of the LOFAR primary beam, centred on the EGS. Image made without international stations.}
+\caption{\label{plot.EGS.lofar.widefield} Full image of the LOFAR primary beam, centred on the EGS. Image made without international stations and with direction-dependent calibration.}
 \end{figure}
 
 \begin{table}[h!]
@@ -175,7 +176,7 @@ EGS-12  & 14:02:43.49 & 51:03:14.69 & Radio Galaxy in Cluster       & \cref{fig.
 \pg
 \cref{table.egs.sources} also gives the likely associations for each chosen EGS source, giving redshift information when available. The analysis here is done by hand using NED (\href{https://ned.ipac.caltech.edu/}{NASA/IPAC Extragalactic Database (NED)}), Simbad (\href{http://simbad.u-strasbg.fr/simbad/}{
 operated at CDS, Strasbourg}) and the associated catalogues and papers, often accessible through ADS (\href{http://adsabs.harvard.edu/}{SAO/NASA Astrophysics Data System (ADS)}). Such an artisanal approach is suitable for the analysis of a dozen sources, but quickly becomes intractable. % Ideally, one would rely on automated matching between sources extracted from the widefield image and complete catalogues at other wavelengths: this would allow the matching of hundreds of sources in the time it took to analyse 12.
-Since source analysis is but a happy byproduct of our primary science aim, this was not done here, but would be a promising avenue of future work.
+Since source analysis is but a happy byproduct of our primary science aim, a full catalog extraction was not done here, but would be a promising avenue of future work.
 
 \pg
 For each source, we show four images: a cutout of the LOFAR image around the source, an SDSS cutout of the same area with the LOFAR image superimposed as an overlay, the same SDSS cutout with an NVSS image overlayed, and finally the same SDSS image again with a WISE image overlay. The first image aims to show why the source was selected. The second shows optical counterparts to LOFAR emission. The third serves to check whether we pick up similar structure and emission in NVSS images as the LOFAR wide-field image. Note that the NVSS images are at a much lower resolution, but can be a useful way to ensure that we are not choosing artefacts or spurious emission as sources to investigate. Finally, the WISE overlay attempts to see whether infrared emission can be associated to these sources. Note that the sensitivity of SDSS images are not homogeneous, as not all patches of the sky have received the same coverage. 
@@ -466,8 +467,8 @@ EGS-8 was chosen because it is a complex diffuse source. Note that the source to
 \pg
 This source was chosen because it had one strong lobe and one weak: it was expected to be a good example of a radio galaxy with a single doppler-boosted lobe. There is a likely association to the northern lobe: the galaxy cluster CFHT-W CL J141141.7+525450 \citepads{2011ApJ...734...68W}, which lies at $z=.5252$. There is no similarly likely candidate for association with the second lobe, however. It is interesting to note that there is no NVSS equivalent to either lobe.
 
-\pg
-The southern source has an NVSS equivalent, but is still dominated by artefacts in the LOFAR image. We therefore do not seek to extract information from this source at the time of writing.
+%\pg
+%The southern source has a faint NVSS equivalent, but is still dominated by artefacts in the LOFAR image. We therefore do not seek to extract information from this source at the time of writing.
 
 \clearpage
 
@@ -564,9 +565,9 @@ No counterpart is found at all for the southern source in any band.
 
 \pg
 This source was chosen for its interesting diffuse emission. Identification was straightforward - assuming that this source is a radio-bright galaxy with jet emission, the central blob of the source, surrounded by two others, must be where its center lies. Within this blob lies a single optical counterpart. This counterpart turns out to be SDSS J140243.96+510345.8 \citepads{2009yCat.2294....0A}, the brightest galaxy in its cluster. This is consistent with other similar turbulent diffuse structures chosen in this list: EGS-12's diffuse structure is likely a marker of interactions between the jets of a radio-bright galaxy in a cluster and its surrounding inter-galactic and inter-cluster media.
-
-\pg
-No matching was done for the other two radio sources in the field, as they are unresolved and far from the main source of interest, and thus unlikely to be linked. They do, however, have NVSS counterparts, and are thus likely to be true sources.
+%
+%\pg
+%No matching was done for the other two radio sources in the field, as they are unresolved and far from the main source of interest, and thus unlikely to be linked. They do, however, have NVSS counterparts, and are thus likely to be true sources.
 
 \section{Discussion}
 

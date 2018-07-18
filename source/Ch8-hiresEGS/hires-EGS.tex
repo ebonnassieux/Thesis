@@ -1,36 +1,35 @@
-\section{Aims \& Methodology}
+\section{Testing Directional Gain Errors - Aims \& Methodology}
 
 \pg
 Having made both a wide-field image of the EGS without international stations and a high-resolution model of the brightest source in the LOFAR primary beam, 3C295, in order to calibrate the international LOFAR station, we can now begin to proceed to imaging the EGS with the international LOFAR stations.
-Before we do so, however, we must quantify whether the direction-independent calibration on the international baselines is sufficient when imaging the EGS. We expect to see some direction-dependent effects arising in the neighbourhood of 3C295: are these direction-dependent effect so severe that it is not worth imaging the EGS?
-
-\begin{table}[h!]
-\begin{tabular}{ccccc}
-\# & RA [hms]    & Dec [dms]   & Dist. from EGS [deg.] & Dist. from 3C295 [deg.] \\\hline
-1  & 14:30:18.72 & 52:17:29.80 & 2.041                         & 2.904 \\
-2  & 14:19:44.44 & 54:23:04.58 & 1.928                         & 2.517 \\ 
-3  & 14:21:20.05 & 53:03:46.00 & 0.864                         & 1.743 \\
-4  & 14:21:09.41 & 51:22:32.46 & 1.294                         & 1.728 \\
-5  & 14:11:50.32 & 52:49:02.66 & 0.844                         & 0.619 \\
-6  & 14:11:20.23 & 52:12:04.30 & 0.915                         & 0.000 \\
-7  & 14:08:07.00 & 52:55:11.36 & 1.409                         & 0.869 \\
-8  & 14:08:09.76 & 52:44:46.56 & 1.354                         & 0.680 \\
-\end{tabular}
-\caption{\label{table.LOBOS.sources}Table giving the positions of our 8 LBCS sources and their distance from both the centre of the EGS and 3C295.}
-\end{table}
-\begin{figure}[h!]
-\includegraphics[width=\linewidth]{images/{image_full_ampphase_di_m.NS_Smooth.noise01.fitslbcs.egs.positions}.png}
-\caption{Position of the calibrator sources around the EGS, overlaid on the widefield EGS image. LBCS is 3C295.}
-\label{lbcs-coverage-image}
-\end{figure}
-
+Before we do so, however, we must quantify whether the direction-independent calibration on the international baselines is sufficient when imaging the EGS. We expect to see some direction-dependent effects arising in the neighbourhood of 3C295, and also expect that the SNR in the field will be insufficient to perform direction-dependent calibration on the international stations: are these direction-dependent effect so severe that it is not worth imaging the EGS?
 
 \pg
 In other words, we seek to estimate whether, in practice, the EGS can, in part or in full, be placed on the same facet as 3C295 - and with what loss in accuracy to directional gain errors. The first direction-dependent effect we must take into account is decorrelation, also known as smearing (see \cref{section.RIME.TimeDep}). This effect causes signal loss on the longest baselines for sources far from the phase centre. To do this, we make use of the LOFAR Long-Baseline Calibrator Survey \citepads[LBCS,]{2016A&A...595A..86J}. This is a survey of suitable compact sources to use as calibrators for international LOFAR baselines: these sources are expected to consist mainly of self-absorbed synchrotron radio cores. The survey's source selection procedure is as follows: it selects all sources identified as single sources in WENSS \citepads{1997A&AS..124..259R}. Then, based on the work of \citetads{2015A&A...574A..73M}, which found that the main predictors for compact structure were a high total WENSS flux density and a flat low-frequency spectrum (in line with the expectation above), a selection was made on the basis of spectral index and WENSS flux density for all these sources. %Because the survey aims to span the whole northern sky, there is no guarantee that LBCS sources are single sources
 
 
+\begin{table}[h!]
+	\begin{tabular}{ccccc}
+		\# & RA [hms]    & Dec [dms]   & Dist. from EGS [deg.] & Dist. from 3C295 [deg.] \\\hline
+		1  & 14:30:18.72 & 52:17:29.80 & 2.041                         & 2.904 \\
+		2  & 14:19:44.44 & 54:23:04.58 & 1.928                         & 2.517 \\ 
+		3  & 14:21:20.05 & 53:03:46.00 & 0.864                         & 1.743 \\
+		4  & 14:21:09.41 & 51:22:32.46 & 1.294                         & 1.728 \\
+		5  & 14:11:50.32 & 52:49:02.66 & 0.844                         & 0.619 \\
+		6  & 14:11:20.23 & 52:12:04.30 & 0.915                         & 0.000 \\
+		7  & 14:08:07.00 & 52:55:11.36 & 1.409                         & 0.869 \\
+		8  & 14:08:09.76 & 52:44:46.56 & 1.354                         & 0.680 \\
+	\end{tabular}
+	\caption{\label{table.LOBOS.sources}Table giving the positions of our 8 LBCS sources and their distance from both the centre of the EGS and 3C295.}
+\end{table}
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{images/{image_full_ampphase_di_m.NS_Smooth.noise01.fitslbcs.egs.positions}.png}
+	\caption{Position of the calibrator sources around the EGS, overlaid on the widefield EGS image. LBCS is 3C295.}
+	\label{lbcs-coverage-image}
+\end{figure}
+
 \pg
-A significant preliminary test is therefore to check that we do in fact see any of the LBCS sources. However, this is not the end of the problem: decorrelation causes flux from a source to be ``smeared" (hence its other name) around the source. The DDFacet suite can account for this effect by modelling the direction-dependent PSF, i.e. a PSF which is smeared appropriately as a function of position\footnote{A single smeared PSF is calculated per facet, and this smeared PSF is treated as being constant within the facet: this is a good approximation unless one uses truly massive facets.}
+A significant preliminary test is therefore to check that we do in fact see any of the LBCS sources. However, this is not the end of the problem: decorrelation causes flux from a source to be ``smeared" (hence its other name) around the source. The DDFacet suite can account for this effect by modelling the direction-dependent PSF, i.e. a PSF which is smeared appropriately as a function of position\footnote{A single smeared PSF is calculated per facet, and this smeared PSF is treated as being constant within the facet: this is a good approximation unless one uses truly massive facets.}.
 
 \begin{figure}[h!]
 \centering
@@ -47,7 +46,10 @@ A significant preliminary test is therefore to check that we do in fact see any 
 \end{figure}
 
 \pg
-The second source of direction-dependent effects is physical: the signal from different parts of the sky propagates through different parts of the local ionosphere before reaching our antennas. In the ideal case, our direction-independent calibration of the EGS using 3C295 as a calibrator is good enough, for international baselines, to allow the imaging of the full EGS using international LOFAR, with acceptable upper bounds to decorrelation throughout the field. Of course, this is unlikely to be the case - the aim is then to find out just how far we are from this ideal scenario.
+The second source of direction-dependent effects is physical: the signal from different parts of the sky propagates through different parts of the local ionosphere before reaching our antennas.
+
+\pg
+In the ideal case, our direction-independent calibration of the EGS using 3C295 as a calibrator is good enough, for international baselines, to allow the imaging of the full EGS using international LOFAR, with acceptable upper bounds to decorrelation throughout the field. Of course, this is unlikely to be the case - the aim is then to find out just how far we are from this ideal scenario.
 
 \pg
 In RIME terms, when performing our direction-independent calibration, we solved for $\hatJones_{3C295,p}^{\nu}$ (see \cref{3c295.dirin.cal}), assuming that it was the dominant source of signal in the sky. By applying the inverse of this gain solution to the visibilities, we image the \textit{corrected visibilities}:
@@ -61,7 +63,7 @@ where
 \tildeGjones_{p}(\nu) &= \Ghatjones_{p}^{-1}(\nu)\Gjones_{p}(\nu)\\
 \tildeEjones_{s,p}(\nu) &= \Ehatjones_{3C295,p}^{-1}(\nu)\Ejones_{s,p}(\nu)
 \end{align}                        
-where we have muted the time-dependence of all variables for the sake of readability. Provided that our gain solutions are exactly right (i.e. that $\hatJones_p^{\nu}=\Jones_p^{\nu}$ for all $p,\nu$) then $\tildeGjones=\I \forall p,\nu$. If the calibration problem is sufficiently well-conditioned (i.e. good signal-to-noise, many baselines) and the sky model sufficiently complete, then this is a reasonable assumption to make. However, for all $s\ne 3C295$, $\tildeEjones\ne 1$. This means that, depending on how different the $\Ejones$ terms will be between a given direction and 3C295, direction-dependent calibration artefacts will be introduced in the field. 
+where $\Kjones$ is in $\Jones$, and we have muted the time-dependence of all variables for the sake of readability. Provided that our gain solutions are exactly right (i.e. that $\hatJones_p^{\nu}=\Jones_p^{\nu}$ for all $p,\nu$) then $\tildeGjones=\I \forall p,\nu$. If the calibration problem is sufficiently well-conditioned (i.e. good signal-to-noise, many baselines) and the sky model sufficiently complete, then this is a reasonable assumption to make. However, for all $s\ne 3C295$, $\tildeEjones\ne 1$. This means that, depending on how different the $\Ejones$ terms will be between a given direction and 3C295, direction-dependent calibration artefacts will be introduced in the field. 
 
 \pg
 In practice, both $\tildeGjones$ and $\tildeEjones$ will contribute to image deterioration: in our case, we only model part of the sky to which our array is sensitive, and so $\tildeGjones\ne 1$ differently for various antennas, times and frequencies. Similarly, we do not perform direction-dependent calibration: as distance increases from 3C295, it is increasingly likely that the ionosphere through which non-3C295 sources' signal propagates before reaching our antennas will vary from the ionosphere through which the signal from 3C295 will vary - and because the ionosphere's behaviour is complex, this behaviour is unpredictable as a function of distance or frequency. The departure of both $\tildeGjones$ and $\tildeEjones$ from unity as a function of direction is called \textit{directional gain errors}, as it is caused by direction-dependent effects. 
@@ -83,7 +85,7 @@ We select 8 LBCS sources, which are all the ``good" sources within 5 degrees of 
 \section{Testing Directional Gain Errors - LBCS Sources in the Primary Beam}\label{section.decorr}
 
 \pg
-The LBCS sources were chosen automatically using a routine written by Leah Morabitoh and shared in a private communication. This was done in early 2017. Only the brightest reliable sources were kept, provided they had a good reliability factor (the LBCS catalog includes a reliability factor for each source; the updated reliability factor has not been verified for the sources used here). This left a total of 8 sources, described in \cref{table.LOBOS.sources}. Their position on the sky is shown in \cref{lbcs-coverage-image}. They will henceforth be referred to as LBCS1, LBCS2, and so on - note that LBCS6 is actually 3C295.
+The LBCS sources were chosen automatically using a routine written by Leah Morabitoh and shared in a personal communication. This was done in early 2017. Only the brightest reliable sources were kept, provided they had a good reliability factor (the LBCS catalog includes a reliability factor for each source; we have not verified that these reliability factors have not changed since). This left a total of 8 sources, described in \cref{table.LOBOS.sources}. Their position on the sky is shown in \cref{lbcs-coverage-image}. They will henceforth be referred to as LBCS1, LBCS2, and so on - note that LBCS6 is actually 3C295.
 
 %describe LOBOS catalogue \& sources chosen  - why, how
 
@@ -214,7 +216,7 @@ Of course, it is not enough to eyeball this: we therefore proceed to quantify th
 \end{figure}
 
 \pg
-To estimate the prevalence of directional gain errors, we then calculate the rms around each LBCS source. This is plotted in \cref{fig.dderms.distEGS}. The RMS around each source is normalised by the source's integrated flux as calculated on the restored image: this is because we expect brighter images to show stronger artefacts associated to directional gain errors. It should be noted that LBCS8 is not deconvolved at all: as such, its RMS is effectively calculated on a corrupted dirty map of the source, rather than a residual map. This helps explains its outlier behaviour. This outlier aside, the directional gain rms seems fairly flat as a function of distance from 3C295, however - a very good sign, as it indicates that the directional gain errors are comparable across the primary beam. However, we do not take into account the increase in thermal rms as a function of distance from phase centre in this plot. We therefore look at the normalised RMS values for each LBCS source, shown in \cref{fig.rmsratio.distEGS}. Here the relationship becomes even flatter, though LBCS5 now stands as a $3\sigma$ outlier. The blue line shows the mean value, excluding LBCS8; it lies at $y=1.08063981$. In other words, the average RMS induced by directional gain errors, when normalised by both the flux of a source for which it is calculated and the thermal noise, is very close to unity, and does not increase very much as distance from 3C295 increases. While it apparently increases in the direction of LBCS5, the EGS is not in this direction from 3C295, and so this is not a source of concern for our project of imaging the EGS using international LOFAR.
+To estimate the prevalence of directional gain errors, we then calculate the rms around each LBCS source. This is plotted in \cref{fig.dderms.distEGS}. The RMS around each source is normalised by the source's integrated flux as calculated on the restored image: this is because we expect brighter images to show stronger artefacts associated to directional gain errors. It should be noted that LBCS8 is not deconvolved at all: as such, its RMS is effectively calculated on a corrupted dirty map of the source, rather than a residual map. This helps explains its outlier behaviour. This outlier aside, the directional gain rms seems fairly flat as a function of distance from 3C295, however - a very good sign, as it indicates that the directional gain errors are comparable across the primary beam. However, we do not take into account the increase in thermal rms as a function of distance from phase centre in this plot. We therefore look at the normalised RMS values for each LBCS source, shown in \cref{fig.rmsratio.distEGS}. The relationship remains flat, though LBCS5 now stands as a $3\sigma$ outlier. The blue line shows the mean value, excluding LBCS8; it lies at $y=1.08063981$. In other words, the average RMS induced by directional gain errors, when normalised by both the flux of a source for which it is calculated and the thermal noise, is very close to unity, and does not increase very much as distance from 3C295 increases. While it apparently increases in the direction of LBCS5, the EGS is not in this direction from 3C295, and so this is not a source of concern for our project of imaging the EGS using international LOFAR.
 \begin{figure}[h!]
 \includegraphics[width=0.8\linewidth]{images/ArtefactRMSvsDistFrom3c295.png}
 \caption{DDE noise near LBCS sources as a function of distance from the phase centre. Because 3C295 is so much brighter than all other sources ($\sim100$Jy; second-brightest LBCS source is $\sim2$Jy), its DDE noise was normalised by its integrated model flux.}
@@ -222,7 +224,7 @@ To estimate the prevalence of directional gain errors, we then calculate the rms
 \end{figure}
 \begin{figure}[h!]
 \includegraphics[width=0.8\linewidth]{images/NormArtefactRMSvsDistFrom3c295.png}
-\caption{}
+\caption{Normalised RMS values around each of the LBCS sources in the field as a function of distance from phase centre. }
 \label{fig.rmsratio.distEGS}
 \end{figure}
 
