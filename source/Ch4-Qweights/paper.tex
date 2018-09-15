@@ -596,3 +596,6 @@ The work presented here can be improved upon, notably by working on improving th
 \item The impact of sky model incompleteness (since calibration requires a sky model) is ignored in this paper; we start by assuming that we have a complete sky model. In practice, of course, acquiring a complete sky model is often a key science goal in and of itself. The impact of this hypothesis therefore ought to be investigated in future work.
 \item The conditioning of our covariance matrix estimation remains a concern. By using an antenna-based approach, we can improve conditioning by a factor of $n_{ant}$, but this is only one approach among many. Further work is needed to investigate which method, if any, proves optimal.
 \end{itemize}
+
+\pg
+Once the conditioning issues of the artefact-optimal weights are resolved, a Briggs-type implementation of the overall adaptive quality-based weighting scheme with a sliding parameter could conceivably be implemented. As things stand, however, there is no good reason to use the currently-existing artefact-optimal weighting scheme over the well-conditioned sensitivity-optimal weighting scheme.
