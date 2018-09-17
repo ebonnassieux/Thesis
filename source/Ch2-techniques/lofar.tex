@@ -47,8 +47,17 @@ There are two bands to LOFAR, which are known as LOFAR-HBA (High-Band Antennas) 
 \pg
 We see the presence, in both cases, of two very different antenna types. One of these antenna types is not a single antenna, but rather a phased array: 16 antenna dipoles distributed in a $4 \times 4$ array. International LOFAR stations include 96 such tiles, distributed in a ``filled-disk" pattern, where the disk fill ratio is determined by the size of the tile. Dutch ``remote" stations have 48 such tiles spread into 2 disks (HBA\textunderscore INNER and HBA\textunderscore OUTER), while ``core" station HBA tiles are split into two 24-tile crosses. This pattern is shown in \cref{fig.hba.tile}. The antennas from each tile are combined into a phased array with a single ``tile beam", and all tile beams are themselves combined as a phased array into a station beam\footnote{Reference: \href{https://www.astron.nl/radio-observatory/astronomers/technical-information/antennae/antennae-description}{ASTRON technical description}: \url{https://www.astron.nl/radio-observatory/astronomers/technical-information/antennae/antennae-description}}.% This station beam is then pointed digitally.
 \begin{figure}[h!]
-\includegraphics[width=0.45\textwidth]{images/{Schematic-diagram-of-a-24-tile-LOFAR-HBA-station-A-tile-is-made-of-16-dual-polarization.png}}
-\caption{\label{fig.hba.tile} Layout of a single HBA tile. Source: \href{https://www.researchgate.net/profile/Sarod_Yatawatta/publication/281316394/figure/fig1/AS:614002589720576@1523401033149/Schematic-diagram-of-a-24-tile-LOFAR-HBA-station-A-tile-is-made-of-16-dual-polarization.png}{Sarod Yatawatta researchgate profile}}
+\begin{subfigure}{.45\textwidth}
+	\centering
+	\includegraphics[width=0.95\textwidth]{images/{Schematic-diagram-of-a-24-tile-LOFAR-HBA-station-A-tile-is-made-of-16-dual-polarization.png}}
+	\caption{\label{fig.hba.tile} Layout of a single HBA tile. Source: \href{https://www.researchgate.net/profile/Sarod_Yatawatta/publication/281316394/figure/fig1/AS:614002589720576@1523401033149/Schematic-diagram-of-a-24-tile-LOFAR-HBA-station-A-tile-is-made-of-16-dual-polarization.png}{Sarod Yatawatta researchgate profile}}
+\end{subfigure}
+\begin{subfigure}{.45\textwidth}
+	\centering
+	\includegraphics[width=0.95\textwidth]{images/{hbaim.jpeg}}
+	\caption{\label{fig.hba.im} Picture of an HBA tile. Source: Figure 1 of \citetads{2012A&A...545A.108N}}
+\end{subfigure}
+\caption{HBA tile layout and image. Note that both cases show a 24-tile HBA array: each core station includes two such arrays. International stations include a single larger tile array.}
 \end{figure}
 
 
