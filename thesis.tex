@@ -166,7 +166,6 @@
 % +++ IMPORT DEFINITIONS +++
 \input{source/auxil/Defs.tex}
 
-
 \begin{document}
 \dominitoc
 %%%%%%%%%%%%%%%
@@ -179,7 +178,7 @@
 \addtocontents{toc}{~\hfill\textbf{Page}\par}
 %\input{source/synopsis.tex}
 %\newpage
-%\input{source/acknowledgements.tex}
+\input{source/acknowledgements.tex}
 
 %%%%%%%%%%%%%%%%%%%%
 %%% START THESIS %%%
@@ -246,5 +245,8 @@
 \bibliography{source/auxil/biblio}
 \addcontentsline{toc}{chapter}{Bibliography}
 
+\clearpage
+\chapter*{Acknowledgements}
+\input{source/acknowledgement-paragraph.tex}
 
 \end{document}
