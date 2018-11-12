@@ -5,7 +5,7 @@
 
 \pg
 In this section, we introduce the mathematical framework which forms the basis for our algorithmic work.
-While radio interferometry has historically been a complex business \citepads{2001isra.book.....T}, modern radio interferometry is based on the Radio Interferometer's Measurement Equation, a powerful and elegant formalism which underpins modern calibration and imaging algorithms. In this section, I will give a simplified account of this formalism as described in \citetads{2011A&A...527A.106S} and its companion papers\footnote{\citetads{2011A&A...527A.107S}, \citetads{2011A&A...527A.108S} and \citetads{2011A&A...531A.159S}}. This will form the theoretical basis on which further sections will expand. I cannot overstate the importance of the RIME as the foundation of modern calibration and imaging algorithms.
+While radio interferometry has historically been a complex business \citepads{2001isra.book.....T}, modern radio interferometry is based on the Radio Interferometer's Measurement Equation, a powerful and elegant formalism which underpins modern calibration and imaging algorithms. In this section, I will give a simplified account of this formalism as described in \citetads{2011A&A...527A.106S} and its companion papers \citepads{2011A&A...527A.107S, 2011A&A...527A.108S, 2011A&A...531A.159S}. This will form the theoretical basis on which further sections will expand.% I cannot overstate the importance of the RIME as the foundation of modern calibration and imaging algorithms.
 
 \pg
 For a mathematically rigorous description of the RIME, the references used in this work (particularly \citetads{2011A&A...527A.108S} and \citetads{2011A&A...531A.159S}) are obviously the first place to look. We frame the RIME in the continuity of previous theoretical frameworks of radio interferometry, while also describing it in the context of contemporary software packages and algorithmic tools.
@@ -18,10 +18,18 @@ The Radio Interferometer's Measurement Equation, or RIME, is a formalism which a
 
 \pg
 Consider a single quasi-monochromatic point source in the sky. Its signal at a point in time and space can be described by a complex 2-vector $\evector$ -- this assumes plane waves. We can then represent physical processes which affect this signal's propagation using \emph{Jones matrices}. In other words:
+\begin{align}
+\volt &= \Jones\evector\\
+\evector &= \begin{pmatrix} e_x \\ e_y \\ e_z \end{pmatrix}
+\end{align}
+where $\volt$ is the voltage measured by our antenna, and $\Jones$ the Jones matrix describing the \emph{net} propagation effects - atmospheric, astrophysical, and instrumental - which affect our source's signal. $\evector$ is the electromagnetic wave emitted by a source. $\Jones$ can be written as a series of matrix products, each individual matrix describing a physical phenomenon. They are then called a \emph{Jones chain}, and the resulting $\Jones$ is often called the \emph{total Jones matrix}.
+
+\pg
+For $\mathbf{e}$ to be a 2-vector, rather than a 3-vector, we must choose to use $xyz$ as our coordinates, with $z$ the direction of propagation of our signal. \citetads{1996A&AS..117..137H} then show that the following relation holds:
 \begin{equation}
-\volt = \Jones\evector
+2 \evector \evector^\Herm = 2  \begin{bmatrix} <e_x e_x^\star> & <e_x e_y^\star> \\ <e_y e_x^\star> & <e_y e_y^\star> \end{bmatrix} = \begin{bmatrix} I+Q & U+iV \\ U-iV & I-Q \end{bmatrix} = \Bmatrix
 \end{equation}
-where $\volt$ is the voltage measured by our antenna, and $\Jones$ the Jones matrix describing the \emph{net} propagation effects - atmospheric, astrophysical, and instrumental - which affect our source's signal. $\Jones$ can be written as a series of matrix products, each individual matrix describing a physical phenomenon. They are then called a \emph{Jones chain}, and the resulting $\Jones$ is often called the \emph{total Jones matrix}.
+where $\Bmatrix$ is the coherency matrix of the source's emission.
 
 \pg
 A visibility is the correlation of voltage from two antennas. In other words,
@@ -30,13 +38,9 @@ A visibility is the correlation of voltage from two antennas. In other words,
 \Vis_{pq} &= 2 \langle\Jones_p \evector (\Jones_q \evector)^\Herm\rangle\\
 \Vis_{pq} &= 2 \langle\Jones_p \evector \evector^\Herm \Jones_q^\Herm\rangle
 \end{align}
-where $\Jones_p$ corresponds to the signal propagation chain of antenna $p$, and $\Jones_q$ for antenna $q$. Note that a factor of 2 has been introduced here, as a matter of convention. This is due to the definition of the Stokes parameter in relation to our $\evector$ outer product.
+where $\Jones_p$ corresponds to the signal propagation chain of antenna $p$, and $\Jones_q$ for antenna $q$. $(...)^\Herm$ corresponds to taking the Hermitian conjugate of a matrix, and $\langle...\rangle$ an average over some interval. Note that a factor of 2 has been introduced here, as a matter of convention. This is due to the definition of the Stokes parameter in relation to our $\evector$ outer product.
 
-\pg
-For $\mathbf{e}$ to be a 2-vector, rather than a 3-vector, we must choose to use $xyz$ as our coordinates, with $z$ the direction of propagation of our signal. \citetads{1996A&AS..117..137H} then show that the following relation holds:
-\begin{equation}
-2 \evector \evector^\Herm = 2  \begin{bmatrix} <e_x e_x^\star> & <e_x e_y^\star> \\ <e_y e_x^\star> & <e_y e_y^\star> \end{bmatrix} = \begin{bmatrix} I+Q & U+iV \\ U-iV & I-Q \end{bmatrix} = \Bmatrix
-\end{equation}
+
 
 \pg
 We can thus write:
@@ -52,10 +56,10 @@ This gives us an elegant formulation of the relationship between the signal emit
 \pg
 Having written our RIME as a matrix multiplication problem, we can now begin to differentiate between different types of Jones matrices. $\Jones_p$ describes the \emph{aggregate} effects which occur over the course of the signal's propagation to our antenna $p$. It can be split into a Jones chain of $n$ separate matrices, corresponding to different effects:
 \begin{align}
-\displaystyle \Jones_{sp}^H &= \prod_1^n \Jones_{nsp}^H = \Jones_{1sp}^H \Jones_{2sp}^H ... \Jones_{nsp}^H\\
-\displaystyle \Jones_{sp}   &= \Jones_{nsp}...\Jones_{2sp} \Jones_{1sp}
+\displaystyle \Jones_{sp}^H &= \prod_1^n \Jones_{nsp}^H = \Jones_{1sp}^H \Jones_{2sp}^H ... \Jones_{nsp}^H\label{eatshit1}\\
+\displaystyle \Jones_{sp}   &= \Jones_{nsp}...\Jones_{2sp} \Jones_{1sp}\label{eatshit2}
 \end{align}
-where $s$ is a particular direction in the sky: these Jones matrices are therefore direction-dependent.
+where $s$ is a particular direction in the sky: these Jones matrices are therefore direction-dependent. Going from \cref{eatshit1} to \cref{eatshit2} simply consists of applying the Hermitian operator to both sides of \cref{eatshit1} to recover $\Jones_{nsp}$.
 Since the Jones terms are applied sequentially to the brightness matrix, starting with $\Jones_{1sp}$, the terms to the right of our decomposition of $\Jones_{sp}$ can be said to occur `at the source', i.e. before those to the left (said to occur `at the antenna').
 
 \pg
@@ -93,7 +97,7 @@ The commutation property of $\Kjones_p$ with other Jones matrices allow us to al
 \pg
 Here, we have decoupled the nominal phase delay term ($\Kjones_p$) from all `corrupting' effects ($\Gjones_p$). We can take this one step further by defining the \emph{source coherency}, $\Coherency_{pq}$, as follows:
 \begin{align}\label{eq.def.coherency}
-\Coherency_{pq} &= \Kjones_p \Bmatrix_{pq} \Kjones_p^H\\
+\Coherency_{pq} &= \Kjones_p \Bmatrix \Kjones_p^H\\
 \Vis_{pq} &= \Gjones_p \Coherency_{pq} \Gjones_q^H
 \end{align}
 
@@ -117,9 +121,7 @@ We now expand our Jones chain as before. Some, but not all, elements in the chai
 \begin{equation}
 \Jones_{sp} = \Gjones_p \Ejones_{sp} \Kjones_{sp}
 \end{equation}
-
-\pg
-Note that we have kept the source-dependent effects (i.e. $E_{sp}$ those occurring `at the source') are to the right of our chain, and the antenna-dependent ($G_p$) effects to the left. $K_{sp}$ is a scalar and can thus be moved at will; it is therefore placed at the far right to recover the coherency matrix if necessary.
+where $E_{sp}$ are direction-dependent effects, which vary for each source. Note that we have kept the source-dependent effects (i.e. those which vary depending on the line of sight) are to the right of our chain, and the antenna-dependent ($G_p$) effects to the left. $K_{sp}$ is a scalar and can thus be moved at will; it is therefore placed at the far right to recover the coherency matrix if necessary.
 
 \pg
 Our multiple-source RIME can thus be written in the following form:
@@ -128,7 +130,7 @@ Our multiple-source RIME can thus be written in the following form:
 \end{equation}
 
 \pg
-This `onion' form of the RIME is usually sufficient to describe signal propagation in radio-interferometric arrays. We find the three types of Jones matrices promised earlier: the geometric effects accounted for by $\Kjones$, the direction-dependent effects modeled into $\Ejones$, and the direction-independent effects (antenna-based effects) modeled into $\Gjones$.
+This `onion' form of the RIME - so-called because, like an onion, it is formed in layers - is usually sufficient to describe signal propagation in radio-interferometric arrays. We find the three types of Jones matrices promised earlier: the geometric effects accounted for by $\Kjones$, the direction-dependent effects modeled into $\Ejones$, and the direction-independent effects (antenna-based effects) modeled into $\Gjones$.
 
 \pg
 There are still limitations to this RIME; notably, it assumes that the sky consists entirely of point sources (absence of diffuse emission), and that Jones matrices are time-independent. These are of course unphysical hypotheses, though they are a very good first approximation. We shall now address these two points.
@@ -153,7 +155,7 @@ Here, effects such as our array's beam lie in the Jones matrices. By performing 
 \pg
 Having written this, and using $\lvec$ as shorthand $(l,m)$, we can once again decompose our Jones matrix into a Jones chain containing a direction-independent term $\Gjones$, a direction-dependent term $\Ejones$, and the phase term $\Kjones$. Substituting this into our integral, we get the following expression:
 \begin{align}
-\Vis_{pq} &= \Gjones_p \bigg(\int_{\lvec} \frac{1}{n} \Ejones_p(\lvec) \Bmatrix \Ejones_q(\lvec) \Kjones_p(\lvec)\Kjones_q^H(\lvec) dl dm \bigg) \Gjones_q^H\\
+\Vis_{pq} &= \Gjones_p \bigg(\int_{\lvec} \frac{1}{n} \Ejones_p(\lvec) \Kjones_p(\lvec) \Bmatrix \Kjones_q^H(\lvec) \Ejones_q(\lvec)  dl dm \bigg) \Gjones_q^H\\\Vis_{pq} &= \Gjones_p \bigg(\int_{\lvec} \frac{1}{n} \Ejones_p(\lvec) \Bmatrix \Ejones_q(\lvec) \Kjones_p(\lvec)\Kjones_q^H(\lvec) dl dm \bigg) \Gjones_q^H\\
           &= \Gjones_p \bigg(\int_{\lvec} \frac{1}{n} \Ejones_p(\lvec) \Bmatrix \Ejones_q(\lvec) e^{-2\pi i\big(u_{pq}l+v_{pq}m+w_{pq}(n-1)\big)} dl dm \bigg) \Gjones_q^H
 \end{align}
 where
@@ -178,10 +180,10 @@ Note that $\Bmatrix$ was the actual sky  brightness distribution as a function o
 \label{section.RIME.FullSky.CVZ}
 
 \pg
-Earlier calibration models and algorithms rely on the hypothesis that all baselines see the same sky. This is the \emph{fundamental premise of self-calibration}. The topic of self-cal is covered in \cref{section.calibration.2gc}. This premise only holds when all Direction-Dependent Effects (henceforth referred to as DDEs) are identical for all baselines (and therefore for all antennas). This is a necessary condition for the apparent sky $\Bmatrix_{pq}$ to be the same for all baselines\footnote{$\Bmatrix_{pq}$ would then correspond to the `true' sky attenuated by the ``power beam", which corresponds to our instrument's directional sensitivity in the traditional view}, as it allows us to write:
+Earlier calibration models and algorithms rely on the hypothesis that all baselines see the same sky. This is the \emph{fundamental premise of self-calibration}. The topic of self-cal is covered in \cref{section.calibration.2gc}. This premise only holds when all Direction-Dependent Effects (henceforth referred to as DDEs) are identical for all baselines (and therefore for all antennas). We then effectively have $\Ejones_{s,p}=1$ for all $p$. This is a necessary condition for the \textit{apparent} sky $\Bmatrix_{pq}$ to be the same for all baselines\footnote{The ``apparent" sky is the `true' sky attenuated by the ``power beam", which corresponds to our instrument's directional sensitivity in the traditional view.}, as it allows us to write:
 \begin{align}
 \Ejones_p(\lvec) \Wjones_p(\lvec)&= \Ejones(\lvec) \Wjones(\lvec)\\
-\Bmatrix_{pq}(\lvec) = \Bmatrix_{app}(\lvec) &= \Ejones(\lvec) \Wjones(\lvec) \Bmatrix)(\lvec) \Wjones^H(\lvec) \Ejones^H(\lvec)
+\Bmatrix_{pq}(\lvec) = \Bmatrix_{app}(\lvec) &= \Ejones(\lvec) \Wjones(\lvec) \Bmatrix (\lvec) \Wjones^H(\lvec) \Ejones^H(\lvec)
 \end{align}
 
 \pg
@@ -189,7 +191,7 @@ If this condition is met, we can then rewrite the full-sky RIME as:
 \begin{equation}\label{eq.fullsky.RIME}
 \Vis_{pq} = \Gjones_p \Coherency_{pq} \Gjones_q^H
 \end{equation}
-where $\Coherency_{pq} = \Coherency(u_{pq},v_{pq}) = \Coherency(\uvec)$. Comparing \cref{eq.def.coherency,eq.vis.FT.coherency.matrix} directly shows that the coherency matrix is simply the two-dimensional Fourier transform of $\Bmatrix_{app}(\lvec)$. We can thus call $\Coherency(\uvec)$ the \emph{sky coherency}, in keeping with our nomenclature for the RIME of a point source.
+where $\Coherency_{pq} = \Coherency(u_{pq},v_{pq}) = \Coherency(\uvec)$. Our coherency matrix includes the beam attenuation implicitly, as $\Bmatrix_{app}$ is now the coherency of the \textit{apparent} sky brightness distribution. Comparing \cref{eq.def.coherency,eq.vis.FT.coherency.matrix} directly shows that the coherency matrix is simply the two-dimensional Fourier transform of $\Bmatrix_{app}(\lvec)$. We can thus call $\Coherency(\uvec)$ the \emph{sky coherency}, in keeping with our nomenclature for the RIME of a point source.
 
 \pg
 Note that deriving the van Cittert-Zernike theorem (\citepads{1934Phy.....1..201V}, covered in \citepads{2001isra.book.....T}) from the RIME was simply of matter of treating phase as a Jones matrix in its own right\footnote{\href{https://raw.githubusercontent.com/wiki/ska-sa/meqtrees/aips++_note185.pdf}{Noordam, J.E. 1996, AIPS++, Note 185: The Measurement Equation of a Generic Radio Telescope}}. A significant consequence of this is that DDEs can be incorporated within the RIME formalism.
@@ -226,7 +228,7 @@ In practice, measurements made by any interferometric array are actually average
 \end{align}
 
 \pg
-$\Jones(t,\nu)$ describes the propagation of an electromagnetic signal through various physical processes. This signal has a complex phase, which is variable in both time and frequency. Since it is a rotating vector, integrating over any time or frequency band will always result in a \emph{net loss} in amplitude in the measured $\langle\Vis\rangle$. This mechanism is commonly referred to as \emph{time/bandwidth width decorrelation} or \emph{smearing} \citepads{2011A&A...527A.106S}.
+$\Jones(t,\nu)$ describes the propagation of an electromagnetic signal through various physical processes. This signal has a complex phase, which is variable in both time and frequency. Since it is a rotating vector, integrating over any time or frequency band will always result in a \emph{net loss} in amplitude in the measured $\langle\Vis\rangle$. This mechanism is commonly referred to as \emph{time/bandwidth decorrelation} or \emph{smearing} \citepads{2011A&A...527A.106S}.
 
 \pg
 The general effect is referred to as \emph{decorrelation}\footnote{Decorrelation can equivalently be referred to as ``decoherence".}, and the specific case of decoherence caused by the $\Kjones$ term is referred to as \emph{smearing}.
@@ -237,7 +239,7 @@ The general effect is referred to as \emph{decorrelation}\footnote{Decorrelation
 In the context of the RIME, smearing is an element-by-element operation, i.e. different elements do not affect each other. Treating smearing within the RIME is thus a trivial expansion of the scalar equations.
 
 \pg
-Assuming that $\Delta t$ and $\Delta \nu$ are small enough that the amplitude of $\Vis_{pq}$ remains constant over the integration band (i.e. that $\Vis_{pq}$ is well-sampled by our instrument), then a useful first-order approximation is:
+Assuming that $\Delta t$ and $\Delta \nu$ are small enough that the amplitude of $\Vis_{pq}$ remains constant over the integration band (i.e. that $\Vis_{pq}$ is well-sampled by our instrument), then a useful first-order approximation\footnote{see \citetads{2011A&A...527A.107S} and companion papers.} is:
 \begin{equation}
 \langle \Vis_{pw} \rangle \simeq \text{sinc}\frac{\Delta \pmb{\Psi}}{2} \enskip \text{sinc}\frac{\Delta \pmb{\Phi}}{2} \enskip \Vis_{pq}(t_{mid},\nu_{mid})
 \end{equation}
